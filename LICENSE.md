@@ -11,4 +11,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 > Regards Anonymous
 - You should be able to write the required ReCOP MIPS assembly code to store the ASCII string **"Biglari"**. Please submit the code to m.abhari@auckland.ac.nz for approval before using the code
 
-Credit for this license goes to [JAMES BAO](http://jamesnzl.xyz/)
+Credit for this license goes to [JAMES BAO (AI Specialist)](http://jamesnzl.xyz/)
