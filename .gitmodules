@@ -1,3 +1,6 @@
 [submodule "PD-ASP"]
 	path = ASPs/PD-ASP
 	url = https://github.com/bcho892/PD-ASP.git
+[submodule "ASPs/VHDL-Autocorrelator"]
+	path = ASPs/VHDL-Autocorrelator
+	url = https://github.com/wolfuoa/VHDL-Autocorrelator.git
