@@ -4,3 +4,6 @@
 [submodule "ASPs/PD-ASP"]
 	path = ASPs/PD-ASP
 	url = https://github.com/bcho892/PD-ASP.git
+[submodule "ASPs/701AvgASP"]
+	path = ASPs/701AvgASP
+	url = git@github.com:obwan02/701AvgASP.git
