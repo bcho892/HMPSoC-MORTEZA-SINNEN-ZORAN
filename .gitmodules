@@ -4,3 +4,6 @@
 [submodule "ASPs/PD-ASP"]
 	path = ASPs/PD-ASP
 	url = https://github.com/bcho892/PD-ASP.git
+[submodule "ReCOPs/701-ReCOP"]
+	path = ReCOPs/701-ReCOP
+	url = https://github.com/wolfuoa/701-ReCOP.git
