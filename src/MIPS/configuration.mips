@@ -1,6 +1,17 @@
 ldi $r0 #0
 datacalli $r0 #0
 
+-- Configure Averaging
+ldi $r9 #4
+ssop $r9
+-- Send config to Averaging
+ldi $r13 #61762  -- xF142
+datacalli $r13 #0 -- 0x0000
+
+-- Reset NOC back to 0
+ldi $r0 #0
+datacalli $r0 #0
+
 -- datacalli $rx #op
 -- Configure ADC
 -- send.data <= x"a0420000"; enable ch 0
@@ -8,7 +19,7 @@ datacalli $r0 #0
 ldi $r9 #2
 ssop $r9
 -- Send config to ADC
-ldi $r13 #40978  -- xa012
+ldi $r13 #41026  -- xa042
 datacalli $r13 #0 -- 0x0000
 
 -- Reset NOC back to 0
@@ -20,8 +31,9 @@ datacalli $r0 #0
 ldi $r9 #1
 ssop $r9
 -- Send config to CORE
-ldi $r13 #32770  -- 1000000000000010
-datacalli $r13 #24448 -- 0101111110000000
+-- "1010" & "0000" & "0000" & "00" & '1' & '0' & "0101" & "11111" & "0000000";
+ldi $r13 #40962  -- 1010000000000010
+datacalli $r13 #21376 -- 0101001110000000
 
 -- Reset NOC back to 0
 ldi $r0 #0
@@ -35,4 +47,9 @@ ssop $r9 -- put address on NOC
 ldi $r13 #45055 -- "AFFF"
 datacalli $r13 #32767 -- "7FFF"
 
-j #0 -- infinite loop
+-- Reset NOC back to 0
+ldi $r0 #0
+datacalli $r0 #0
+
+j #25 -- infinite loop
+j #24 

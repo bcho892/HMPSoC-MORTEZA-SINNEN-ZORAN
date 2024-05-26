@@ -8,7 +8,7 @@ use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports : positive := 4
+        ports : positive := 5
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -40,13 +40,6 @@ architecture rtl of TopLevel is
 
     signal clock     : std_logic;
 
-    signal adc_empty : std_logic := '0';
-    signal adc_get   : std_logic;
-    signal adc_data  : std_logic_vector(16 downto 0) := "1" & x"6969";
-    signal dac_full  : std_logic;
-    signal dac_put   : std_logic;
-    signal dac_data  : std_logic_vector(16 downto 0);
-
     signal zoran     : std_logic_vector(7 downto 0);
 
     signal send_port : tdma_min_ports(0 to ports - 1);
@@ -62,25 +55,6 @@ begin
             clock => clock,
             sends => send_port,
             recvs => recv_port
-        );
-
-    recop_wolf_top_level_inst : entity work.recop_wolf_top_level
-        generic map(
-            program_file_path => FilePaths.RECOP_FILE_PATH
-        )
-        port map(
-            clock                     => clock,
-            enable                    => '1',
-            dprr(31 downto 2)         => (others => '0'),
-            dprr(1)                   => KEY(1),
-            dprr(0)                   => '0',
-            sip_data_in(15 downto 10) => (others => '0'),
-            sip_data_in(9 downto 0)   => SW,
-            reset                     => KEY(0),
-            dpcr_data_out             => send_port(3).data,
-            sop_data_out(15 downto 8) => zoran,
-            sop_data_out(7 downto 0)  => send_port(3).addr,
-            state_decode_fail         => open
         );
 
     pd_asp_inst : entity work.top_level_pd_asp
@@ -102,15 +76,43 @@ begin
             send_addr     => send_port(1).addr
         );
 
-    asp_adc : entity work.AspAdc
+    viktor_asp : entity work.TopLevelAdcAsp
         port map(
-            clock => clock,
-            empty => adc_empty,
-            get   => adc_get,
-            data  => adc_data,
+            clock  => clock,
+            reset  => '0',
+            enable => '1',
+            recv   => recv_port(2),
+            send   => send_port(2)
+        );
 
-            send  => send_port(2),
-            recv  => recv_port(2)
+    recop_wolf_top_level_inst : entity work.recop_wolf_top_level
+        generic map(
+            program_file_path => FilePaths.RECOP_FILE_PATH
+        )
+        port map(
+            clock                     => clock,
+            enable                    => '1',
+            dprr(31 downto 2)         => (others => '0'),
+            dprr(1)                   => KEY(1),
+            dprr(0)                   => '0',
+            sip_data_in(15 downto 10) => (others => '0'),
+            sip_data_in(9 downto 0)   => SW,
+            reset                     => KEY(0),
+            dpcr_data_out             => send_port(3).data,
+            sop_data_out(15 downto 8) => zoran,
+            sop_data_out(7 downto 0)  => send_port(3).addr,
+            state_decode_fail         => open
+        );
+
+    oliver_sinnen_asp : entity work.avg_asp
+        generic map(
+            AVG_WINDOW_SIZE => 4
+        )
+        port map(
+            clk     => clock,
+            reset   => '0',
+            noc_in  => recv_port(4),
+            noc_out => send_port(4)
         );
 
 end architecture;

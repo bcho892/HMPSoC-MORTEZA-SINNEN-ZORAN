@@ -13,16 +13,22 @@ set library_file_list {
 
                                            ip/TdmaMinFifo/TdmaMinFifo.vhd
 
+                                           ASPs/PD-ASP/vhdl/data/register_buffer.vhd
+                                           ASPs/VHDL-Autocorrelator/src/memory/register.vhd
+
                                            src/vhdl/TdmaMin/TdmaMinSlots.vhd
                                            src/vhdl/TdmaMin/TdmaMinFabric.vhd
                                            src/vhdl/TdmaMin/TdmaMinInterface.vhd
                                            src/vhdl/TdmaMin/TdmaMin.vhd
+
+                                           ASPs/VHDL-ADC/src/vhdl/memory/ROM.vhd
+                                           ASPs/VHDL-ADC/src/vhdl/FilePaths.vhd
+                                           ASPs/VHDL-ADC/src/vhdl/TopLevelAdcAsp.vhd
                            
                                            ASPs/PD-ASP/vhdl/utils/biglari_types.vhd
                                            ASPs/PD-ASP/vhdl/utils/zoran_types.vhd
                                            ASPs/PD-ASP/vhdl/utils/mux_constants.vhd
                                            ASPs/PD-ASP/vhdl/utils/noc_constants.vhd
-                                           ASPs/PD-ASP/vhdl/data/register_buffer.vhd
                                            ASPs/PD-ASP/vhdl/logic/comparator.vhd
                                            ASPs/PD-ASP/vhdl/data/max_value_storage.vhd
                                            ASPs/PD-ASP/vhdl/data/min_value_storage.vhd
@@ -36,9 +42,11 @@ set library_file_list {
                                            ASPs/PD-ASP/vhdl/top_level_pd_asp.vhd
 
                                            ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd
-                                           ASPs/VHDL-Autocorrelator/src/memory/register.vhd
                                            ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd
 
+                                           ASPs/701AvgASP/src/avg_queue.vhd
+                                           ASPs/701AvgASP/src/asp_control_unit.vhd
+                                           ASPs/701AvgASP/src/asp.vhd
 
                                            ReCOPs/701-ReCOP/src/vhdl/utils/file_paths.vhd
                                            

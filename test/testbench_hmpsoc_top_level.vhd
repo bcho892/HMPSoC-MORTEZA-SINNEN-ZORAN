@@ -13,7 +13,7 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            ports => 4
+            ports => 5
         )
         port map(
             CLOCK_50        => t_clock,
