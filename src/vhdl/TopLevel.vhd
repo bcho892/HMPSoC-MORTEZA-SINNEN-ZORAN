@@ -1,13 +1,14 @@
 library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
+use work.FilePaths;
 
 library work;
 use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports : positive := 2
+        ports : positive := 4
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -39,12 +40,14 @@ architecture rtl of TopLevel is
 
     signal clock     : std_logic;
 
-    signal adc_empty : std_logic;
+    signal adc_empty : std_logic := '0';
     signal adc_get   : std_logic;
-    signal adc_data  : std_logic_vector(16 downto 0);
+    signal adc_data  : std_logic_vector(16 downto 0) := "1" & x"6969";
     signal dac_full  : std_logic;
     signal dac_put   : std_logic;
     signal dac_data  : std_logic_vector(16 downto 0);
+
+    signal zoran     : std_logic_vector(7 downto 0);
 
     signal send_port : tdma_min_ports(0 to ports - 1);
     signal recv_port : tdma_min_ports(0 to ports - 1);
@@ -61,12 +64,31 @@ begin
             recvs => recv_port
         );
 
-    asp_adc : entity work.AspAdc
+    recop_wolf_top_level_inst : entity work.recop_wolf_top_level
+        generic map(
+            program_file_path => FilePaths.RECOP_FILE_PATH
+        )
         port map(
-            clock => clock,
-            empty => adc_empty,
-            get   => adc_get,
-            data  => adc_data
+            clock                     => clock,
+            enable                    => '1',
+            dprr(31 downto 2)         => (others => '0'),
+            dprr(1)                   => KEY(1),
+            dprr(0)                   => '0',
+            sip_data_in(15 downto 10) => (others => '0'),
+            sip_data_in(9 downto 0)   => SW,
+            reset                     => KEY(0),
+            dpcr_data_out             => send_port(3).data,
+            sop_data_out(15 downto 8) => zoran,
+            sop_data_out(7 downto 0)  => send_port(3).addr,
+            state_decode_fail         => open
+        );
+
+    pd_asp_inst : entity work.top_level_pd_asp
+        port map(
+            clock    => clock,
+            reset    => KEY(0),
+            data_out => send_port(0),
+            data_in  => recv_port(0)
         );
 
     cor_asp_inst : entity work.cor_asp
@@ -80,12 +102,15 @@ begin
             send_addr     => send_port(1).addr
         );
 
-    pd_asp_inst : entity work.top_level_pd_asp
+    asp_adc : entity work.AspAdc
         port map(
-            clock    => clock,
-            reset    => '0',
-            data_out => send_port(0),
-            data_in  => recv_port(0)
+            clock => clock,
+            empty => adc_empty,
+            get   => adc_get,
+            data  => adc_data,
+
+            send  => send_port(2),
+            recv  => recv_port(2)
         );
 
 end architecture;

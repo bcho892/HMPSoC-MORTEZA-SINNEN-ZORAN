@@ -6,6 +6,18 @@ puts {
 
 set library_file_list {
                            design_library {
+                                           src/vhdl/Constants/FilePaths.vhd 
+                                           src/vhdl/TdmaMin/TdmaMinTypes.vhd
+                                           src/vhdl/TdmaMin/TdmaMinSwitch.vhd
+                                           src/vhdl/TdmaMin/TdmaMinStage.vhd
+
+                                           ip/TdmaMinFifo/TdmaMinFifo.vhd
+
+                                           src/vhdl/TdmaMin/TdmaMinSlots.vhd
+                                           src/vhdl/TdmaMin/TdmaMinFabric.vhd
+                                           src/vhdl/TdmaMin/TdmaMinInterface.vhd
+                                           src/vhdl/TdmaMin/TdmaMin.vhd
+                           
                                            ASPs/PD-ASP/vhdl/utils/biglari_types.vhd
                                            ASPs/PD-ASP/vhdl/utils/zoran_types.vhd
                                            ASPs/PD-ASP/vhdl/utils/mux_constants.vhd
@@ -22,23 +34,44 @@ set library_file_list {
                                            ASPs/PD-ASP/vhdl/data/noc_output_stage.vhd
                                            ASPs/PD-ASP/vhdl/logic/peak_detection.vhd
                                            ASPs/PD-ASP/vhdl/top_level_pd_asp.vhd
+
                                            ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd
                                            ASPs/VHDL-Autocorrelator/src/memory/register.vhd
                                            ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd
-                                           src/vhdl/TdmaMin/TdmaMinTypes.vhd
-                                           src/vhdl/TdmaMin/TdmaMinSwitch.vhd
-                                           src/vhdl/TdmaMin/TdmaMinStage.vhd
-                                           ip/TdmaMinFifo/TdmaMinFifo.vhd
-                                           src/vhdl/TdmaMin/TdmaMinSlots.vhd
-                                           src/vhdl/TdmaMin/TdmaMinFabric.vhd
-                                           src/vhdl/TdmaMin/TdmaMinInterface.vhd
-                                           src/vhdl/TdmaMin/TdmaMin.vhd
+
+
+                                           ReCOPs/701-ReCOP/src/vhdl/utils/file_paths.vhd
+                                           
+                                           ReCOPs/701-ReCOP/src/vhdl/utils/recop_types.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/utils/mux_select_constants.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/utils/opcodes.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/utils/alu_ops.vhd
+
+                                           ReCOPs/701-ReCOP/src/vhdl/arith/max.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/arith/alu.vhd
+
+                                           ReCOPs/701-ReCOP/src/vhdl/memory/data_mem.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/memory/prog_mem.vhd
+
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/pc.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/instruction_register.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/register_file.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/control_unit.vhd
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/data_path.vhd
+
+                                           ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd
+
+                                           
+                                           src/vhdl/AspAdc.vhd
+                                           
+                                           src/vhdl/TopLevel.vhd
                                            
                            }
 
                            test_library   {
                                           test/TdmaMin/TestTdmaMin.vhd
                                           test/TdmaMin/TestTdmaMinInterface.vhd
+                                          test/testbench_hmpsoc_top_level.vhd
                            }
 }
 

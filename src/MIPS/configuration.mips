@@ -1,0 +1,38 @@
+ldi $r0 #0
+datacalli $r0 #0
+
+-- datacalli $rx #op
+-- Configure ADC
+-- send.data <= x"a0420000"; enable ch 0
+-- 1010000001000010 - 0000000000000000
+ldi $r9 #2
+ssop $r9
+-- Send config to ADC
+ldi $r13 #40978  -- xa012
+datacalli $r13 #0 -- 0x0000
+
+-- Reset NOC back to 0
+ldi $r0 #0
+datacalli $r0 #0
+
+-- Configure CORE
+-- Load port address
+ldi $r9 #1
+ssop $r9
+-- Send config to CORE
+ldi $r13 #32770  -- 1000000000000010
+datacalli $r13 #24448 -- 0101111110000000
+
+-- Reset NOC back to 0
+ldi $r0 #0
+datacalli $r0 #0
+
+-- Configure PD
+-- Load address in R9
+ldi $r9 #0 -- load address 0 for PD
+ssop $r9 -- put address on NOC
+-- Send config to PD
+ldi $r13 #45055 -- "AFFF"
+datacalli $r13 #32767 -- "7FFF"
+
+j #0 -- infinite loop
