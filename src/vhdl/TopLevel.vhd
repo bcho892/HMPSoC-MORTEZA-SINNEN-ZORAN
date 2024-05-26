@@ -59,10 +59,12 @@ begin
 
     pd_asp_inst : entity work.top_level_pd_asp
         port map(
-            clock    => clock,
-            reset    => KEY(0),
-            data_out => send_port(0),
-            data_in  => recv_port(0)
+            clock         => clock,
+            reset         => KEY(0),
+            data_out.data => send_port(0).data,
+            data_out.addr => send_port(0).addr,
+            data_in.data  => recv_port(0).data,
+            data_in.addr  => recv_port(0).addr
         );
 
     cor_asp_inst : entity work.cor_asp
