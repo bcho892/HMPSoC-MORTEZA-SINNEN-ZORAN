@@ -10,3 +10,6 @@
 [submodule "ASPs/701AvgASP"]
 	path = ASPs/701AvgASP
 	url = https://github.com/obwan02/701AvgASP
+[submodule "ASPs/VHDL-ADC"]
+	path = ASPs/VHDL-ADC
+	url = https://github.com/wolfuoa/VHDL-ADC.git
