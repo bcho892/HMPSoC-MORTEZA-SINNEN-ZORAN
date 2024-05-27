@@ -82,16 +82,16 @@ check_system_unlock:
 -- USE SPACE BELOW FOR FUNCTIONS
 
 config_adc_enable:
-    -- Process ADC config data
-    ldi $r13 #41026  -- xa042
 
+    -- Process ADC config data
+    ldi $r13 #41026  -- xa042 => First config register
     -- ============================ Check Rate ============================
     andi $r2 $r1 #8 -- Mask third bit
     subz $r2 #8
     -- if rate[0] switched
     sz @set_rate_0
     -- else
-    andi $r2 $r2 #65531 -- 1111111111111011 -> rate[0] <= 1
+    andi $r2 $r2 #65531 -- 1111111111111011 -> rate[0] <= 0
     j @join_adc_rate_0
 set_rate_0:
     ori $r2 $r2 #4 -- 0000000000000100 -> rate[0] <= 1
@@ -102,13 +102,39 @@ andi $r2 $r1 #16 -- Mask fourth bit
     -- if rate[1] switched
     sz @set_rate_1
     -- else
-
+    andi $r2 $r2 #65527 -- 1111111111110111 -> rate[1] <= 0
     j @join_adc_rate_1
 set_rate_1:
-
+    ori $r2 $r2 #8 -- 0000000000001000 -> rate[1] <= 1
 join_adc_rate_1:
 
--- ============================ Check Rate ============================
+    -- ============================ Check Rate ============================
+
+    ldi $r12 #0 -- 0x0000
+    -- ========================= Check Resolution =========================
+    andi $r2 $r1 #32 -- Mask fifth bit
+    subz $r2 #32
+    -- if resolution[0] switched
+    sz @set_resolution_0
+    -- else
+    andi $r2 $r2 #65531 -- 1111111111111011 -> resolution[0] <= 0
+    j @join_adc_resolution_0
+set_resolution_0:
+    ori $r2 $r2 #4 -- 0000000000000100 -> resolution[0] <= 1
+join_adc_resolution_0:
+
+andi $r2 $r1 #64 -- Mask sixth bit
+    subz $r2 #64
+    -- if resolution[1] switched
+    sz @set_resolution_1
+    -- else
+    andi $r2 $r2 #65527 -- 1111111111110111 -> resolution[1] <= 0
+    j @join_adc_resolution_1
+set_resolution_1:
+    ori $r2 $r2 #8 -- 0000000000001000 -> resolution[1] <= 1
+join_adc_resolution_1:
+
+    -- ========================= Check Resolution =========================
 
     -- Configure ADC
     -- send.data <= x"a0420000"; enable ch 0
