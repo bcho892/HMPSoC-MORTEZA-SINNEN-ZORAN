@@ -69,9 +69,6 @@ set library_file_list {
 
                                            ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd
 
-                                           
-                                           src/vhdl/AspAdc.vhd
-                                           
                                            src/vhdl/TopLevel.vhd
                                            
                            }
