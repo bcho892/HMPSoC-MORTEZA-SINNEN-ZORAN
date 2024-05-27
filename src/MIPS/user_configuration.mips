@@ -54,7 +54,7 @@ check_pd:
     datacalli $r0 #0
 
 check_system_unlock: 
-    andi $r2 $r1 #512 -- Mask third bit
+    andi $r2 $r1 #512 -- Mask ninth bit
     subz $r2 #512
     -- if system unlocked
     sz @config_adc_enable

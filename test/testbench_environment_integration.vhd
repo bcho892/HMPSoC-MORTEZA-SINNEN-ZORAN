@@ -69,9 +69,14 @@ begin
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000000"; -- adc to kneeos directly
+        t_switch <= "0000000000"; -- All off
 
         for i in 1200 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1000000000"; -- adc to kneeos directly
+
+        for i in 1900 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "0000000000"; -- All off
