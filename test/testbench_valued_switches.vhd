@@ -3,10 +3,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.FilePaths;
 
-entity testbench_environment_integration is
+entity testbench_valued_switches is
 end entity;
 
-architecture rtl of testbench_environment_integration is
+architecture rtl of testbench_valued_switches is
 
     signal t_clock    : std_logic;
 
@@ -17,7 +17,7 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            recop_file_path => FilePaths.RECOP_CONFIGURABLE_CONFIG_FILE_PATH,
+            recop_file_path => FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH,
             ports           => 5
         )
         port map(
@@ -48,63 +48,63 @@ begin
         --- Everything enabled
         t_switch   <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
         t_key_lime <= "1110";
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000001111"; -- Config ADC <= Rate - 01 Res - 00
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000010111"; -- Config ADC <= Rate - 10 Res - 00
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000011111"; -- Config ADC <= Rate - 11 Res - 00
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000100111"; -- Config ADC <= Rate - 00 Res - 01
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000101111"; -- Config ADC <= Rate - 01 Res - 01
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000110111"; -- Config ADC <= Rate - 10 Res - 01
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1000111111"; -- Config ADC <= Rate - 11 Res - 01
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001000111"; -- Config ADC <= Rate - 00 Res - 10
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001001111"; -- Config ADC <= Rate - 01 Res - 10
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001010111"; -- Config ADC <= Rate - 10 Res - 10
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001011111"; -- Config ADC <= Rate - 11 Res - 10
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001100111"; -- Config ADC <= Rate - 00 Res - 11
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001101111"; -- Config ADC <= Rate - 01 Res - 11
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001110111"; -- Config ADC <= Rate - 10 Res - 11
-        for i in 2500 downto 0 loop
+        for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch <= "1001111111"; -- Config ADC <= Rate - 11 Res - 11

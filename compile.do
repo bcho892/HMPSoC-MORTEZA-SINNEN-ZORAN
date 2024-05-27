@@ -78,7 +78,7 @@ set library_file_list {
                                           test/TdmaMin/TestTdmaMinInterface.vhd
                                           test/testbench_asp_integration.vhd
                                           test/testbench_environment_integration.vhd
-                                          test\testbench_valued_switches.vhd
+                                          test/testbench_valued_switches.vhd
                            }
 }
 
