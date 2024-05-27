@@ -1,3 +1,8 @@
+-- valued_config_fields.mips
+-- author: wolf
+-- Reads dynamic configuration values past enable/disable
+-- Maintain $r1 - switch option register
+
 start:
 ldi $r0 #0
 datacalli $r0 #0
@@ -74,7 +79,36 @@ check_system_unlock:
 
     j @start
 
+-- USE SPACE BELOW FOR FUNCTIONS
+
 config_adc_enable:
+    -- Process ADC config data
+    ldi $r13 #41026  -- xa042
+
+    -- ============================ Check Rate ============================
+    andi $r2 $r1 #8 -- Mask third bit
+    subz $r2 #8
+    -- if rate[0] switched
+    sz @set_rate_0
+    -- else
+    andi $r2 $r2 #65531 -- 1111111111111011 -> rate[0] <= 1
+    j @join_adc_rate_0
+set_rate_0:
+    ori $r2 $r2 #4 -- 0000000000000100 -> rate[0] <= 1
+join_adc_rate_0:
+
+andi $r2 $r1 #16 -- Mask fourth bit
+    subz $r2 #16
+    -- if rate[1] switched
+    sz @set_rate_1
+    -- else
+
+    j @join_adc_rate_1
+set_rate_1:
+
+join_adc_rate_1:
+
+-- ============================ Check Rate ============================
 
     -- Configure ADC
     -- send.data <= x"a0420000"; enable ch 0
@@ -82,7 +116,7 @@ config_adc_enable:
     ldi $r9 #2
     ssop $r9
     -- Send config to ADC
-    ldi $r13 #41026  -- xa042
+    -- ldi $r13 #41026  -- xa042
     datacalli $r13 #0 -- 0x0000
 
     -- Reset NOC back to 0
