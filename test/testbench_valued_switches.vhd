@@ -46,45 +46,68 @@ begin
     emulate_user_input : process
     begin
         --- Everything enabled
-        t_switch   <= "1000000111"; -- All On
+        t_switch   <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
         t_key_lime <= "1110";
         for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000101"; -- Open Core
-        for i in 1200 downto 0 loop
+        t_switch <= "1000001111"; -- Config ADC <= Rate - 01 Res - 00
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "0000000110"; -- Buffer System
-        for i in 1200 downto 0 loop
+        t_switch <= "1000010111"; -- Config ADC <= Rate - 10 Res - 00
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000110"; -- Open LA
-
-        for i in 1200 downto 0 loop
+        t_switch <= "1000011111"; -- Config ADC <= Rate - 11 Res - 00
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000011"; -- only PD off
-
-        for i in 1200 downto 0 loop
+        t_switch <= "1000100111"; -- Config ADC <= Rate - 00 Res - 01
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "0000000000"; -- All off
-
-        for i in 1200 downto 0 loop
+        t_switch <= "1000101111"; -- Config ADC <= Rate - 01 Res - 01
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000000"; -- adc to kneeos directly
-
-        for i in 1900 downto 0 loop
+        t_switch <= "1000110111"; -- Config ADC <= Rate - 10 Res - 01
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "0000000000"; -- All off
-
-        for i in 1200 downto 0 loop
+        t_switch <= "1000111111"; -- Config ADC <= Rate - 11 Res - 01
+        for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000111"; -- All on again
+        t_switch <= "1001000111"; -- Config ADC <= Rate - 00 Res - 10
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001001111"; -- Config ADC <= Rate - 01 Res - 10
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001010111"; -- Config ADC <= Rate - 10 Res - 10
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001011111"; -- Config ADC <= Rate - 11 Res - 10
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001100111"; -- Config ADC <= Rate - 00 Res - 11
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001101111"; -- Config ADC <= Rate - 01 Res - 11
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001110111"; -- Config ADC <= Rate - 10 Res - 11
+        for i in 2500 downto 0 loop
+            wait until rising_edge(t_clock);
+        end loop;
+        t_switch <= "1001111111"; -- Config ADC <= Rate - 11 Res - 11
         wait;
     end process emulate_user_input;
 
