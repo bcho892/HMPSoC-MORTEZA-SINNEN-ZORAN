@@ -1,0 +1,137 @@
+start:
+ldi $r0 #0
+datacalli $r0 #0
+lsip $r1  
+
+-- Temp register for masking result in r2
+andi $r2 $r1 #1 -- Mask first bit
+subz $r2 #1
+-- if Linear averaing enabled
+sz @config_la_normal
+
+-- Config LA Passthrough
+    ldi $r9 #4
+    ssop $r9
+    ldi $r13 #61890  -- xF1C2
+    datacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+check_core:
+    andi $r2 $r1 #2 -- Mask set second bit
+    subz $r2 #2
+    -- if core enabled
+    sz @config_core_normal
+
+    -- Config core Passthrough
+    ldi $r9 #1
+    ssop $r9
+    ldi $r13 #40962  -- 1010000000000010
+    datacalli $r13 #21440 -- 0101001111000000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+check_pd:
+    andi $r2 $r1 #4 -- Mask third bit
+    subz $r2 #4
+    -- if peak detection enabled
+    sz @config_pd_normal
+
+    -- Configure PD in passthrough
+    -- Load address in R9
+    ldi $r9 #0 -- load address 0 for PD
+    ssop $r9 -- put address on NOC
+    -- Send config to PD
+    ldi $r13 #45055 -- "AFFF"
+    datacalli $r13 #32767 -- "7FFF"
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+check_system_unlock: 
+    andi $r2 $r1 #512 -- Mask ninth bit
+    subz $r2 #512
+    -- if system unlocked
+    sz @config_adc_enable
+
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000000 - 0000000000000000
+    ldi $r9 #2
+    ssop $r9
+    -- Send config to ADC
+    ldi $r13 #41024  -- xa040
+    datacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+    j @start
+
+config_adc_enable:
+
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000010 - 0000000000000000
+    ldi $r9 #2
+    ssop $r9
+    -- Send config to ADC
+    ldi $r13 #41026  -- xa042
+    datacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+    j @start
+
+config_la_normal:
+    -- Configure Averaging
+    ldi $r9 #4
+    ssop $r9
+    -- Send config to Averaging
+    ldi $r13 #61762  -- xF142
+    datacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+    
+    j @check_core
+
+config_core_normal:
+    -- Configure CORE
+    -- Load port address
+    ldi $r9 #1
+    ssop $r9
+    -- Send config to CORE
+    -- "1010" & "0000" & "0000" & "00" & '1' & '0' & "0101" & "11111" & "0000000";
+    ldi $r13 #40962  -- 1010000000000010
+    datacalli $r13 #21376 -- 0101001110000000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+    j @check_pd
+
+config_pd_normal:
+    -- Configure PD
+    -- Load address in R9
+    ldi $r9 #0 -- load address 0 for PD
+    ssop $r9 -- put address on NOC
+    -- Send config to PD
+    ldi $r13 #45054 -- "AFFE"
+    datacalli $r13 #32767 -- "7FFF"
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+    j @check_system_unlock
