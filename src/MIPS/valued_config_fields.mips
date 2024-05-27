@@ -83,6 +83,10 @@ check_system_unlock:
 
 config_adc_enable:
 
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000010 - 0000000000000000
+
     -- Process ADC config data
     ldi $r13 #41026  -- xa042 => First config register
     -- ============================ Check Rate ============================
@@ -91,10 +95,10 @@ config_adc_enable:
     -- if rate[0] switched
     sz @set_rate_0
     -- else
-    andi $r2 $r2 #65531 -- 1111111111111011 -> rate[0] <= 0
+    andi $r13 $r13 #65531 -- 1111111111111011 -> rate[0] <= 0
     j @join_adc_rate_0
 set_rate_0:
-    ori $r2 $r2 #4 -- 0000000000000100 -> rate[0] <= 1
+    ori $r13 $r13 #4 -- 0000000000000100 -> rate[0] <= 1
 join_adc_rate_0:
 
 andi $r2 $r1 #16 -- Mask fourth bit
@@ -102,10 +106,10 @@ andi $r2 $r1 #16 -- Mask fourth bit
     -- if rate[1] switched
     sz @set_rate_1
     -- else
-    andi $r2 $r2 #65527 -- 1111111111110111 -> rate[1] <= 0
+    andi $r13 $r13 #65527 -- 1111111111110111 -> rate[1] <= 0
     j @join_adc_rate_1
 set_rate_1:
-    ori $r2 $r2 #8 -- 0000000000001000 -> rate[1] <= 1
+    ori $r13 $r13 #8 -- 0000000000001000 -> rate[1] <= 1
 join_adc_rate_1:
 
     -- ============================ Check Rate ============================
@@ -117,10 +121,10 @@ join_adc_rate_1:
     -- if resolution[0] switched
     sz @set_resolution_0
     -- else
-    andi $r2 $r2 #65531 -- 1111111111111011 -> resolution[0] <= 0
+    andi $r12 $r12 #49151 -- 1011111111111111 -> resolution[0] <= 0
     j @join_adc_resolution_0
 set_resolution_0:
-    ori $r2 $r2 #4 -- 0000000000000100 -> resolution[0] <= 1
+    ori $r12 $r12 #16384 -- 0100000000000000 -> resolution[0] <= 1
 join_adc_resolution_0:
 
 andi $r2 $r1 #64 -- Mask sixth bit
@@ -128,22 +132,20 @@ andi $r2 $r1 #64 -- Mask sixth bit
     -- if resolution[1] switched
     sz @set_resolution_1
     -- else
-    andi $r2 $r2 #65527 -- 1111111111110111 -> resolution[1] <= 0
+    andi $r12 $r12 #32767 -- 0111111111111111 -> resolution[1] <= 0
     j @join_adc_resolution_1
 set_resolution_1:
-    ori $r2 $r2 #8 -- 0000000000001000 -> resolution[1] <= 1
+    ori $r12 $r12 #32768 -- 1000000000000000 -> resolution[1] <= 1
 join_adc_resolution_1:
 
     -- ========================= Check Resolution =========================
 
-    -- Configure ADC
-    -- send.data <= x"a0420000"; enable ch 0
-    -- 1010000001000010 - 0000000000000000
+    -- Route message to ADC
     ldi $r9 #2
     ssop $r9
+
     -- Send config to ADC
-    -- ldi $r13 #41026  -- xa042
-    datacalli $r13 #0 -- 0x0000
+    datacallr $r13 $r12
 
     -- Reset NOC back to 0
     ldi $r0 #0
