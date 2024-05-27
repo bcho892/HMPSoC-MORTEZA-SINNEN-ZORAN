@@ -53,8 +53,29 @@ check_pd:
     ldi $r0 #0
     datacalli $r0 #0
 
+check_system_unlock: 
+    andi $r2 $r1 #512 -- Mask third bit
+    subz $r2 #512
+    -- if system unlocked
+    sz @config_adc_enable
 
-config_adc_normal:
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000000 - 0000000000000000
+    ldi $r9 #2
+    ssop $r9
+    -- Send config to ADC
+    ldi $r13 #41024  -- xa040
+    datacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    datacalli $r0 #0
+
+    j @start
+
+config_adc_enable:
+
     -- Configure ADC
     -- send.data <= x"a0420000"; enable ch 0
     -- 1010000001000010 - 0000000000000000
@@ -113,4 +134,4 @@ config_pd_normal:
     ldi $r0 #0
     datacalli $r0 #0
 
-    j @config_adc_normal
+    j @check_system_unlock
