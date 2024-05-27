@@ -1,11 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.FilePaths;
 
-entity testbench_hmpsoc_tl is
+entity testbench_asp_integration is
 end entity;
 
-architecture rtl of testbench_hmpsoc_tl is
+architecture rtl of testbench_asp_integration is
 
     signal t_clock : std_logic;
 
@@ -13,7 +14,8 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            ports => 5
+            recop_file_path => FilePaths.RECOP_FIXED_CONFIG_FILE_PATH,
+            ports           => 5
         )
         port map(
             CLOCK_50        => t_clock,

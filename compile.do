@@ -76,7 +76,7 @@ set library_file_list {
                            test_library   {
                                           test/TdmaMin/TestTdmaMin.vhd
                                           test/TdmaMin/TestTdmaMinInterface.vhd
-                                          test/testbench_hmpsoc_top_level.vhd
+                                          test/testbench_asp_integration.vhd
                            }
 }
 

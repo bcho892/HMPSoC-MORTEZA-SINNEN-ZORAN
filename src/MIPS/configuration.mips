@@ -44,7 +44,7 @@ datacalli $r0 #0
 ldi $r9 #0 -- load address 0 for PD
 ssop $r9 -- put address on NOC
 -- Send config to PD
-ldi $r13 #45055 -- "AFFF"
+ldi $r13 #45054 -- "AFFE"
 datacalli $r13 #32767 -- "7FFF"
 
 -- Reset NOC back to 0

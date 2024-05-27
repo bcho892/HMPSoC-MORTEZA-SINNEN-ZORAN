@@ -1,14 +1,14 @@
 library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
-use work.FilePaths;
 
 library work;
 use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports : positive := 5
+        ports           : positive := 5;
+        recop_file_path : string
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -89,7 +89,7 @@ begin
 
     recop_wolf_top_level_inst : entity work.recop_wolf_top_level
         generic map(
-            program_file_path => FilePaths.RECOP_FILE_PATH
+            program_file_path => recop_file_path
         )
         port map(
             clock                     => clock,
