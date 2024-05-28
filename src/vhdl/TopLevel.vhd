@@ -2,13 +2,15 @@ library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 
+use work.FilePaths;
+
 library work;
 use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports           : positive := 5;
-        recop_file_path : string
+        ports           : positive := 6;
+        recop_file_path : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -34,16 +36,47 @@ entity TopLevel is
         HEX4          : out   std_logic_vector(6 downto 0);
         HEX5          : out   std_logic_vector(6 downto 0)
     );
+
 end entity;
 
 architecture rtl of TopLevel is
 
-    signal clock     : std_logic;
+    signal clock            : std_logic;
+    signal unblock_datacall : std_logic;
+    signal zoran            : std_logic_vector(7 downto 0);
 
-    signal zoran     : std_logic_vector(7 downto 0);
+    signal send_port        : tdma_min_ports(0 to ports - 1);
+    signal recv_port        : tdma_min_ports(0 to ports - 1);
 
-    signal send_port : tdma_min_ports(0 to ports - 1);
-    signal recv_port : tdma_min_ports(0 to ports - 1);
+    component zoran_nios is
+        port (
+            button_pio_external_connection_export : in    std_logic_vector(1 downto 0) := (others => 'X');  -- export
+            clocks_ref_clk_clk                    : in    std_logic                    := 'X';              -- clk
+            clocks_ref_reset_reset                : in    std_logic                    := 'X';              -- reset
+            clocks_sdram_clk_clk                  : out   std_logic;                                        -- clk
+            led_pio_external_connection_export    : out   std_logic_vector(7 downto 0);                     -- export
+            sdram_wire_addr                       : out   std_logic_vector(12 downto 0);                    -- addr
+            sdram_wire_ba                         : out   std_logic_vector(1 downto 0);                     -- ba
+            sdram_wire_cas_n                      : out   std_logic;                                        -- cas_n
+            sdram_wire_cke                        : out   std_logic;                                        -- cke
+            sdram_wire_cs_n                       : out   std_logic;                                        -- cs_n
+            sdram_wire_dq                         : inout std_logic_vector(15 downto 0) := (others => 'X'); -- dq
+            sdram_wire_dqm                        : out   std_logic_vector(1 downto 0);                     -- dqm
+            sdram_wire_ras_n                      : out   std_logic;                                        -- ras_n
+            sdram_wire_we_n                       : out   std_logic;                                        -- we_n
+            sseg_5_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            sseg_4_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            sseg_3_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            sseg_2_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            sseg_1_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            sseg_0_external_connection_export     : out   std_logic_vector(6 downto 0);                     -- export
+            send_data_external_connection_export  : out   std_logic_vector(31 downto 0);                    -- export
+            send_addr_external_connection_export  : out   std_logic_vector(7 downto 0);                     -- export
+            recv_data_external_connection_export  : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
+            recv_addr_external_connection_export  : in    std_logic_vector(7 downto 0)  := (others => 'X')  -- export
+        );
+    end component zoran_nios;
+
 begin
     clock <= CLOCK_50;
 
@@ -95,7 +128,7 @@ begin
             clock                     => clock,
             enable                    => '1',
             dprr(31 downto 2)         => (others => '0'),
-            dprr(1)                   => KEY(1),
+            dprr(1)                   => unblock_datacall,
             dprr(0)                   => '0',
             sip_data_in(15 downto 10) => (others => '0'),
             sip_data_in(9 downto 0)   => SW,
@@ -116,5 +149,36 @@ begin
             noc_in  => recv_port(4),
             noc_out => send_port(4)
         );
+
+    zoran_nios_inst : component zoran_nios
+        port map(
+            button_pio_external_connection_export => "00",
+            clocks_ref_clk_clk                    => clock,
+            clocks_ref_reset_reset                => '0',
+            led_pio_external_connection_export    => LEDR(7 downto 0),
+            recv_addr_external_connection_export  => recv_port(5).addr,
+            recv_data_external_connection_export  => recv_port(5).data,
+            send_addr_external_connection_export  => send_port(5).addr,
+            send_data_external_connection_export  => send_port(5).data,
+            sseg_0_external_connection_export     => HEX0,
+            sseg_1_external_connection_export     => HEX1,
+            sseg_2_external_connection_export     => HEX2,
+            sseg_3_external_connection_export     => HEX3,
+            sseg_4_external_connection_export     => HEX4,
+            sseg_5_external_connection_export     => HEX5
+        );
+
+    process (clock)
+        variable edge : std_logic;
+    begin
+        if rising_edge(clock) then
+            if KEY(1) = '0' and edge = '1' then
+                unblock_datacall <= '1';
+            else
+                unblock_datacall <= '0';
+            end if;
+            edge := KEY(1);
+        end if;
+    end process;
 
 end architecture;

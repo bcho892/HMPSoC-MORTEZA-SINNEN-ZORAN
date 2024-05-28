@@ -13,6 +13,8 @@ entity zoran_nios is
 		clocks_ref_reset_reset                : in    std_logic                     := '0';             --               clocks_ref_reset.reset
 		clocks_sdram_clk_clk                  : out   std_logic;                                        --               clocks_sdram_clk.clk
 		led_pio_external_connection_export    : out   std_logic_vector(7 downto 0);                     --    led_pio_external_connection.export
+		recv_addr_external_connection_export  : in    std_logic_vector(7 downto 0)  := (others => '0'); --  recv_addr_external_connection.export
+		recv_data_external_connection_export  : in    std_logic_vector(31 downto 0) := (others => '0'); --  recv_data_external_connection.export
 		sdram_wire_addr                       : out   std_logic_vector(12 downto 0);                    --                     sdram_wire.addr
 		sdram_wire_ba                         : out   std_logic_vector(1 downto 0);                     --                               .ba
 		sdram_wire_cas_n                      : out   std_logic;                                        --                               .cas_n
@@ -22,6 +24,8 @@ entity zoran_nios is
 		sdram_wire_dqm                        : out   std_logic_vector(1 downto 0);                     --                               .dqm
 		sdram_wire_ras_n                      : out   std_logic;                                        --                               .ras_n
 		sdram_wire_we_n                       : out   std_logic;                                        --                               .we_n
+		send_addr_external_connection_export  : out   std_logic_vector(7 downto 0);                     --  send_addr_external_connection.export
+		send_data_external_connection_export  : out   std_logic_vector(31 downto 0);                    --  send_data_external_connection.export
 		sseg_0_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_0_external_connection.export
 		sseg_1_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_1_external_connection.export
 		sseg_2_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_2_external_connection.export
@@ -144,6 +148,26 @@ architecture rtl of zoran_nios is
 		);
 	end component zoran_nios_onchip_memory;
 
+	component zoran_nios_recv_addr is
+		port (
+			clk      : in  std_logic                     := 'X';             -- clk
+			reset_n  : in  std_logic                     := 'X';             -- reset_n
+			address  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			readdata : out std_logic_vector(31 downto 0);                    -- readdata
+			in_port  : in  std_logic_vector(7 downto 0)  := (others => 'X')  -- export
+		);
+	end component zoran_nios_recv_addr;
+
+	component zoran_nios_recv_data is
+		port (
+			clk      : in  std_logic                     := 'X';             -- clk
+			reset_n  : in  std_logic                     := 'X';             -- reset_n
+			address  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			readdata : out std_logic_vector(31 downto 0);                    -- readdata
+			in_port  : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
+		);
+	end component zoran_nios_recv_data;
+
 	component zoran_nios_sdram is
 		port (
 			clk            : in    std_logic                     := 'X';             -- clk
@@ -168,6 +192,19 @@ architecture rtl of zoran_nios is
 			zs_we_n        : out   std_logic                                         -- export
 		);
 	end component zoran_nios_sdram;
+
+	component zoran_nios_send_data is
+		port (
+			clk        : in  std_logic                     := 'X';             -- clk
+			reset_n    : in  std_logic                     := 'X';             -- reset_n
+			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			write_n    : in  std_logic                     := 'X';             -- write_n
+			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			out_port   : out std_logic_vector(31 downto 0)                     -- export
+		);
+	end component zoran_nios_send_data;
 
 	component zoran_nios_sseg_0 is
 		port (
@@ -235,6 +272,10 @@ architecture rtl of zoran_nios is
 			onchip_memory_s1_byteenable             : out std_logic_vector(3 downto 0);                     -- byteenable
 			onchip_memory_s1_chipselect             : out std_logic;                                        -- chipselect
 			onchip_memory_s1_clken                  : out std_logic;                                        -- clken
+			recv_addr_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
+			recv_addr_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			recv_data_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
+			recv_data_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			sdram_s1_address                        : out std_logic_vector(24 downto 0);                    -- address
 			sdram_s1_write                          : out std_logic;                                        -- write
 			sdram_s1_read                           : out std_logic;                                        -- read
@@ -244,6 +285,16 @@ architecture rtl of zoran_nios is
 			sdram_s1_readdatavalid                  : in  std_logic                     := 'X';             -- readdatavalid
 			sdram_s1_waitrequest                    : in  std_logic                     := 'X';             -- waitrequest
 			sdram_s1_chipselect                     : out std_logic;                                        -- chipselect
+			send_addr_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
+			send_addr_s1_write                      : out std_logic;                                        -- write
+			send_addr_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			send_addr_s1_writedata                  : out std_logic_vector(31 downto 0);                    -- writedata
+			send_addr_s1_chipselect                 : out std_logic;                                        -- chipselect
+			send_data_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
+			send_data_s1_write                      : out std_logic;                                        -- write
+			send_data_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			send_data_s1_writedata                  : out std_logic_vector(31 downto 0);                    -- writedata
+			send_data_s1_chipselect                 : out std_logic;                                        -- chipselect
 			sseg_0_s1_address                       : out std_logic_vector(1 downto 0);                     -- address
 			sseg_0_s1_write                         : out std_logic;                                        -- write
 			sseg_0_s1_readdata                      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -354,7 +405,7 @@ architecture rtl of zoran_nios is
 		);
 	end component altera_reset_controller;
 
-	signal clocks_sys_clk_clk                                            : std_logic;                     -- clocks:sys_clk_clk -> [BUTTON_pio:clk, LED_pio:clk, cpu:clk, high_res_timer:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:clocks_sys_clk_clk, onchip_memory:clk, rst_controller:clk, sdram:clk, sseg_0:clk, sseg_1:clk, sseg_2:clk, sseg_3:clk, sseg_4:clk, sseg_5:clk]
+	signal clocks_sys_clk_clk                                            : std_logic;                     -- clocks:sys_clk_clk -> [BUTTON_pio:clk, LED_pio:clk, cpu:clk, high_res_timer:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:clocks_sys_clk_clk, onchip_memory:clk, recv_addr:clk, recv_data:clk, rst_controller:clk, sdram:clk, send_addr:clk, send_data:clk, sseg_0:clk, sseg_1:clk, sseg_2:clk, sseg_3:clk, sseg_4:clk, sseg_5:clk]
 	signal cpu_data_master_readdata                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	signal cpu_data_master_debugaccess                                   : std_logic;                     -- cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
@@ -443,6 +494,20 @@ architecture rtl of zoran_nios is
 	signal mm_interconnect_0_sseg_5_s1_address                           : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sseg_5_s1_address -> sseg_5:address
 	signal mm_interconnect_0_sseg_5_s1_write                             : std_logic;                     -- mm_interconnect_0:sseg_5_s1_write -> mm_interconnect_0_sseg_5_s1_write:in
 	signal mm_interconnect_0_sseg_5_s1_writedata                         : std_logic_vector(31 downto 0); -- mm_interconnect_0:sseg_5_s1_writedata -> sseg_5:writedata
+	signal mm_interconnect_0_send_data_s1_chipselect                     : std_logic;                     -- mm_interconnect_0:send_data_s1_chipselect -> send_data:chipselect
+	signal mm_interconnect_0_send_data_s1_readdata                       : std_logic_vector(31 downto 0); -- send_data:readdata -> mm_interconnect_0:send_data_s1_readdata
+	signal mm_interconnect_0_send_data_s1_address                        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:send_data_s1_address -> send_data:address
+	signal mm_interconnect_0_send_data_s1_write                          : std_logic;                     -- mm_interconnect_0:send_data_s1_write -> mm_interconnect_0_send_data_s1_write:in
+	signal mm_interconnect_0_send_data_s1_writedata                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:send_data_s1_writedata -> send_data:writedata
+	signal mm_interconnect_0_send_addr_s1_chipselect                     : std_logic;                     -- mm_interconnect_0:send_addr_s1_chipselect -> send_addr:chipselect
+	signal mm_interconnect_0_send_addr_s1_readdata                       : std_logic_vector(31 downto 0); -- send_addr:readdata -> mm_interconnect_0:send_addr_s1_readdata
+	signal mm_interconnect_0_send_addr_s1_address                        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:send_addr_s1_address -> send_addr:address
+	signal mm_interconnect_0_send_addr_s1_write                          : std_logic;                     -- mm_interconnect_0:send_addr_s1_write -> mm_interconnect_0_send_addr_s1_write:in
+	signal mm_interconnect_0_send_addr_s1_writedata                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:send_addr_s1_writedata -> send_addr:writedata
+	signal mm_interconnect_0_recv_data_s1_readdata                       : std_logic_vector(31 downto 0); -- recv_data:readdata -> mm_interconnect_0:recv_data_s1_readdata
+	signal mm_interconnect_0_recv_data_s1_address                        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:recv_data_s1_address -> recv_data:address
+	signal mm_interconnect_0_recv_addr_s1_readdata                       : std_logic_vector(31 downto 0); -- recv_addr:readdata -> mm_interconnect_0:recv_addr_s1_readdata
+	signal mm_interconnect_0_recv_addr_s1_address                        : std_logic_vector(1 downto 0);  -- mm_interconnect_0:recv_addr_s1_address -> recv_addr:address
 	signal irq_mapper_receiver0_irq                                      : std_logic;                     -- jtag_uart:av_irq -> irq_mapper:receiver0_irq
 	signal irq_mapper_receiver1_irq                                      : std_logic;                     -- high_res_timer:irq -> irq_mapper:receiver1_irq
 	signal irq_mapper_receiver2_irq                                      : std_logic;                     -- BUTTON_pio:irq -> irq_mapper:receiver2_irq
@@ -464,7 +529,9 @@ architecture rtl of zoran_nios is
 	signal mm_interconnect_0_sseg_3_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_sseg_3_s1_write:inv -> sseg_3:write_n
 	signal mm_interconnect_0_sseg_4_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_sseg_4_s1_write:inv -> sseg_4:write_n
 	signal mm_interconnect_0_sseg_5_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_sseg_5_s1_write:inv -> sseg_5:write_n
-	signal rst_controller_reset_out_reset_ports_inv                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [BUTTON_pio:reset_n, LED_pio:reset_n, cpu:reset_n, high_res_timer:reset_n, jtag_uart:rst_n, sdram:reset_n, sseg_0:reset_n, sseg_1:reset_n, sseg_2:reset_n, sseg_3:reset_n, sseg_4:reset_n, sseg_5:reset_n]
+	signal mm_interconnect_0_send_data_s1_write_ports_inv                : std_logic;                     -- mm_interconnect_0_send_data_s1_write:inv -> send_data:write_n
+	signal mm_interconnect_0_send_addr_s1_write_ports_inv                : std_logic;                     -- mm_interconnect_0_send_addr_s1_write:inv -> send_addr:write_n
+	signal rst_controller_reset_out_reset_ports_inv                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [BUTTON_pio:reset_n, LED_pio:reset_n, cpu:reset_n, high_res_timer:reset_n, jtag_uart:rst_n, recv_addr:reset_n, recv_data:reset_n, sdram:reset_n, send_addr:reset_n, send_data:reset_n, sseg_0:reset_n, sseg_1:reset_n, sseg_2:reset_n, sseg_3:reset_n, sseg_4:reset_n, sseg_5:reset_n]
 
 begin
 
@@ -573,6 +640,24 @@ begin
 			freeze     => '0'                                            -- (terminated)
 		);
 
+	recv_addr : component zoran_nios_recv_addr
+		port map (
+			clk      => clocks_sys_clk_clk,                       --                 clk.clk
+			reset_n  => rst_controller_reset_out_reset_ports_inv, --               reset.reset_n
+			address  => mm_interconnect_0_recv_addr_s1_address,   --                  s1.address
+			readdata => mm_interconnect_0_recv_addr_s1_readdata,  --                    .readdata
+			in_port  => recv_addr_external_connection_export      -- external_connection.export
+		);
+
+	recv_data : component zoran_nios_recv_data
+		port map (
+			clk      => clocks_sys_clk_clk,                       --                 clk.clk
+			reset_n  => rst_controller_reset_out_reset_ports_inv, --               reset.reset_n
+			address  => mm_interconnect_0_recv_data_s1_address,   --                  s1.address
+			readdata => mm_interconnect_0_recv_data_s1_readdata,  --                    .readdata
+			in_port  => recv_data_external_connection_export      -- external_connection.export
+		);
+
 	sdram : component zoran_nios_sdram
 		port map (
 			clk            => clocks_sys_clk_clk,                              --   clk.clk
@@ -595,6 +680,30 @@ begin
 			zs_dqm         => sdram_wire_dqm,                                  --      .export
 			zs_ras_n       => sdram_wire_ras_n,                                --      .export
 			zs_we_n        => sdram_wire_we_n                                  --      .export
+		);
+
+	send_addr : component zoran_nios_LED_pio
+		port map (
+			clk        => clocks_sys_clk_clk,                             --                 clk.clk
+			reset_n    => rst_controller_reset_out_reset_ports_inv,       --               reset.reset_n
+			address    => mm_interconnect_0_send_addr_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_send_addr_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_send_addr_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_send_addr_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_send_addr_s1_readdata,        --                    .readdata
+			out_port   => send_addr_external_connection_export            -- external_connection.export
+		);
+
+	send_data : component zoran_nios_send_data
+		port map (
+			clk        => clocks_sys_clk_clk,                             --                 clk.clk
+			reset_n    => rst_controller_reset_out_reset_ports_inv,       --               reset.reset_n
+			address    => mm_interconnect_0_send_data_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_send_data_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_send_data_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_send_data_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_send_data_s1_readdata,        --                    .readdata
+			out_port   => send_data_external_connection_export            -- external_connection.export
 		);
 
 	sseg_0 : component zoran_nios_sseg_0
@@ -722,6 +831,10 @@ begin
 			onchip_memory_s1_byteenable             => mm_interconnect_0_onchip_memory_s1_byteenable,             --                                .byteenable
 			onchip_memory_s1_chipselect             => mm_interconnect_0_onchip_memory_s1_chipselect,             --                                .chipselect
 			onchip_memory_s1_clken                  => mm_interconnect_0_onchip_memory_s1_clken,                  --                                .clken
+			recv_addr_s1_address                    => mm_interconnect_0_recv_addr_s1_address,                    --                    recv_addr_s1.address
+			recv_addr_s1_readdata                   => mm_interconnect_0_recv_addr_s1_readdata,                   --                                .readdata
+			recv_data_s1_address                    => mm_interconnect_0_recv_data_s1_address,                    --                    recv_data_s1.address
+			recv_data_s1_readdata                   => mm_interconnect_0_recv_data_s1_readdata,                   --                                .readdata
 			sdram_s1_address                        => mm_interconnect_0_sdram_s1_address,                        --                        sdram_s1.address
 			sdram_s1_write                          => mm_interconnect_0_sdram_s1_write,                          --                                .write
 			sdram_s1_read                           => mm_interconnect_0_sdram_s1_read,                           --                                .read
@@ -731,6 +844,16 @@ begin
 			sdram_s1_readdatavalid                  => mm_interconnect_0_sdram_s1_readdatavalid,                  --                                .readdatavalid
 			sdram_s1_waitrequest                    => mm_interconnect_0_sdram_s1_waitrequest,                    --                                .waitrequest
 			sdram_s1_chipselect                     => mm_interconnect_0_sdram_s1_chipselect,                     --                                .chipselect
+			send_addr_s1_address                    => mm_interconnect_0_send_addr_s1_address,                    --                    send_addr_s1.address
+			send_addr_s1_write                      => mm_interconnect_0_send_addr_s1_write,                      --                                .write
+			send_addr_s1_readdata                   => mm_interconnect_0_send_addr_s1_readdata,                   --                                .readdata
+			send_addr_s1_writedata                  => mm_interconnect_0_send_addr_s1_writedata,                  --                                .writedata
+			send_addr_s1_chipselect                 => mm_interconnect_0_send_addr_s1_chipselect,                 --                                .chipselect
+			send_data_s1_address                    => mm_interconnect_0_send_data_s1_address,                    --                    send_data_s1.address
+			send_data_s1_write                      => mm_interconnect_0_send_data_s1_write,                      --                                .write
+			send_data_s1_readdata                   => mm_interconnect_0_send_data_s1_readdata,                   --                                .readdata
+			send_data_s1_writedata                  => mm_interconnect_0_send_data_s1_writedata,                  --                                .writedata
+			send_data_s1_chipselect                 => mm_interconnect_0_send_data_s1_chipselect,                 --                                .chipselect
 			sseg_0_s1_address                       => mm_interconnect_0_sseg_0_s1_address,                       --                       sseg_0_s1.address
 			sseg_0_s1_write                         => mm_interconnect_0_sseg_0_s1_write,                         --                                .write
 			sseg_0_s1_readdata                      => mm_interconnect_0_sseg_0_s1_readdata,                      --                                .readdata
@@ -865,6 +988,10 @@ begin
 	mm_interconnect_0_sseg_4_s1_write_ports_inv <= not mm_interconnect_0_sseg_4_s1_write;
 
 	mm_interconnect_0_sseg_5_s1_write_ports_inv <= not mm_interconnect_0_sseg_5_s1_write;
+
+	mm_interconnect_0_send_data_s1_write_ports_inv <= not mm_interconnect_0_send_data_s1_write;
+
+	mm_interconnect_0_send_addr_s1_write_ports_inv <= not mm_interconnect_0_send_addr_s1_write;
 
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 
