@@ -1,5 +1,5 @@
 .qsys_edit/
-
+.metadata
 # ignore Quartus II generated files
 *_generation_script*
 *_inst.vhd
