@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports           : positive := 6;
-        recop_file_path : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH
+        recop_file_path : string   := "C:\Users\AKLbc\Desktop\Development\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\valued_config_fields.mif"
     );
     port (
         CLOCK_50      : in    std_logic;

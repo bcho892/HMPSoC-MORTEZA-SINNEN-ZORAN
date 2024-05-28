@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY TopLevel
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:09:22  MAY 28, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
@@ -51,57 +51,6 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/bit_truncation.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/prog_mem.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/data_mem.vhd"
-set_global_assignment -name QIP_FILE ../Zoran_Nios/synthesis/zoran_nios.qip
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TopLevel.vhd
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/register_file.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/pc.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/instruction_register.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/data_path.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/control_unit.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/arith/max.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/arith/alu.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/recop_types.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/opcodes.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/mux_select_constants.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/alu_ops.vhd"
-set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/file_paths.vhd"
-set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/avg_queue.vhd
-set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/asp_control_unit.vhd
-set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/asp.vhd
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/top_level_pd_asp.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/peak_detection.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/noc_output_stage.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/control/control_unit.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/counter.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/config_registers.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/control/packet_decode.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/min_value_storage.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/max_value_storage.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/comparator.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/zoran_types.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/noc_constants.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/mux_constants.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/biglari_types.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/TopLevelAdcAsp.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/FilePaths.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/memory/ROM.vhd"
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinSlots.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinInterface.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinFabric.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMin.vhd
-set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/memory/register.vhd"
-set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/register_buffer.vhd"
-set_global_assignment -name VHDL_FILE ../../ip/TdmaMinFifo/TdmaMinFifo.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinTypes.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinSwitch.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinStage.vhd
-set_global_assignment -name VHDL_FILE ../../src/vhdl/Constants/FilePaths.vhd
 
 #============================================================
 # ADC
@@ -1040,4 +989,56 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N
 
 #============================================================
+set_global_assignment -name VHDL_FILE ../../src/vhdl/Constants/FilePaths.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/nios_noc_interface.vhd
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/bit_truncation.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/prog_mem.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/data_mem.vhd"
+set_global_assignment -name QIP_FILE ../Zoran_Nios/synthesis/zoran_nios.qip
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TopLevel.vhd
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/register_file.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/pc.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/instruction_register.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/data_path.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/control_unit.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/arith/max.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/arith/alu.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/recop_types.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/opcodes.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/mux_select_constants.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/alu_ops.vhd"
+set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/utils/file_paths.vhd"
+set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/avg_queue.vhd
+set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/asp_control_unit.vhd
+set_global_assignment -name VHDL_FILE ../../ASPs/701AvgASP/src/asp.vhd
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/top_level_pd_asp.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/peak_detection.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/noc_output_stage.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/control/control_unit.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/counter.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/config_registers.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/control/packet_decode.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/min_value_storage.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/max_value_storage.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/comparator.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/zoran_types.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/noc_constants.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/mux_constants.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/utils/biglari_types.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/TopLevelAdcAsp.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/FilePaths.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-ADC/src/vhdl/memory/ROM.vhd"
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinSlots.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinInterface.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinFabric.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMin.vhd
+set_global_assignment -name VHDL_FILE "../../ASPs/VHDL-Autocorrelator/src/memory/register.vhd"
+set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/data/register_buffer.vhd"
+set_global_assignment -name VHDL_FILE ../../ip/TdmaMinFifo/TdmaMinFifo.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinTypes.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinSwitch.vhd
+set_global_assignment -name VHDL_FILE ../../src/vhdl/TdmaMin/TdmaMinStage.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

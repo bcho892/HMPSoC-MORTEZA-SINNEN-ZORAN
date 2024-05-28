@@ -72,11 +72,11 @@ begin
     generic map(
         add_ram_output_register => "OFF",
         intended_device_family  => "Cyclone V",
-        lpm_numwords            => 256,
+        lpm_numwords            => 8,
         lpm_showahead           => "ON",
         lpm_type                => "scfifo",
         lpm_width               => 32,
-        lpm_widthu              => 8,
+        lpm_widthu              => 3,
         overflow_checking       => "ON",
         underflow_checking      => "ON",
         use_eab                 => "ON"
