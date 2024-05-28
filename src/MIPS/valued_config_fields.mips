@@ -5,7 +5,7 @@
 
 start:
 ldi $r0 #0
-nbdatacalli $r0 #0
+datacalli $r0 #0
 lsip $r1  
 
 -- Temp register for masking result in r2
