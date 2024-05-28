@@ -114,17 +114,17 @@ join_adc_rate_1:
 
     -- ============================ Check Rate ============================
 
-    ldi $r12 #0 -- 0x0000
+    ldi $r7 #0 -- 0x0000
     -- ========================= Check Resolution =========================
     andi $r2 $r1 #32 -- Mask fifth bit
     subz $r2 #32
     -- if resolution[0] switched
     sz @set_resolution_0
     -- else
-    andi $r12 $r12 #49151 -- 1011111111111111 -> resolution[0] <= 0
+    andi $r7 $r7 #49151 -- 1011111111111111 -> resolution[0] <= 0
     j @join_adc_resolution_0
 set_resolution_0:
-    ori $r12 $r12 #16384 -- 0100000000000000 -> resolution[0] <= 1
+    ori $r7 $r7 #16384 -- 0100000000000000 -> resolution[0] <= 1
 join_adc_resolution_0:
 
 andi $r2 $r1 #64 -- Mask sixth bit
@@ -132,10 +132,10 @@ andi $r2 $r1 #64 -- Mask sixth bit
     -- if resolution[1] switched
     sz @set_resolution_1
     -- else
-    andi $r12 $r12 #32767 -- 0111111111111111 -> resolution[1] <= 0
+    andi $r7 $r7 #32767 -- 0111111111111111 -> resolution[1] <= 0
     j @join_adc_resolution_1
 set_resolution_1:
-    ori $r12 $r12 #32768 -- 1000000000000000 -> resolution[1] <= 1
+    ori $r7 $r7 #32768 -- 1000000000000000 -> resolution[1] <= 1
 join_adc_resolution_1:
 
     -- ========================= Check Resolution =========================
@@ -145,7 +145,7 @@ join_adc_resolution_1:
     ssop $r9
 
     -- Send config to ADC
-    datacallr $r13 $r12
+    datacallr $r13 $r7
 
     -- Reset NOC back to 0
     ldi $r0 #0
