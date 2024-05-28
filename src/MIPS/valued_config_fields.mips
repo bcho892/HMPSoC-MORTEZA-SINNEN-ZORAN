@@ -51,7 +51,7 @@ check_pd:
     ldi $r9 #0 -- load address 0 for PD
     ssop $r9 -- put address on NOC
     -- Send config to PD
-    ldi $r13 #44895 -- "AF5F"
+    ldi $r13 #44883 -- "AF53"
     nbdatacalli $r13 #32767 -- "7FFF"
 
     -- Reset NOC back to 0
@@ -189,7 +189,7 @@ config_pd_normal:
     ldi $r9 #0 -- load address 0 for PD
     ssop $r9 -- put address on NOC
     -- Send config to PD
-    ldi $r13 #44894 -- "AF5E"
+    ldi $r13 #44882 -- "AF52"
     nbdatacalli $r13 #32767 -- "7FFF"
 
     -- Reset NOC back to 0
