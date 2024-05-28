@@ -7,9 +7,8 @@ set top_level              test_library.testbench_valued_switches
 eval vsim $top_level
 
 # if waves are required
-add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/peak_detection/peak_detected
-add wave -noupdate -format Analog-Step -height 74 -max 254.99999999999997 /testbench_valued_switches/dut/viktor_asp/rom8_data_out
-add wave -noupdate -format Analog-Step -height 74 -max 168422.0 -radix hexadecimal /testbench_valued_switches/dut/cor_asp_inst/correlation_test
+add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/data_out
+add wave -noupdate -format Analog-Step -height 74 -max 168422.0 -radix hexadecimal /testbench_valued_switches/dut/cor_asp_inst/correlation
 add wave -noupdate -format Analog-Step -height 74 -max 252.0 /testbench_valued_switches/dut/oliver_sinnen_asp/left_average
 add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/peak_detection/correlation_data
 add wave -noupdate -max 31316.0 /testbench_valued_switches/dut/pd_asp_inst/peak_detection/previous_correlation

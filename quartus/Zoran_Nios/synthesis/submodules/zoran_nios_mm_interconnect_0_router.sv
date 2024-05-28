@@ -184,11 +184,6 @@ module zoran_nios_mm_interconnect_0_router
 
 
 
-    // -------------------------------------------------------
-    // Write and read transaction signals
-    // -------------------------------------------------------
-    wire read_transaction;
-    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     zoran_nios_mm_interconnect_0_router_default_decode the_default_decode(
@@ -227,13 +222,13 @@ module zoran_nios_mm_interconnect_0_router
     end
 
     // ( 0x8011020 .. 0x8011030 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 28'h8011020  && read_transaction  ) begin
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 28'h8011020   ) begin
             src_channel = 16'b1000000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
     // ( 0x8011030 .. 0x8011040 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 28'h8011030  && read_transaction  ) begin
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 28'h8011030   ) begin
             src_channel = 16'b0100000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
     end
