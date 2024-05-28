@@ -5,7 +5,7 @@
 
 start:
 ldi $r0 #0
-datacalli $r0 #0
+nbdatacalli $r0 #0
 lsip $r1  
 
 -- Temp register for masking result in r2
@@ -18,11 +18,11 @@ sz @config_la_normal
     ldi $r9 #4
     ssop $r9
     ldi $r13 #61890  -- xF1C2
-    datacalli $r13 #0 -- 0x0000
+    nbdatacalli $r13 #0 -- 0x0000
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
 check_core:
     andi $r2 $r1 #2 -- Mask set second bit
@@ -34,11 +34,11 @@ check_core:
     ldi $r9 #1
     ssop $r9
     ldi $r13 #40962  -- 1010000000000010
-    datacalli $r13 #21440 -- 0101001111000000
+    nbdatacalli $r13 #21440 -- 0101001111000000
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
 check_pd:
     andi $r2 $r1 #4 -- Mask third bit
@@ -52,11 +52,11 @@ check_pd:
     ssop $r9 -- put address on NOC
     -- Send config to PD
     ldi $r13 #45055 -- "AFFF"
-    datacalli $r13 #32767 -- "7FFF"
+    nbdatacalli $r13 #32767 -- "7FFF"
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
 check_system_unlock: 
     andi $r2 $r1 #512 -- Mask ninth bit
@@ -71,11 +71,11 @@ check_system_unlock:
     ssop $r9
     -- Send config to ADC
     ldi $r13 #41024  -- xa040
-    datacalli $r13 #0 -- 0x0000
+    nbdatacalli $r13 #0 -- 0x0000
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
     j @start
 
@@ -145,11 +145,11 @@ join_adc_resolution_1:
     ssop $r9
 
     -- Send config to ADC
-    datacallr $r13 $r7
+    nbdatacallr $r13 $r7
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
     j @start
 
@@ -159,11 +159,11 @@ config_la_normal:
     ssop $r9
     -- Send config to Averaging
     ldi $r13 #61762  -- xF142
-    datacalli $r13 #0 -- 0x0000
+    nbdatacalli $r13 #0 -- 0x0000
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
     
     j @check_core
 
@@ -175,11 +175,11 @@ config_core_normal:
     -- Send config to CORE
     -- "1010" & "0000" & "0000" & "00" & '1' & '0' & "0101" & "11111" & "0000000";
     ldi $r13 #40962  -- 1010000000000010
-    datacalli $r13 #21376 -- 0101001110000000
+    nbdatacalli $r13 #21376 -- 0101001110000000
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
     j @check_pd
 
@@ -190,10 +190,10 @@ config_pd_normal:
     ssop $r9 -- put address on NOC
     -- Send config to PD
     ldi $r13 #45054 -- "AFFE"
-    datacalli $r13 #32767 -- "7FFF"
+    nbdatacalli $r13 #32767 -- "7FFF"
 
     -- Reset NOC back to 0
     ldi $r0 #0
-    datacalli $r0 #0
+    nbdatacalli $r0 #0
 
     j @check_system_unlock
