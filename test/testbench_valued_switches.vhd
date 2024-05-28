@@ -46,11 +46,12 @@ begin
     emulate_user_input : process
     begin
         --- Everything enabled
-        t_switch <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
+        t_switch   <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
+        t_key_lime <= "1110";
         for i in 20 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_key_lime <= "1110";
+        t_key_lime <= "1100";
         for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
