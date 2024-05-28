@@ -1,0 +1,240 @@
+!SESSION 2024-05-28 16:33:56.511 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_NZ
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2024-05-28 16:34:49.981
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-05-28 16:35:53.726
+!MESSAGE Indexed 'nios_hmpsoc_bsp' (82 sources, 94 headers) in 2.41 sec: 2,618 declarations; 4,789 references; 106 unresolved inclusions; 6 syntax errors; 183 unresolved names (2.4%)
+
+!ENTRY org.eclipse.core.resources 4 568 2024-05-28 16:35:54.574
+!MESSAGE Could not write metadata for 'H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\src\c\.metadata\.plugins\org.eclipse.core.resources\.root\.indexes\properties.index'.
+!STACK 0
+java.io.FileNotFoundException: H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\src\c\.metadata\.plugins\org.eclipse.core.resources\.root\.indexes\properties.index (The process cannot access the file because it is being used by another process)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:346)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:302)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:178)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1725)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.setCacheState(ContentDescriptionManager.java:494)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.invalidateCache(ContentDescriptionManager.java:425)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.handleEvent(ContentDescriptionManager.java:487)
+	at org.eclipse.core.internal.resources.Workspace.broadcastEvent(Workspace.java:368)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1270)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1281)
+	at com.altera.sbtgui.project.nature.SBTGUIAppNature.addNature(SBTGUIAppNature.java:116)
+	at com.altera.sbtgui.project.importer.Importer.importProject(Importer.java:259)
+	at com.altera.sbtgui.project.importer.Importer.importProject(Importer.java:107)
+	at com.altera.sbtgui.ui.wizards.NewSbtGuiProject$1.run(NewSbtGuiProject.java:109)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-05-28 16:35:55.762
+!MESSAGE Indexed 'nios_hmpsoc' (1 sources, 21 headers) in 0.079 sec: 983 declarations; 1,599 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:37:15.464
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:37:17.201
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:37:18.926
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:37:18.941
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:37:48.778
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:37:50.439
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:37:52.099
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:37:52.106
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:38:46.168
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 16:38:47.825
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:38:49.718
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 16:38:49.725
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.core 4 0 2024-05-28 17:17:50.372
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> "sdram" is out of range: "none", "reset", "onchip_memory"
+SEVERE: [Error] hal: <b>hal.linker.exception_stack_memory_region_name</b> "sdram" is out of range: "none", "reset", "onchip_memory"
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.core 4 0 2024-05-28 17:19:49.087
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: BSP not valid.
+SEVERE: BSP not valid.
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY org.eclipse.core.resources 2 2 2024-05-28 17:20:20.701
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2024-05-28 17:20:20.701
+!MESSAGE The project description file (.project) for 'nios_hmpsoc_bsp' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-05-28 17:22:39.324
+!MESSAGE Indexed 'nios_hmpsoc_bsp' (82 sources, 133 headers) in 2.31 sec: 3,923 declarations; 6,840 references; 78 unresolved inclusions; 6 syntax errors; 158 unresolved names (1.4%)
+
+!ENTRY org.eclipse.core.resources 4 568 2024-05-28 17:22:40.089
+!MESSAGE Could not write metadata for 'H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\src\c\.metadata\.plugins\org.eclipse.core.resources\.root\.indexes\properties.index'.
+!STACK 0
+java.io.FileNotFoundException: H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\src\c\.metadata\.plugins\org.eclipse.core.resources\.root\.indexes\properties.index (The process cannot access the file because it is being used by another process)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at java.io.FileOutputStream.<init>(Unknown Source)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:346)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:302)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:178)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1725)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.setCacheState(ContentDescriptionManager.java:494)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.invalidateCache(ContentDescriptionManager.java:425)
+	at org.eclipse.core.internal.resources.ContentDescriptionManager.handleEvent(ContentDescriptionManager.java:487)
+	at org.eclipse.core.internal.resources.Workspace.broadcastEvent(Workspace.java:368)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1270)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1281)
+	at org.eclipse.cdt.internal.core.settings.model.SettingsContext$1.run(SettingsContext.java:103)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager$CompositeWorkspaceRunnable.run(CProjectDescriptionManager.java:201)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager$5.run(CProjectDescriptionManager.java:523)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.runAtomic(CProjectDescriptionManager.java:519)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.runWspModification(CProjectDescriptionManager.java:484)
+	at org.eclipse.cdt.internal.core.settings.model.SetCProjectDescriptionOperation.executeOperation(SetCProjectDescriptionOperation.java:154)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.execute(CModelOperation.java:341)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.run(CModelOperation.java:607)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.cdt.internal.core.model.CModelOperation.runOperation(CModelOperation.java:638)
+	at org.eclipse.cdt.internal.core.settings.model.AbstractCProjectDescriptionStorage.setProjectDescription(AbstractCProjectDescriptionStorage.java:203)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionStorageManager.setProjectDescription(CProjectDescriptionStorageManager.java:149)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:885)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:846)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.setProjectDescription(CProjectDescriptionManager.java:840)
+	at org.eclipse.cdt.core.CCorePlugin.setProjectDescription(CCorePlugin.java:1276)
+	at org.eclipse.cdt.core.CCorePlugin$2.run(CCorePlugin.java:891)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.cdt.core.CCorePlugin.createCDTProject(CCorePlugin.java:848)
+	at org.eclipse.cdt.core.CCorePlugin.convertProjectToNewCC(CCorePlugin.java:967)
+	at com.altera.sbtgui.project.importer.Importer.importProject(Importer.java:169)
+	at com.altera.sbtgui.project.importer.Importer.importProject(Importer.java:107)
+	at com.altera.sbtgui.ui.wizards.NewSbtGuiProject$1.run(NewSbtGuiProject.java:109)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-05-28 17:22:40.358
+!MESSAGE Indexed 'nios_hmpsoc' (1 sources, 0 headers) in 0.013 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:24:08.353
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:10.788
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:24:11.111
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:13.954
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:13.961
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:24:33.331
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:35.679
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:24:36.009
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:38.607
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:24:38.612
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:25:38.018
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:25:40.369
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:25:40.678
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:25:43.229
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:25:43.235
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:26:06.777
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:09.120
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:26:09.434
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --reset-target /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:11.528
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --reset-target, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:11.534
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:26:27.997
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:30.341
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 1 0 2024-05-28 17:26:30.672
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid --reset-target /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:32.962
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, --reset-target, /cygdrive/h/Documents/GitHub/701-hmpsoc/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/software/nios_hmpsoc/nios_hmpsoc.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2024-05-28 17:26:32.968
+!MESSAGE Downloading ELF Process failed

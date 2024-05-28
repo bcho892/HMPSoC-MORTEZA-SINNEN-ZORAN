@@ -8,30 +8,21 @@ use IEEE.numeric_std.all;
 
 entity zoran_nios is
 	port (
-		button_pio_external_connection_export : in    std_logic_vector(1 downto 0)  := (others => '0'); -- button_pio_external_connection.export
-		clocks_ref_clk_clk                    : in    std_logic                     := '0';             --                 clocks_ref_clk.clk
-		clocks_ref_reset_reset                : in    std_logic                     := '0';             --               clocks_ref_reset.reset
-		clocks_sdram_clk_clk                  : out   std_logic;                                        --               clocks_sdram_clk.clk
-		led_pio_external_connection_export    : out   std_logic_vector(7 downto 0);                     --    led_pio_external_connection.export
-		recv_addr_external_connection_export  : in    std_logic_vector(7 downto 0)  := (others => '0'); --  recv_addr_external_connection.export
-		recv_data_external_connection_export  : in    std_logic_vector(31 downto 0) := (others => '0'); --  recv_data_external_connection.export
-		sdram_wire_addr                       : out   std_logic_vector(12 downto 0);                    --                     sdram_wire.addr
-		sdram_wire_ba                         : out   std_logic_vector(1 downto 0);                     --                               .ba
-		sdram_wire_cas_n                      : out   std_logic;                                        --                               .cas_n
-		sdram_wire_cke                        : out   std_logic;                                        --                               .cke
-		sdram_wire_cs_n                       : out   std_logic;                                        --                               .cs_n
-		sdram_wire_dq                         : inout std_logic_vector(15 downto 0) := (others => '0'); --                               .dq
-		sdram_wire_dqm                        : out   std_logic_vector(1 downto 0);                     --                               .dqm
-		sdram_wire_ras_n                      : out   std_logic;                                        --                               .ras_n
-		sdram_wire_we_n                       : out   std_logic;                                        --                               .we_n
-		send_addr_external_connection_export  : out   std_logic_vector(7 downto 0);                     --  send_addr_external_connection.export
-		send_data_external_connection_export  : out   std_logic_vector(31 downto 0);                    --  send_data_external_connection.export
-		sseg_0_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_0_external_connection.export
-		sseg_1_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_1_external_connection.export
-		sseg_2_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_2_external_connection.export
-		sseg_3_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_3_external_connection.export
-		sseg_4_external_connection_export     : out   std_logic_vector(6 downto 0);                     --     sseg_4_external_connection.export
-		sseg_5_external_connection_export     : out   std_logic_vector(6 downto 0)                      --     sseg_5_external_connection.export
+		button_pio_external_connection_export : in  std_logic_vector(1 downto 0)  := (others => '0'); -- button_pio_external_connection.export
+		clocks_ref_clk_clk                    : in  std_logic                     := '0';             --                 clocks_ref_clk.clk
+		clocks_ref_reset_reset                : in  std_logic                     := '0';             --               clocks_ref_reset.reset
+		clocks_sdram_clk_clk                  : out std_logic;                                        --               clocks_sdram_clk.clk
+		led_pio_external_connection_export    : out std_logic_vector(7 downto 0);                     --    led_pio_external_connection.export
+		recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => '0'); --  recv_addr_external_connection.export
+		recv_data_external_connection_export  : in  std_logic_vector(31 downto 0) := (others => '0'); --  recv_data_external_connection.export
+		send_addr_external_connection_export  : out std_logic_vector(7 downto 0);                     --  send_addr_external_connection.export
+		send_data_external_connection_export  : out std_logic_vector(31 downto 0);                    --  send_data_external_connection.export
+		sseg_0_external_connection_export     : out std_logic_vector(6 downto 0);                     --     sseg_0_external_connection.export
+		sseg_1_external_connection_export     : out std_logic_vector(6 downto 0);                     --     sseg_1_external_connection.export
+		sseg_2_external_connection_export     : out std_logic_vector(6 downto 0);                     --     sseg_2_external_connection.export
+		sseg_3_external_connection_export     : out std_logic_vector(6 downto 0);                     --     sseg_3_external_connection.export
+		sseg_4_external_connection_export     : out std_logic_vector(6 downto 0);                     --     sseg_4_external_connection.export
+		sseg_5_external_connection_export     : out std_logic_vector(6 downto 0)                      --     sseg_5_external_connection.export
 	);
 end entity zoran_nios;
 
@@ -85,11 +76,13 @@ architecture rtl of zoran_nios is
 			d_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
 			d_write                             : out std_logic;                                        -- write
 			d_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
+			d_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
 			debug_mem_slave_debugaccess_to_roms : out std_logic;                                        -- debugaccess
 			i_address                           : out std_logic_vector(27 downto 0);                    -- address
 			i_read                              : out std_logic;                                        -- read
 			i_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			i_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
+			i_readdatavalid                     : in  std_logic                     := 'X';             -- readdatavalid
 			irq                                 : in  std_logic_vector(31 downto 0) := (others => 'X'); -- irq
 			debug_reset_request                 : out std_logic;                                        -- reset
 			debug_mem_slave_address             : in  std_logic_vector(8 downto 0)  := (others => 'X'); -- address
@@ -168,31 +161,6 @@ architecture rtl of zoran_nios is
 		);
 	end component zoran_nios_recv_data;
 
-	component zoran_nios_sdram is
-		port (
-			clk            : in    std_logic                     := 'X';             -- clk
-			reset_n        : in    std_logic                     := 'X';             -- reset_n
-			az_addr        : in    std_logic_vector(24 downto 0) := (others => 'X'); -- address
-			az_be_n        : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- byteenable_n
-			az_cs          : in    std_logic                     := 'X';             -- chipselect
-			az_data        : in    std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
-			az_rd_n        : in    std_logic                     := 'X';             -- read_n
-			az_wr_n        : in    std_logic                     := 'X';             -- write_n
-			za_data        : out   std_logic_vector(15 downto 0);                    -- readdata
-			za_valid       : out   std_logic;                                        -- readdatavalid
-			za_waitrequest : out   std_logic;                                        -- waitrequest
-			zs_addr        : out   std_logic_vector(12 downto 0);                    -- export
-			zs_ba          : out   std_logic_vector(1 downto 0);                     -- export
-			zs_cas_n       : out   std_logic;                                        -- export
-			zs_cke         : out   std_logic;                                        -- export
-			zs_cs_n        : out   std_logic;                                        -- export
-			zs_dq          : inout std_logic_vector(15 downto 0) := (others => 'X'); -- export
-			zs_dqm         : out   std_logic_vector(1 downto 0);                     -- export
-			zs_ras_n       : out   std_logic;                                        -- export
-			zs_we_n        : out   std_logic                                         -- export
-		);
-	end component zoran_nios_sdram;
-
 	component zoran_nios_send_data is
 		port (
 			clk        : in  std_logic                     := 'X';             -- clk
@@ -228,6 +196,7 @@ architecture rtl of zoran_nios is
 			cpu_data_master_byteenable              : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			cpu_data_master_read                    : in  std_logic                     := 'X';             -- read
 			cpu_data_master_readdata                : out std_logic_vector(31 downto 0);                    -- readdata
+			cpu_data_master_readdatavalid           : out std_logic;                                        -- readdatavalid
 			cpu_data_master_write                   : in  std_logic                     := 'X';             -- write
 			cpu_data_master_writedata               : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			cpu_data_master_debugaccess             : in  std_logic                     := 'X';             -- debugaccess
@@ -235,6 +204,7 @@ architecture rtl of zoran_nios is
 			cpu_instruction_master_waitrequest      : out std_logic;                                        -- waitrequest
 			cpu_instruction_master_read             : in  std_logic                     := 'X';             -- read
 			cpu_instruction_master_readdata         : out std_logic_vector(31 downto 0);                    -- readdata
+			cpu_instruction_master_readdatavalid    : out std_logic;                                        -- readdatavalid
 			BUTTON_pio_s1_address                   : out std_logic_vector(1 downto 0);                     -- address
 			BUTTON_pio_s1_write                     : out std_logic;                                        -- write
 			BUTTON_pio_s1_readdata                  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -276,15 +246,6 @@ architecture rtl of zoran_nios is
 			recv_addr_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			recv_data_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
 			recv_data_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			sdram_s1_address                        : out std_logic_vector(24 downto 0);                    -- address
-			sdram_s1_write                          : out std_logic;                                        -- write
-			sdram_s1_read                           : out std_logic;                                        -- read
-			sdram_s1_readdata                       : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
-			sdram_s1_writedata                      : out std_logic_vector(15 downto 0);                    -- writedata
-			sdram_s1_byteenable                     : out std_logic_vector(1 downto 0);                     -- byteenable
-			sdram_s1_readdatavalid                  : in  std_logic                     := 'X';             -- readdatavalid
-			sdram_s1_waitrequest                    : in  std_logic                     := 'X';             -- waitrequest
-			sdram_s1_chipselect                     : out std_logic;                                        -- chipselect
 			send_addr_s1_address                    : out std_logic_vector(1 downto 0);                     -- address
 			send_addr_s1_write                      : out std_logic;                                        -- write
 			send_addr_s1_readdata                   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -405,19 +366,21 @@ architecture rtl of zoran_nios is
 		);
 	end component altera_reset_controller;
 
-	signal clocks_sys_clk_clk                                            : std_logic;                     -- clocks:sys_clk_clk -> [BUTTON_pio:clk, LED_pio:clk, cpu:clk, high_res_timer:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:clocks_sys_clk_clk, onchip_memory:clk, recv_addr:clk, recv_data:clk, rst_controller:clk, sdram:clk, send_addr:clk, send_data:clk, sseg_0:clk, sseg_1:clk, sseg_2:clk, sseg_3:clk, sseg_4:clk, sseg_5:clk]
+	signal clocks_sys_clk_clk                                            : std_logic;                     -- clocks:sys_clk_clk -> [BUTTON_pio:clk, LED_pio:clk, cpu:clk, high_res_timer:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:clocks_sys_clk_clk, onchip_memory:clk, recv_addr:clk, recv_data:clk, rst_controller:clk, send_addr:clk, send_data:clk, sseg_0:clk, sseg_1:clk, sseg_2:clk, sseg_3:clk, sseg_4:clk, sseg_5:clk]
 	signal cpu_data_master_readdata                                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	signal cpu_data_master_waitrequest                                   : std_logic;                     -- mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	signal cpu_data_master_debugaccess                                   : std_logic;                     -- cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
 	signal cpu_data_master_address                                       : std_logic_vector(27 downto 0); -- cpu:d_address -> mm_interconnect_0:cpu_data_master_address
 	signal cpu_data_master_byteenable                                    : std_logic_vector(3 downto 0);  -- cpu:d_byteenable -> mm_interconnect_0:cpu_data_master_byteenable
 	signal cpu_data_master_read                                          : std_logic;                     -- cpu:d_read -> mm_interconnect_0:cpu_data_master_read
+	signal cpu_data_master_readdatavalid                                 : std_logic;                     -- mm_interconnect_0:cpu_data_master_readdatavalid -> cpu:d_readdatavalid
 	signal cpu_data_master_write                                         : std_logic;                     -- cpu:d_write -> mm_interconnect_0:cpu_data_master_write
 	signal cpu_data_master_writedata                                     : std_logic_vector(31 downto 0); -- cpu:d_writedata -> mm_interconnect_0:cpu_data_master_writedata
 	signal cpu_instruction_master_readdata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:cpu_instruction_master_readdata -> cpu:i_readdata
 	signal cpu_instruction_master_waitrequest                            : std_logic;                     -- mm_interconnect_0:cpu_instruction_master_waitrequest -> cpu:i_waitrequest
 	signal cpu_instruction_master_address                                : std_logic_vector(27 downto 0); -- cpu:i_address -> mm_interconnect_0:cpu_instruction_master_address
 	signal cpu_instruction_master_read                                   : std_logic;                     -- cpu:i_read -> mm_interconnect_0:cpu_instruction_master_read
+	signal cpu_instruction_master_readdatavalid                          : std_logic;                     -- mm_interconnect_0:cpu_instruction_master_readdatavalid -> cpu:i_readdatavalid
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata        : std_logic_vector(31 downto 0); -- jtag_uart:av_readdata -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_readdata
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest     : std_logic;                     -- jtag_uart:av_waitrequest -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_waitrequest
@@ -445,15 +408,6 @@ architecture rtl of zoran_nios is
 	signal mm_interconnect_0_led_pio_s1_address                          : std_logic_vector(1 downto 0);  -- mm_interconnect_0:LED_pio_s1_address -> LED_pio:address
 	signal mm_interconnect_0_led_pio_s1_write                            : std_logic;                     -- mm_interconnect_0:LED_pio_s1_write -> mm_interconnect_0_led_pio_s1_write:in
 	signal mm_interconnect_0_led_pio_s1_writedata                        : std_logic_vector(31 downto 0); -- mm_interconnect_0:LED_pio_s1_writedata -> LED_pio:writedata
-	signal mm_interconnect_0_sdram_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:sdram_s1_chipselect -> sdram:az_cs
-	signal mm_interconnect_0_sdram_s1_readdata                           : std_logic_vector(15 downto 0); -- sdram:za_data -> mm_interconnect_0:sdram_s1_readdata
-	signal mm_interconnect_0_sdram_s1_waitrequest                        : std_logic;                     -- sdram:za_waitrequest -> mm_interconnect_0:sdram_s1_waitrequest
-	signal mm_interconnect_0_sdram_s1_address                            : std_logic_vector(24 downto 0); -- mm_interconnect_0:sdram_s1_address -> sdram:az_addr
-	signal mm_interconnect_0_sdram_s1_read                               : std_logic;                     -- mm_interconnect_0:sdram_s1_read -> mm_interconnect_0_sdram_s1_read:in
-	signal mm_interconnect_0_sdram_s1_byteenable                         : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sdram_s1_byteenable -> mm_interconnect_0_sdram_s1_byteenable:in
-	signal mm_interconnect_0_sdram_s1_readdatavalid                      : std_logic;                     -- sdram:za_valid -> mm_interconnect_0:sdram_s1_readdatavalid
-	signal mm_interconnect_0_sdram_s1_write                              : std_logic;                     -- mm_interconnect_0:sdram_s1_write -> mm_interconnect_0_sdram_s1_write:in
-	signal mm_interconnect_0_sdram_s1_writedata                          : std_logic_vector(15 downto 0); -- mm_interconnect_0:sdram_s1_writedata -> sdram:az_data
 	signal mm_interconnect_0_high_res_timer_s1_chipselect                : std_logic;                     -- mm_interconnect_0:high_res_timer_s1_chipselect -> high_res_timer:chipselect
 	signal mm_interconnect_0_high_res_timer_s1_readdata                  : std_logic_vector(15 downto 0); -- high_res_timer:readdata -> mm_interconnect_0:high_res_timer_s1_readdata
 	signal mm_interconnect_0_high_res_timer_s1_address                   : std_logic_vector(2 downto 0);  -- mm_interconnect_0:high_res_timer_s1_address -> high_res_timer:address
@@ -518,9 +472,6 @@ architecture rtl of zoran_nios is
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_read:inv -> jtag_uart:av_read_n
 	signal mm_interconnect_0_jtag_uart_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_avalon_jtag_slave_write:inv -> jtag_uart:av_write_n
 	signal mm_interconnect_0_led_pio_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_led_pio_s1_write:inv -> LED_pio:write_n
-	signal mm_interconnect_0_sdram_s1_read_ports_inv                     : std_logic;                     -- mm_interconnect_0_sdram_s1_read:inv -> sdram:az_rd_n
-	signal mm_interconnect_0_sdram_s1_byteenable_ports_inv               : std_logic_vector(1 downto 0);  -- mm_interconnect_0_sdram_s1_byteenable:inv -> sdram:az_be_n
-	signal mm_interconnect_0_sdram_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_sdram_s1_write:inv -> sdram:az_wr_n
 	signal mm_interconnect_0_high_res_timer_s1_write_ports_inv           : std_logic;                     -- mm_interconnect_0_high_res_timer_s1_write:inv -> high_res_timer:write_n
 	signal mm_interconnect_0_button_pio_s1_write_ports_inv               : std_logic;                     -- mm_interconnect_0_button_pio_s1_write:inv -> BUTTON_pio:write_n
 	signal mm_interconnect_0_sseg_0_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_sseg_0_s1_write:inv -> sseg_0:write_n
@@ -531,7 +482,7 @@ architecture rtl of zoran_nios is
 	signal mm_interconnect_0_sseg_5_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_sseg_5_s1_write:inv -> sseg_5:write_n
 	signal mm_interconnect_0_send_data_s1_write_ports_inv                : std_logic;                     -- mm_interconnect_0_send_data_s1_write:inv -> send_data:write_n
 	signal mm_interconnect_0_send_addr_s1_write_ports_inv                : std_logic;                     -- mm_interconnect_0_send_addr_s1_write:inv -> send_addr:write_n
-	signal rst_controller_reset_out_reset_ports_inv                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [BUTTON_pio:reset_n, LED_pio:reset_n, cpu:reset_n, high_res_timer:reset_n, jtag_uart:rst_n, recv_addr:reset_n, recv_data:reset_n, sdram:reset_n, send_addr:reset_n, send_data:reset_n, sseg_0:reset_n, sseg_1:reset_n, sseg_2:reset_n, sseg_3:reset_n, sseg_4:reset_n, sseg_5:reset_n]
+	signal rst_controller_reset_out_reset_ports_inv                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [BUTTON_pio:reset_n, LED_pio:reset_n, cpu:reset_n, high_res_timer:reset_n, jtag_uart:rst_n, recv_addr:reset_n, recv_data:reset_n, send_addr:reset_n, send_data:reset_n, sseg_0:reset_n, sseg_1:reset_n, sseg_2:reset_n, sseg_3:reset_n, sseg_4:reset_n, sseg_5:reset_n]
 
 begin
 
@@ -581,11 +532,13 @@ begin
 			d_waitrequest                       => cpu_data_master_waitrequest,                       --                          .waitrequest
 			d_write                             => cpu_data_master_write,                             --                          .write
 			d_writedata                         => cpu_data_master_writedata,                         --                          .writedata
+			d_readdatavalid                     => cpu_data_master_readdatavalid,                     --                          .readdatavalid
 			debug_mem_slave_debugaccess_to_roms => cpu_data_master_debugaccess,                       --                          .debugaccess
 			i_address                           => cpu_instruction_master_address,                    --        instruction_master.address
 			i_read                              => cpu_instruction_master_read,                       --                          .read
 			i_readdata                          => cpu_instruction_master_readdata,                   --                          .readdata
 			i_waitrequest                       => cpu_instruction_master_waitrequest,                --                          .waitrequest
+			i_readdatavalid                     => cpu_instruction_master_readdatavalid,              --                          .readdatavalid
 			irq                                 => cpu_irq_irq,                                       --                       irq.irq
 			debug_reset_request                 => cpu_debug_reset_request_reset,                     --       debug_reset_request.reset
 			debug_mem_slave_address             => mm_interconnect_0_cpu_debug_mem_slave_address,     --           debug_mem_slave.address
@@ -656,30 +609,6 @@ begin
 			address  => mm_interconnect_0_recv_data_s1_address,   --                  s1.address
 			readdata => mm_interconnect_0_recv_data_s1_readdata,  --                    .readdata
 			in_port  => recv_data_external_connection_export      -- external_connection.export
-		);
-
-	sdram : component zoran_nios_sdram
-		port map (
-			clk            => clocks_sys_clk_clk,                              --   clk.clk
-			reset_n        => rst_controller_reset_out_reset_ports_inv,        -- reset.reset_n
-			az_addr        => mm_interconnect_0_sdram_s1_address,              --    s1.address
-			az_be_n        => mm_interconnect_0_sdram_s1_byteenable_ports_inv, --      .byteenable_n
-			az_cs          => mm_interconnect_0_sdram_s1_chipselect,           --      .chipselect
-			az_data        => mm_interconnect_0_sdram_s1_writedata,            --      .writedata
-			az_rd_n        => mm_interconnect_0_sdram_s1_read_ports_inv,       --      .read_n
-			az_wr_n        => mm_interconnect_0_sdram_s1_write_ports_inv,      --      .write_n
-			za_data        => mm_interconnect_0_sdram_s1_readdata,             --      .readdata
-			za_valid       => mm_interconnect_0_sdram_s1_readdatavalid,        --      .readdatavalid
-			za_waitrequest => mm_interconnect_0_sdram_s1_waitrequest,          --      .waitrequest
-			zs_addr        => sdram_wire_addr,                                 --  wire.export
-			zs_ba          => sdram_wire_ba,                                   --      .export
-			zs_cas_n       => sdram_wire_cas_n,                                --      .export
-			zs_cke         => sdram_wire_cke,                                  --      .export
-			zs_cs_n        => sdram_wire_cs_n,                                 --      .export
-			zs_dq          => sdram_wire_dq,                                   --      .export
-			zs_dqm         => sdram_wire_dqm,                                  --      .export
-			zs_ras_n       => sdram_wire_ras_n,                                --      .export
-			zs_we_n        => sdram_wire_we_n                                  --      .export
 		);
 
 	send_addr : component zoran_nios_LED_pio
@@ -787,6 +716,7 @@ begin
 			cpu_data_master_byteenable              => cpu_data_master_byteenable,                                --                                .byteenable
 			cpu_data_master_read                    => cpu_data_master_read,                                      --                                .read
 			cpu_data_master_readdata                => cpu_data_master_readdata,                                  --                                .readdata
+			cpu_data_master_readdatavalid           => cpu_data_master_readdatavalid,                             --                                .readdatavalid
 			cpu_data_master_write                   => cpu_data_master_write,                                     --                                .write
 			cpu_data_master_writedata               => cpu_data_master_writedata,                                 --                                .writedata
 			cpu_data_master_debugaccess             => cpu_data_master_debugaccess,                               --                                .debugaccess
@@ -794,6 +724,7 @@ begin
 			cpu_instruction_master_waitrequest      => cpu_instruction_master_waitrequest,                        --                                .waitrequest
 			cpu_instruction_master_read             => cpu_instruction_master_read,                               --                                .read
 			cpu_instruction_master_readdata         => cpu_instruction_master_readdata,                           --                                .readdata
+			cpu_instruction_master_readdatavalid    => cpu_instruction_master_readdatavalid,                      --                                .readdatavalid
 			BUTTON_pio_s1_address                   => mm_interconnect_0_button_pio_s1_address,                   --                   BUTTON_pio_s1.address
 			BUTTON_pio_s1_write                     => mm_interconnect_0_button_pio_s1_write,                     --                                .write
 			BUTTON_pio_s1_readdata                  => mm_interconnect_0_button_pio_s1_readdata,                  --                                .readdata
@@ -835,15 +766,6 @@ begin
 			recv_addr_s1_readdata                   => mm_interconnect_0_recv_addr_s1_readdata,                   --                                .readdata
 			recv_data_s1_address                    => mm_interconnect_0_recv_data_s1_address,                    --                    recv_data_s1.address
 			recv_data_s1_readdata                   => mm_interconnect_0_recv_data_s1_readdata,                   --                                .readdata
-			sdram_s1_address                        => mm_interconnect_0_sdram_s1_address,                        --                        sdram_s1.address
-			sdram_s1_write                          => mm_interconnect_0_sdram_s1_write,                          --                                .write
-			sdram_s1_read                           => mm_interconnect_0_sdram_s1_read,                           --                                .read
-			sdram_s1_readdata                       => mm_interconnect_0_sdram_s1_readdata,                       --                                .readdata
-			sdram_s1_writedata                      => mm_interconnect_0_sdram_s1_writedata,                      --                                .writedata
-			sdram_s1_byteenable                     => mm_interconnect_0_sdram_s1_byteenable,                     --                                .byteenable
-			sdram_s1_readdatavalid                  => mm_interconnect_0_sdram_s1_readdatavalid,                  --                                .readdatavalid
-			sdram_s1_waitrequest                    => mm_interconnect_0_sdram_s1_waitrequest,                    --                                .waitrequest
-			sdram_s1_chipselect                     => mm_interconnect_0_sdram_s1_chipselect,                     --                                .chipselect
 			send_addr_s1_address                    => mm_interconnect_0_send_addr_s1_address,                    --                    send_addr_s1.address
 			send_addr_s1_write                      => mm_interconnect_0_send_addr_s1_write,                      --                                .write
 			send_addr_s1_readdata                   => mm_interconnect_0_send_addr_s1_readdata,                   --                                .readdata
@@ -966,12 +888,6 @@ begin
 	mm_interconnect_0_jtag_uart_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;
 
 	mm_interconnect_0_led_pio_s1_write_ports_inv <= not mm_interconnect_0_led_pio_s1_write;
-
-	mm_interconnect_0_sdram_s1_read_ports_inv <= not mm_interconnect_0_sdram_s1_read;
-
-	mm_interconnect_0_sdram_s1_byteenable_ports_inv <= not mm_interconnect_0_sdram_s1_byteenable;
-
-	mm_interconnect_0_sdram_s1_write_ports_inv <= not mm_interconnect_0_sdram_s1_write;
 
 	mm_interconnect_0_high_res_timer_s1_write_ports_inv <= not mm_interconnect_0_high_res_timer_s1_write;
 

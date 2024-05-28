@@ -54,7 +54,6 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VHDL_FILE "../../ASPs/PD-ASP/vhdl/logic/bit_truncation.vhd"
 set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/prog_mem.vhd"
 set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/memory/data_mem.vhd"
-set_global_assignment -name VHDL_FILE ../Zoran_Nios/synthesis/zoran_nios.vhd -library zoran_nios
 set_global_assignment -name QIP_FILE ../Zoran_Nios/synthesis/zoran_nios.qip
 set_global_assignment -name VHDL_FILE ../../src/vhdl/TopLevel.vhd
 set_global_assignment -name VHDL_FILE "../../ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd"
