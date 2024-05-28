@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports           : positive := 6;
-        recop_file_path : string   := "C:\Users\AKLbc\Desktop\Development\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\valued_config_fields.mif"
+        recop_file_path : string   := FilePaths.RECOP_FIXED_CONFIG_FILE_PATH
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -127,7 +127,7 @@ begin
             dprr(0)                   => '0',
             sip_data_in(15 downto 10) => (others => '0'),
             sip_data_in(9 downto 0)   => SW,
-            reset                     => KEY(0),
+            reset                     => '0',
             dpcr_data_out             => send_port(3).data,
             sop_data_out(15 downto 8) => zoran,
             sop_data_out(7 downto 0)  => send_port(3).addr,
