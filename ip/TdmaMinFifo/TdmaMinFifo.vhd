@@ -17,7 +17,6 @@
 -- 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 -- ************************************************************
 
-
 --Copyright (C) 2020  Intel Corporation. All rights reserved.
 --Your use of Intel Corporation's design tools, logic functions 
 --and other software and tools, and any partner logic 
@@ -33,90 +32,83 @@
 --refer to the applicable agreement for further details, at
 --https://fpgasoftware.intel.com/eula.
 
+library ieee;
+use ieee.std_logic_1164.all;
 
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
+library altera_mf;
+use altera_mf.all;
 
-LIBRARY altera_mf;
-USE altera_mf.all;
+entity TdmaMinFifo is
+    port (
+        clock : in  std_logic;
+        data  : in  std_logic_vector (39 downto 0);
+        rdreq : in  std_logic;
+        wrreq : in  std_logic;
+        empty : out std_logic;
+        full  : out std_logic;
+        q     : out std_logic_vector (39 downto 0)
+    );
+end TdmaMinFifo;
 
-ENTITY TdmaMinFifo IS
-	PORT
-	(
-		clock		: IN STD_LOGIC ;
-		data		: IN STD_LOGIC_VECTOR (39 DOWNTO 0);
-		rdreq		: IN STD_LOGIC ;
-		wrreq		: IN STD_LOGIC ;
-		empty		: OUT STD_LOGIC ;
-		full		: OUT STD_LOGIC ;
-		q		: OUT STD_LOGIC_VECTOR (39 DOWNTO 0)
-	);
-END TdmaMinFifo;
+architecture SYN of tdmaminfifo is
 
+    signal sub_wire0 : std_logic;
+    signal sub_wire1 : std_logic;
+    signal sub_wire2 : std_logic_vector (39 downto 0);
 
-ARCHITECTURE SYN OF tdmaminfifo IS
+    component scfifo
+        generic (
+            add_ram_output_register : string;
+            intended_device_family  : string;
+            lpm_numwords            : natural;
+            lpm_showahead           : string;
+            lpm_type                : string;
+            lpm_width               : natural;
+            lpm_widthu              : natural;
+            overflow_checking       : string;
+            underflow_checking      : string;
+            use_eab                 : string
+        );
+        port (
+            clock : in  std_logic;
+            data  : in  std_logic_vector (39 downto 0);
+            rdreq : in  std_logic;
+            wrreq : in  std_logic;
+            empty : out std_logic;
+            full  : out std_logic;
+            q     : out std_logic_vector (39 downto 0)
+        );
+    end component;
 
-	SIGNAL sub_wire0	: STD_LOGIC ;
-	SIGNAL sub_wire1	: STD_LOGIC ;
-	SIGNAL sub_wire2	: STD_LOGIC_VECTOR (39 DOWNTO 0);
+begin
+    empty <= sub_wire0;
+    full  <= sub_wire1;
+    q     <= sub_wire2(39 downto 0);
 
+    scfifo_component : scfifo
+    generic map(
+        add_ram_output_register => "OFF",
+        intended_device_family  => "Cyclone V",
+        lpm_numwords            => 256,
+        lpm_showahead           => "ON",
+        lpm_type                => "scfifo",
+        lpm_width               => 40,
+        lpm_widthu              => 8,
+        overflow_checking       => "ON",
+        underflow_checking      => "ON",
+        use_eab                 => "ON"
+    )
+    port map(
+        clock => clock,
+        data  => data,
+        rdreq => rdreq,
+        wrreq => wrreq,
+        empty => sub_wire0,
+        full  => sub_wire1,
+        q     => sub_wire2
+    );
 
-
-	COMPONENT scfifo
-	GENERIC (
-		add_ram_output_register		: STRING;
-		intended_device_family		: STRING;
-		lpm_numwords		: NATURAL;
-		lpm_showahead		: STRING;
-		lpm_type		: STRING;
-		lpm_width		: NATURAL;
-		lpm_widthu		: NATURAL;
-		overflow_checking		: STRING;
-		underflow_checking		: STRING;
-		use_eab		: STRING
-	);
-	PORT (
-			clock	: IN STD_LOGIC ;
-			data	: IN STD_LOGIC_VECTOR (39 DOWNTO 0);
-			rdreq	: IN STD_LOGIC ;
-			wrreq	: IN STD_LOGIC ;
-			empty	: OUT STD_LOGIC ;
-			full	: OUT STD_LOGIC ;
-			q	: OUT STD_LOGIC_VECTOR (39 DOWNTO 0)
-	);
-	END COMPONENT;
-
-BEGIN
-	empty    <= sub_wire0;
-	full    <= sub_wire1;
-	q    <= sub_wire2(39 DOWNTO 0);
-
-	scfifo_component : scfifo
-	GENERIC MAP (
-		add_ram_output_register => "OFF",
-		intended_device_family => "Cyclone V",
-		lpm_numwords => 256,
-		lpm_showahead => "ON",
-		lpm_type => "scfifo",
-		lpm_width => 40,
-		lpm_widthu => 8,
-		overflow_checking => "ON",
-		underflow_checking => "ON",
-		use_eab => "ON"
-	)
-	PORT MAP (
-		clock => clock,
-		data => data,
-		rdreq => rdreq,
-		wrreq => wrreq,
-		empty => sub_wire0,
-		full => sub_wire1,
-		q => sub_wire2
-	);
-
-
-
-END SYN;
+end SYN;
 
 -- ============================================================
 -- CNX file retrieval info

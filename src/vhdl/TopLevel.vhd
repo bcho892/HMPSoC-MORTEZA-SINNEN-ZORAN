@@ -41,30 +41,34 @@ end entity;
 
 architecture rtl of TopLevel is
 
-    signal clock            : std_logic;
-    signal unblock_datacall : std_logic;
-    signal zoran            : std_logic_vector(7 downto 0);
+    signal clock                     : std_logic;
+    signal unblock_datacall          : std_logic;
+    signal zoran                     : std_logic_vector(7 downto 0);
 
-    signal send_port        : tdma_min_ports(0 to ports - 1);
-    signal recv_port        : tdma_min_ports(0 to ports - 1);
+    signal send_port                 : tdma_min_ports(0 to ports - 1);
+    signal recv_port                 : tdma_min_ports(0 to ports - 1);
+
+    signal ack                       : std_logic;
+    signal nios_noc_interface_output : std_logic_vector(31 downto 0);
 
     component zoran_nios is
         port (
-            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X');  -- export
-            clocks_ref_clk_clk                    : in  std_logic                    := 'X';              -- clk
-            clocks_ref_reset_reset                : in  std_logic                    := 'X';              -- reset
-            clocks_sdram_clk_clk                  : out std_logic;                                        -- clk
-            led_pio_external_connection_export    : out std_logic_vector(7 downto 0);                     -- export
-            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
-            send_data_external_connection_export  : out std_logic_vector(31 downto 0);                    -- export
-            send_addr_external_connection_export  : out std_logic_vector(7 downto 0);                     -- export
+            ack_external_connection_export        : out std_logic;
+            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
+            clocks_ref_clk_clk                    : in  std_logic                    := 'X'; -- clk
+            clocks_ref_reset_reset                : in  std_logic                    := 'X'; -- reset
+            clocks_sdram_clk_clk                  : out std_logic; -- clk
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); -- export
+            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            send_data_external_connection_export  : out std_logic_vector(31 downto 0); -- export
+            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); -- export
             recv_data_external_connection_export  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X')  -- export
+            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X') -- export
         );
     end component zoran_nios;
 
@@ -142,15 +146,25 @@ begin
         );
 
     -- nios wrapper
+    nios_noc_interface_inst : entity work.nios_noc_interface
+        port map(
+            clock     => clock,
+            rdreq     => ack,
+            empty     => open,
+            full      => open,
+            q         => nios_noc_interface_output,
+            recv_port => recv_port(5)
+        );
 
     zoran_nios_inst : component zoran_nios
         port map(
+            ack_external_connection_export        => ack,
             button_pio_external_connection_export => "00",
             clocks_ref_clk_clk                    => clock,
             clocks_ref_reset_reset                => '0',
             led_pio_external_connection_export    => open, -- LEDR(7 downto 0),
             recv_addr_external_connection_export  => recv_port(5).addr,
-            recv_data_external_connection_export  => recv_port(5).data,
+            recv_data_external_connection_export  => nios_noc_interface_output,
             send_addr_external_connection_export  => send_port(5).addr,
             send_data_external_connection_export  => send_port(5).data,
             sseg_0_external_connection_export     => HEX0,

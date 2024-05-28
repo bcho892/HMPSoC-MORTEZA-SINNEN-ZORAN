@@ -14,7 +14,8 @@ module zoran_nios (
 	sseg_2_external_connection_export,
 	sseg_3_external_connection_export,
 	sseg_4_external_connection_export,
-	sseg_5_external_connection_export);	
+	sseg_5_external_connection_export,
+	ack_external_connection_export);	
 
 	input	[1:0]	button_pio_external_connection_export;
 	input		clocks_ref_clk_clk;
@@ -31,4 +32,5 @@ module zoran_nios (
 	output	[6:0]	sseg_3_external_connection_export;
 	output	[6:0]	sseg_4_external_connection_export;
 	output	[6:0]	sseg_5_external_connection_export;
+	output		ack_external_connection_export;
 endmodule
