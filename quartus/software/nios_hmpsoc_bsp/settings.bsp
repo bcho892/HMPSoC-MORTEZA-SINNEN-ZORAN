@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>28/05/2024 6:08:56 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1716876536089</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\quartus\software\nios_hmpsoc_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspGeneratedTimeStamp>28/05/2024 11:00:09 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1716894009091</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\AKLbc\Desktop\Development\HMPSoC-MORTEZA-SINNEN-ZORAN\quartus\software\nios_hmpsoc_bsp</BspGeneratedLocation>
+        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\zoran_nios.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
@@ -898,6 +898,12 @@
                 <Enabled>false</Enabled>
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
+        <MemoryMap>
+                <slaveDescriptor>ack</slaveDescriptor>
+                <addressRange>0x00000000 - 0x0000000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory</slaveDescriptor>
                 <addressRange>0x08008000 - 0x0800CFFF</addressRange>

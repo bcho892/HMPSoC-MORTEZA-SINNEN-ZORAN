@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
  * SOPC Builder design path: ../../zoran_nios.sopcinfo
  *
- * Generated: Tue May 28 17:22:36 NZST 2024
+ * Generated: Tue May 28 23:00:11 NZST 2024
  */
 
 /*
@@ -239,6 +239,33 @@
 
 
 /*
+ * ack configuration
+ *
+ */
+
+#define ACK_BASE 0x0
+#define ACK_BIT_CLEARING_EDGE_REGISTER 0
+#define ACK_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define ACK_CAPTURE 0
+#define ACK_DATA_WIDTH 1
+#define ACK_DO_TEST_BENCH_WIRING 0
+#define ACK_DRIVEN_SIM_VALUE 0
+#define ACK_EDGE_TYPE "NONE"
+#define ACK_FREQ 50000000
+#define ACK_HAS_IN 0
+#define ACK_HAS_OUT 1
+#define ACK_HAS_TRI 0
+#define ACK_IRQ -1
+#define ACK_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define ACK_IRQ_TYPE "NONE"
+#define ACK_NAME "/dev/ack"
+#define ACK_RESET_VALUE 0
+#define ACK_SPAN 16
+#define ACK_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_ack altera_avalon_pio
+
+
+/*
  * hal configuration
  *
  */
@@ -329,13 +356,13 @@
 
 #define ALT_MODULE_CLASS_recv_addr altera_avalon_pio
 #define RECV_ADDR_BASE 0x8011020
-#define RECV_ADDR_BIT_CLEARING_EDGE_REGISTER 0
+#define RECV_ADDR_BIT_CLEARING_EDGE_REGISTER 1
 #define RECV_ADDR_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define RECV_ADDR_CAPTURE 0
+#define RECV_ADDR_CAPTURE 1
 #define RECV_ADDR_DATA_WIDTH 8
 #define RECV_ADDR_DO_TEST_BENCH_WIRING 0
 #define RECV_ADDR_DRIVEN_SIM_VALUE 0
-#define RECV_ADDR_EDGE_TYPE "NONE"
+#define RECV_ADDR_EDGE_TYPE "RISING"
 #define RECV_ADDR_FREQ 50000000
 #define RECV_ADDR_HAS_IN 1
 #define RECV_ADDR_HAS_OUT 0
@@ -356,13 +383,13 @@
 
 #define ALT_MODULE_CLASS_recv_data altera_avalon_pio
 #define RECV_DATA_BASE 0x8011030
-#define RECV_DATA_BIT_CLEARING_EDGE_REGISTER 0
+#define RECV_DATA_BIT_CLEARING_EDGE_REGISTER 1
 #define RECV_DATA_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define RECV_DATA_CAPTURE 0
+#define RECV_DATA_CAPTURE 1
 #define RECV_DATA_DATA_WIDTH 32
 #define RECV_DATA_DO_TEST_BENCH_WIRING 0
 #define RECV_DATA_DRIVEN_SIM_VALUE 0
-#define RECV_DATA_EDGE_TYPE "NONE"
+#define RECV_DATA_EDGE_TYPE "RISING"
 #define RECV_DATA_FREQ 50000000
 #define RECV_DATA_HAS_IN 1
 #define RECV_DATA_HAS_OUT 0

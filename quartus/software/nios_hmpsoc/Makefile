@@ -134,7 +134,7 @@ ACDS_VERSION := 18.1
 
 # This following BUILD_NUMBER comment indicates the build number of the tool 
 # used to generate this makefile. 
-# BUILD_NUMBER: 625
+# BUILD_NUMBER: 646
 
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
@@ -142,7 +142,7 @@ ACDS_VERSION := 18.1
 ELF := nios_hmpsoc.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS := hello_world_small.c
 CXX_SRCS :=
 ASM_SRCS :=
 

@@ -177,9 +177,9 @@ begin
 
     LEDR(0) <= '1' when send_port(0).data(31 downto 28) = "1011" else
                '0';
-    LEDR(1)          <= '1';
+    LEDR(1)          <= ack;
     LEDR(5 downto 2) <= send_port(2).data(31 downto 28);
-    LEDR(9 downto 6) <= send_port(2).data(3 downto 0);
+    LEDR(9 downto 6) <= send_port(2).data(7 downto 4);
 
     process (clock)
         variable edge : std_logic;
