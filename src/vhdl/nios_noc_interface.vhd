@@ -73,7 +73,7 @@ begin
         add_ram_output_register => "OFF",
         intended_device_family  => "Cyclone V",
         lpm_numwords            => 8,
-        lpm_showahead           => "ON",
+        lpm_showahead           => "OFF",
         lpm_type                => "scfifo",
         lpm_width               => 32,
         lpm_widthu              => 3,

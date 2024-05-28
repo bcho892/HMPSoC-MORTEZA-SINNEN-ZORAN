@@ -44,16 +44,28 @@ begin
         t_rdreq <= '1';
 
         for i in 20 downto 0 loop
+            t_recv_port.data <= x"FA990775";
+            wait until rising_edge(t_clock);
+            t_recv_port.data <= x"90CC1233";
             wait until rising_edge(t_clock);
         end loop;
 
-        t_rdreq <= '0';
+        t_rdreq          <= '0';
+        t_recv_port.data <= x"00000000";
 
         for i in 20 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
 
         t_rdreq <= '1';
+
+        -- empty it
+        for i in 20 downto 0 loop
+            t_rdreq <= '0';
+            wait until rising_edge(t_clock);
+            t_rdreq <= '1';
+            wait until rising_edge(t_clock);
+        end loop;
 
         wait;
     end process;

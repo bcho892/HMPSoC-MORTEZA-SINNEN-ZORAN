@@ -15,6 +15,7 @@
  */
 
 #include "altera_avalon_pio_regs.h"
+#include "priv/alt_busy_sleep.h"
 #include "system.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -29,13 +30,10 @@ int main() {
     IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
 
     for (;;) {
+        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
+
         uint32_t datain = *((volatile uint32_t *)RECV_DATA_BASE);
         uint32_t addrin = IORD_ALTERA_AVALON_PIO_DATA(RECV_ADDR_BASE);
-        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
-        if (datain == 0) {
-            IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
-        }
-        printf("type: %x\n", datain >> 28);
 
         if (datain >> 28 == 0b1011) {
             printf("Peak Detected: Cock Cycles: %d\n", datain & 0x00001111);
@@ -43,6 +41,7 @@ int main() {
             //      SEND_ADDR(0x01);
             //      SEND_DATA(datain & 0xFFFF);
         }
+        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
     }
     return 0;
 }
