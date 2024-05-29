@@ -64,9 +64,12 @@ begin
         end if;
     end process;
 
-    empty <= sub_wire0;
-    full  <= sub_wire1;
-    q     <= sub_wire2(31 downto 0);
+    empty                   <= sub_wire0;
+    full                    <= sub_wire1;
+
+    -- Show data if not empty, show 0 otherwise
+    with sub_wire0 select q <= sub_wire2(31 downto 0) when '0',
+                               (others => '0') when others;
 
     scfifo_component : scfifo
     generic map(
