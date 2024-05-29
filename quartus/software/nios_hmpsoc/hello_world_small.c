@@ -27,29 +27,19 @@ int main() {
     printf("Hello from Nios II!\n");
     // SEND_ADDR(0x01);
     // SEND_DATA(0x00000000);
-    IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
 
     for (;;) {
 
-        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
-        uint32_t datain = IORD_ALTERA_AVALON_PIO_DATA(RECV_DATA_BASE);
-
-        uint32_t addrin = IORD_ALTERA_AVALON_PIO_DATA(RECV_ADDR_BASE);
-        if (datain == 0) {
-            IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
-        }
+        ALT_CI_BIGLARI_SSEG_0(0x69);
+        uint32_t datain = ALT_CI_BIGLARI_READ_0;
 
         if (((datain >> 28) == 0b1001)) {
             printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
-            IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
             continue;
         }
-        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
+
         if ((datain >> 28) == 0b1011) {
             printf("Peak Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
-            //	     printf("Addr: %d\n", addrin);
-            //      SEND_ADDR(0x01);
-            //      SEND_DATA(datain & 0xFFFF);
         }
     }
     return 0;

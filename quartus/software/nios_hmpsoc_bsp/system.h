@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
  * SOPC Builder design path: ../../zoran_nios.sopcinfo
  *
- * Generated: Wed May 29 17:03:56 NZST 2024
+ * Generated: Wed May 29 22:20:18 NZST 2024
  */
 
 /*
@@ -170,6 +170,8 @@
 
 #define ALT_CI_BIGLARI_READ_0 __builtin_custom_in(ALT_CI_BIGLARI_READ_0_N)
 #define ALT_CI_BIGLARI_READ_0_N 0x0
+#define ALT_CI_BIGLARI_SSEG_0(A) __builtin_custom_ini(ALT_CI_BIGLARI_SSEG_0_N,(A))
+#define ALT_CI_BIGLARI_SSEG_0_N 0x1
 
 
 /*
@@ -183,6 +185,7 @@
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
 #define __BIGLARI_READ
+#define __BIGLARI_SSEG
 
 
 /*
@@ -360,60 +363,6 @@
 
 
 /*
- * recv_addr configuration
- *
- */
-
-#define ALT_MODULE_CLASS_recv_addr altera_avalon_pio
-#define RECV_ADDR_BASE 0x8011020
-#define RECV_ADDR_BIT_CLEARING_EDGE_REGISTER 1
-#define RECV_ADDR_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define RECV_ADDR_CAPTURE 1
-#define RECV_ADDR_DATA_WIDTH 8
-#define RECV_ADDR_DO_TEST_BENCH_WIRING 0
-#define RECV_ADDR_DRIVEN_SIM_VALUE 0
-#define RECV_ADDR_EDGE_TYPE "RISING"
-#define RECV_ADDR_FREQ 50000000
-#define RECV_ADDR_HAS_IN 1
-#define RECV_ADDR_HAS_OUT 0
-#define RECV_ADDR_HAS_TRI 0
-#define RECV_ADDR_IRQ -1
-#define RECV_ADDR_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define RECV_ADDR_IRQ_TYPE "NONE"
-#define RECV_ADDR_NAME "/dev/recv_addr"
-#define RECV_ADDR_RESET_VALUE 0
-#define RECV_ADDR_SPAN 16
-#define RECV_ADDR_TYPE "altera_avalon_pio"
-
-
-/*
- * recv_data configuration
- *
- */
-
-#define ALT_MODULE_CLASS_recv_data altera_avalon_pio
-#define RECV_DATA_BASE 0x8011030
-#define RECV_DATA_BIT_CLEARING_EDGE_REGISTER 1
-#define RECV_DATA_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define RECV_DATA_CAPTURE 1
-#define RECV_DATA_DATA_WIDTH 32
-#define RECV_DATA_DO_TEST_BENCH_WIRING 0
-#define RECV_DATA_DRIVEN_SIM_VALUE 0
-#define RECV_DATA_EDGE_TYPE "RISING"
-#define RECV_DATA_FREQ 50000000
-#define RECV_DATA_HAS_IN 1
-#define RECV_DATA_HAS_OUT 0
-#define RECV_DATA_HAS_TRI 0
-#define RECV_DATA_IRQ -1
-#define RECV_DATA_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define RECV_DATA_IRQ_TYPE "NONE"
-#define RECV_DATA_NAME "/dev/recv_data"
-#define RECV_DATA_RESET_VALUE 0
-#define RECV_DATA_SPAN 16
-#define RECV_DATA_TYPE "altera_avalon_pio"
-
-
-/*
  * send_addr configuration
  *
  */
@@ -465,167 +414,5 @@
 #define SEND_DATA_RESET_VALUE 0
 #define SEND_DATA_SPAN 16
 #define SEND_DATA_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_0 altera_avalon_pio
-#define SSEG_0_BASE 0x80110b0
-#define SSEG_0_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_0_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_0_CAPTURE 0
-#define SSEG_0_DATA_WIDTH 7
-#define SSEG_0_DO_TEST_BENCH_WIRING 0
-#define SSEG_0_DRIVEN_SIM_VALUE 0
-#define SSEG_0_EDGE_TYPE "NONE"
-#define SSEG_0_FREQ 50000000
-#define SSEG_0_HAS_IN 0
-#define SSEG_0_HAS_OUT 1
-#define SSEG_0_HAS_TRI 0
-#define SSEG_0_IRQ -1
-#define SSEG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_0_IRQ_TYPE "NONE"
-#define SSEG_0_NAME "/dev/sseg_0"
-#define SSEG_0_RESET_VALUE 0
-#define SSEG_0_SPAN 16
-#define SSEG_0_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_1 altera_avalon_pio
-#define SSEG_1_BASE 0x80110a0
-#define SSEG_1_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_1_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_1_CAPTURE 0
-#define SSEG_1_DATA_WIDTH 7
-#define SSEG_1_DO_TEST_BENCH_WIRING 0
-#define SSEG_1_DRIVEN_SIM_VALUE 0
-#define SSEG_1_EDGE_TYPE "NONE"
-#define SSEG_1_FREQ 50000000
-#define SSEG_1_HAS_IN 0
-#define SSEG_1_HAS_OUT 1
-#define SSEG_1_HAS_TRI 0
-#define SSEG_1_IRQ -1
-#define SSEG_1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_1_IRQ_TYPE "NONE"
-#define SSEG_1_NAME "/dev/sseg_1"
-#define SSEG_1_RESET_VALUE 0
-#define SSEG_1_SPAN 16
-#define SSEG_1_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_2 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_2 altera_avalon_pio
-#define SSEG_2_BASE 0x8011090
-#define SSEG_2_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_2_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_2_CAPTURE 0
-#define SSEG_2_DATA_WIDTH 7
-#define SSEG_2_DO_TEST_BENCH_WIRING 0
-#define SSEG_2_DRIVEN_SIM_VALUE 0
-#define SSEG_2_EDGE_TYPE "NONE"
-#define SSEG_2_FREQ 50000000
-#define SSEG_2_HAS_IN 0
-#define SSEG_2_HAS_OUT 1
-#define SSEG_2_HAS_TRI 0
-#define SSEG_2_IRQ -1
-#define SSEG_2_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_2_IRQ_TYPE "NONE"
-#define SSEG_2_NAME "/dev/sseg_2"
-#define SSEG_2_RESET_VALUE 0
-#define SSEG_2_SPAN 16
-#define SSEG_2_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_3 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_3 altera_avalon_pio
-#define SSEG_3_BASE 0x8011080
-#define SSEG_3_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_3_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_3_CAPTURE 0
-#define SSEG_3_DATA_WIDTH 7
-#define SSEG_3_DO_TEST_BENCH_WIRING 0
-#define SSEG_3_DRIVEN_SIM_VALUE 0
-#define SSEG_3_EDGE_TYPE "NONE"
-#define SSEG_3_FREQ 50000000
-#define SSEG_3_HAS_IN 0
-#define SSEG_3_HAS_OUT 1
-#define SSEG_3_HAS_TRI 0
-#define SSEG_3_IRQ -1
-#define SSEG_3_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_3_IRQ_TYPE "NONE"
-#define SSEG_3_NAME "/dev/sseg_3"
-#define SSEG_3_RESET_VALUE 0
-#define SSEG_3_SPAN 16
-#define SSEG_3_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_4 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_4 altera_avalon_pio
-#define SSEG_4_BASE 0x8011070
-#define SSEG_4_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_4_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_4_CAPTURE 0
-#define SSEG_4_DATA_WIDTH 7
-#define SSEG_4_DO_TEST_BENCH_WIRING 0
-#define SSEG_4_DRIVEN_SIM_VALUE 0
-#define SSEG_4_EDGE_TYPE "NONE"
-#define SSEG_4_FREQ 50000000
-#define SSEG_4_HAS_IN 0
-#define SSEG_4_HAS_OUT 1
-#define SSEG_4_HAS_TRI 0
-#define SSEG_4_IRQ -1
-#define SSEG_4_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_4_IRQ_TYPE "NONE"
-#define SSEG_4_NAME "/dev/sseg_4"
-#define SSEG_4_RESET_VALUE 0
-#define SSEG_4_SPAN 16
-#define SSEG_4_TYPE "altera_avalon_pio"
-
-
-/*
- * sseg_5 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sseg_5 altera_avalon_pio
-#define SSEG_5_BASE 0x8011060
-#define SSEG_5_BIT_CLEARING_EDGE_REGISTER 0
-#define SSEG_5_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SSEG_5_CAPTURE 0
-#define SSEG_5_DATA_WIDTH 7
-#define SSEG_5_DO_TEST_BENCH_WIRING 0
-#define SSEG_5_DRIVEN_SIM_VALUE 0
-#define SSEG_5_EDGE_TYPE "NONE"
-#define SSEG_5_FREQ 50000000
-#define SSEG_5_HAS_IN 0
-#define SSEG_5_HAS_OUT 1
-#define SSEG_5_HAS_TRI 0
-#define SSEG_5_IRQ -1
-#define SSEG_5_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SSEG_5_IRQ_TYPE "NONE"
-#define SSEG_5_NAME "/dev/sseg_5"
-#define SSEG_5_RESET_VALUE 0
-#define SSEG_5_SPAN 16
-#define SSEG_5_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>29/05/2024 5:03:55 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1716959035596</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>29/05/2024 11:08:39 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1716980919845</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\AKLbc\Desktop\Development\HMPSoC-MORTEZA-SINNEN-ZORAN\quartus\software\nios_hmpsoc_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\zoran_nios.sopcinfo</SopcDesignFile>
@@ -917,18 +917,6 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>recv_addr</slaveDescriptor>
-                <addressRange>0x08011020 - 0x0801102F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>recv_data</slaveDescriptor>
-                <addressRange>0x08011030 - 0x0801103F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>send_addr</slaveDescriptor>
                 <addressRange>0x08011040 - 0x0801104F</addressRange>
                 <addressSpan>16</addressSpan>
@@ -937,42 +925,6 @@
         <MemoryMap>
                 <slaveDescriptor>send_data</slaveDescriptor>
                 <addressRange>0x08011050 - 0x0801105F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_5</slaveDescriptor>
-                <addressRange>0x08011060 - 0x0801106F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_4</slaveDescriptor>
-                <addressRange>0x08011070 - 0x0801107F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_3</slaveDescriptor>
-                <addressRange>0x08011080 - 0x0801108F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_2</slaveDescriptor>
-                <addressRange>0x08011090 - 0x0801109F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_1</slaveDescriptor>
-                <addressRange>0x080110A0 - 0x080110AF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sseg_0</slaveDescriptor>
-                <addressRange>0x080110B0 - 0x080110BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
