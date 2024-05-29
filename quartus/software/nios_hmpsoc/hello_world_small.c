@@ -30,8 +30,9 @@ int main() {
 
     for (;;) {
 
-        ALT_CI_BIGLARI_SSEG_0(0x69);
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
+        ALT_CI_BIGLARI_SSEG_0(datain >> 28);
+
 
         if (((datain >> 28) == 0b1001)) {
             printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
