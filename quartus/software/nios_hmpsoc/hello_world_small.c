@@ -34,16 +34,15 @@ int main() {
         IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
         uint32_t datain = IORD_ALTERA_AVALON_PIO_DATA(RECV_DATA_BASE);
 
-        // uint32_t datain = *((volatile uint32_t *)RECV_DATA_BASE);
         uint32_t addrin = IORD_ALTERA_AVALON_PIO_DATA(RECV_ADDR_BASE);
         if (datain == 0) {
             IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
         }
 
-        if (((datain >> 28) == 0b1001)){
-              printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
-              IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
-              continue;
+        if (((datain >> 28) == 0b1001)) {
+            printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
+            IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
+            continue;
         }
         IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
         if ((datain >> 28) == 0b1011) {
@@ -52,7 +51,6 @@ int main() {
             //      SEND_ADDR(0x01);
             //      SEND_DATA(datain & 0xFFFF);
         }
-
     }
     return 0;
 }

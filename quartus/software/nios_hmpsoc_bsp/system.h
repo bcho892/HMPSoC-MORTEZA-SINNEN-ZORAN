@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
  * SOPC Builder design path: ../../zoran_nios.sopcinfo
  *
- * Generated: Wed May 29 12:03:09 NZST 2024
+ * Generated: Wed May 29 17:03:56 NZST 2024
  */
 
 /*
@@ -164,6 +164,15 @@
 
 
 /*
+ * Custom instruction macros
+ *
+ */
+
+#define ALT_CI_BIGLARI_READ_0 __builtin_custom_in(ALT_CI_BIGLARI_READ_0_N)
+#define ALT_CI_BIGLARI_READ_0_N 0x0
+
+
+/*
  * Define for each module class mastered by the CPU
  *
  */
@@ -173,6 +182,7 @@
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
+#define __BIGLARI_READ
 
 
 /*

@@ -1,4 +1,5 @@
 	zoran_nios u0 (
+		.ack_external_connection_export        (<connected-to-ack_external_connection_export>),        //        ack_external_connection.export
 		.button_pio_external_connection_export (<connected-to-button_pio_external_connection_export>), // button_pio_external_connection.export
 		.clocks_ref_clk_clk                    (<connected-to-clocks_ref_clk_clk>),                    //                 clocks_ref_clk.clk
 		.clocks_ref_reset_reset                (<connected-to-clocks_ref_reset_reset>),                //               clocks_ref_reset.reset
@@ -14,6 +15,6 @@
 		.sseg_3_external_connection_export     (<connected-to-sseg_3_external_connection_export>),     //     sseg_3_external_connection.export
 		.sseg_4_external_connection_export     (<connected-to-sseg_4_external_connection_export>),     //     sseg_4_external_connection.export
 		.sseg_5_external_connection_export     (<connected-to-sseg_5_external_connection_export>),     //     sseg_5_external_connection.export
-		.ack_external_connection_export        (<connected-to-ack_external_connection_export>)         //        ack_external_connection.export
+		.biglari_read_0_conduit_end_cock       (<connected-to-biglari_read_0_conduit_end_cock>)        //     biglari_read_0_conduit_end.cock
 	);
 

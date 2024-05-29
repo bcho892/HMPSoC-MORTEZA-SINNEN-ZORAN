@@ -49,6 +49,14 @@
          type = "int";
       }
    }
+   element biglari_read_0
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
    element clocks
    {
       datum _sortIndex
@@ -308,6 +316,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="biglari_read_0_conduit_end"
+   internal="biglari_read_0.conduit_end"
+   type="conduit"
+   dir="end" />
+ <interface
    name="button_pio_external_connection"
    internal="BUTTON_pio.external_connection"
    type="conduit"
@@ -424,6 +437,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
+ <module name="biglari_read_0" kind="biglari_read" version="1.0" enabled="1" />
  <module
    name="clocks"
    kind="altera_up_avalon_sys_sdram_pll"
@@ -453,7 +467,7 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="1" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="biglari_read_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
@@ -1034,6 +1048,15 @@
  </connection>
  <connection kind="interrupt" version="18.1" start="cpu.irq" end="BUTTON_pio.irq">
   <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="cpu.custom_instruction_master"
+   end="biglari_read_0.nios_custom_instruction_slave">
+  <parameter name="CIName" value="biglari_read_0" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0" />
  </connection>
  <connection
    kind="reset"
