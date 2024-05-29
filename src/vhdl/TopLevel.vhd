@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports           : positive := 6;
-        recop_file_path : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH
+        recop_file_path : string   := "H:\Documents\GitHub\701-hmpsoc\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\valued_config_fields.mif"
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -54,21 +54,21 @@ architecture rtl of TopLevel is
     component zoran_nios is
         port (
             ack_external_connection_export        : out std_logic;
-            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
-            clocks_ref_clk_clk                    : in  std_logic                    := 'X'; -- clk
-            clocks_ref_reset_reset                : in  std_logic                    := 'X'; -- reset
-            clocks_sdram_clk_clk                  : out std_logic; -- clk
-            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); -- export
-            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            send_data_external_connection_export  : out std_logic_vector(31 downto 0); -- export
-            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); -- export
+            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X');  -- export
+            clocks_ref_clk_clk                    : in  std_logic                    := 'X';              -- clk
+            clocks_ref_reset_reset                : in  std_logic                    := 'X';              -- reset
+            clocks_sdram_clk_clk                  : out std_logic;                                        -- clk
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0);                     -- export
+            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0);                     -- export
+            send_data_external_connection_export  : out std_logic_vector(31 downto 0);                    -- export
+            send_addr_external_connection_export  : out std_logic_vector(7 downto 0);                     -- export
             recv_data_external_connection_export  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X') -- export
+            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X')  -- export
         );
     end component zoran_nios;
 
