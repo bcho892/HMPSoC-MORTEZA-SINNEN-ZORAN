@@ -40,13 +40,19 @@ int main() {
             IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 1);
         }
 
+        if (((datain >> 28) == 0b1001)){
+              printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
+              IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
+              continue;
+        }
+        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
         if ((datain >> 28) == 0b1011) {
             printf("Peak Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
             //	     printf("Addr: %d\n", addrin);
             //      SEND_ADDR(0x01);
             //      SEND_DATA(datain & 0xFFFF);
         }
-        IOWR_ALTERA_AVALON_PIO_DATA(ACK_BASE, 0);
+
     }
     return 0;
 }
