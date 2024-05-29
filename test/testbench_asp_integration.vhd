@@ -14,8 +14,9 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            recop_file_path => FilePaths.RECOP_FIXED_CONFIG_FILE_PATH,
-            ports           => 5
+            recop_file_path       => FilePaths.RECOP_FIXED_CONFIG_FILE_PATH,
+            ports                 => 6,
+            default_starting_tick => x"001"
         )
         port map(
             CLOCK_50        => t_clock,

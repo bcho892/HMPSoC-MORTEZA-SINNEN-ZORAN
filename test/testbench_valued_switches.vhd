@@ -17,8 +17,9 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            recop_file_path => FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH,
-            ports           => 5
+            recop_file_path       => FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH,
+            ports                 => 6,
+            default_starting_tick => x"00f"
         )
         port map(
             CLOCK_50      => t_clock,
@@ -46,11 +47,12 @@ begin
     emulate_user_input : process
     begin
         --- Everything enabled
-        t_switch <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
+        t_switch   <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
+        t_key_lime <= "1110";
         for i in 20 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_key_lime <= "1110";
+        t_key_lime <= "1100";
         for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
@@ -106,11 +108,9 @@ begin
         for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1001110111"; -- Config ADC <= Rate - 10 Res - 11
         for i in 500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1001111111"; -- Config ADC <= Rate - 11 Res - 11
         wait;
     end process emulate_user_input;
 

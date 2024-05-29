@@ -2,13 +2,16 @@ library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 
+use work.FilePaths;
+
 library work;
 use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports           : positive := 5;
-        recop_file_path : string
+        ports                 : positive := 6;
+        recop_file_path       : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH;
+        default_starting_tick : unsigned := x"C35" -- 3125 -> gives 16kHz when using 50MHz clock
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -34,16 +37,42 @@ entity TopLevel is
         HEX4          : out   std_logic_vector(6 downto 0);
         HEX5          : out   std_logic_vector(6 downto 0)
     );
+
 end entity;
 
 architecture rtl of TopLevel is
 
-    signal clock     : std_logic;
+    signal clock                     : std_logic;
+    signal unblock_datacall          : std_logic;
+    signal zoran                     : std_logic_vector(7 downto 0);
 
-    signal zoran     : std_logic_vector(7 downto 0);
+    signal send_port                 : tdma_min_ports(0 to ports - 1);
+    signal recv_port                 : tdma_min_ports(0 to ports - 1);
 
-    signal send_port : tdma_min_ports(0 to ports - 1);
-    signal recv_port : tdma_min_ports(0 to ports - 1);
+    signal ack                       : std_logic;
+    signal nios_noc_interface_output : std_logic_vector(31 downto 0);
+
+    component zoran_nios is
+        port (
+            ack_external_connection_export        : out std_logic;
+            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
+            clocks_ref_clk_clk                    : in  std_logic                    := 'X'; -- clk
+            clocks_ref_reset_reset                : in  std_logic                    := 'X'; -- reset
+            clocks_sdram_clk_clk                  : out std_logic; -- clk
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); -- export
+            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0); -- export
+            send_data_external_connection_export  : out std_logic_vector(31 downto 0); -- export
+            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); -- export
+            recv_data_external_connection_export  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
+            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X') -- export
+        );
+    end component zoran_nios;
+
 begin
     clock <= CLOCK_50;
 
@@ -60,7 +89,7 @@ begin
     pd_asp_inst : entity work.top_level_pd_asp
         port map(
             clock         => clock,
-            reset         => KEY(0),
+            reset         => '0',
             data_out.data => send_port(0).data,
             data_out.addr => send_port(0).addr,
             data_in.data  => recv_port(0).data,
@@ -79,6 +108,9 @@ begin
         );
 
     viktor_asp : entity work.TopLevelAdcAsp
+        generic map(
+            default_starting_tick => default_starting_tick
+        )
         port map(
             clock  => clock,
             reset  => '0',
@@ -95,11 +127,11 @@ begin
             clock                     => clock,
             enable                    => '1',
             dprr(31 downto 2)         => (others => '0'),
-            dprr(1)                   => KEY(1),
+            dprr(1)                   => unblock_datacall,
             dprr(0)                   => '0',
             sip_data_in(15 downto 10) => (others => '0'),
             sip_data_in(9 downto 0)   => SW,
-            reset                     => KEY(0),
+            reset                     => '0',
             dpcr_data_out             => send_port(3).data,
             sop_data_out(15 downto 8) => zoran,
             sop_data_out(7 downto 0)  => send_port(3).addr,
@@ -108,7 +140,7 @@ begin
 
     oliver_sinnen_asp : entity work.avg_asp
         generic map(
-            AVG_WINDOW_SIZE => 4
+            AVG_WINDOW_SIZE => 128
         )
         port map(
             clk     => clock,
@@ -116,5 +148,54 @@ begin
             noc_in  => recv_port(4),
             noc_out => send_port(4)
         );
+
+    -- nios wrapper
+    nios_noc_interface_inst : entity work.nios_noc_interface
+        port map(
+            clock     => clock,
+            rdreq     => ack,
+            empty     => open,
+            full      => open,
+            q         => nios_noc_interface_output,
+            recv_port => recv_port(5)
+        );
+
+    zoran_nios_inst : component zoran_nios
+        port map(
+            ack_external_connection_export        => ack,
+            button_pio_external_connection_export => "00",
+            clocks_ref_clk_clk                    => clock,
+            clocks_ref_reset_reset                => '0',
+            led_pio_external_connection_export    => open, -- LEDR(7 downto 0),
+            recv_addr_external_connection_export  => recv_port(5).addr,
+            recv_data_external_connection_export  => nios_noc_interface_output,
+            send_addr_external_connection_export  => send_port(5).addr,
+            send_data_external_connection_export  => send_port(5).data,
+            sseg_0_external_connection_export     => HEX0,
+            sseg_1_external_connection_export     => HEX1,
+            sseg_2_external_connection_export     => HEX2,
+            sseg_3_external_connection_export     => HEX3,
+            sseg_4_external_connection_export     => HEX4,
+            sseg_5_external_connection_export     => HEX5
+        );
+
+    LEDR(0) <= '1' when send_port(0).data(31 downto 28) = "1011" else
+               '0';
+    LEDR(1)          <= ack;
+    LEDR(5 downto 2) <= send_port(2).data(31 downto 28);
+    LEDR(9 downto 6) <= send_port(2).data(7 downto 4);
+
+    process (clock)
+        variable edge : std_logic;
+    begin
+        if rising_edge(clock) then
+            if KEY(1) = '0' and edge = '1' then
+                unblock_datacall <= '1';
+            else
+                unblock_datacall <= '0';
+            end if;
+            edge := KEY(1);
+        end if;
+    end process;
 
 end architecture;

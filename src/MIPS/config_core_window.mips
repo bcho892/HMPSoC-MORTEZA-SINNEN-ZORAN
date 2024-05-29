@@ -1,0 +1,311 @@
+-- valued_config_fields.mips
+-- author: wolf
+-- Reads dynamic configuration values past enable/disable
+-- Maintain $r1 - switch option register
+
+start:
+ldi $r0 #0
+datacalli $r0 #0
+lsip $r1  
+
+-- Temp register for masking result in r2
+andi $r2 $r1 #1 -- Mask first bit
+subz $r2 #1
+-- if Linear averaing enabled
+sz @config_la_normal
+
+-- Config LA Passthrough
+    ldi $r9 #4
+    ssop $r9
+    ldi $r13 #61890  -- xF1C2
+    nbdatacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+check_core:
+    andi $r2 $r1 #2 -- Mask set second bit
+    subz $r2 #2
+    -- if core enabled
+    sz @config_core_normal
+
+    -- Config core Passthrough
+    ldi $r9 #1
+    ssop $r9
+    ldi $r13 #40962  -- 1010000000000010
+    nbdatacalli $r13 #21440 -- 0101001111000000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+check_pd:
+    andi $r2 $r1 #4 -- Mask third bit
+    subz $r2 #4
+    -- if peak detection enabled
+    sz @config_pd_normal
+
+    -- Configure PD in passthrough
+    -- Load address in R9
+    ldi $r9 #0 -- load address 0 for PD
+    ssop $r9 -- put address on NOC
+    -- Send config to PD
+    ldi $r13 #44883 -- "AF53"
+    nbdatacalli $r13 #32767 -- "7FFF"
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+check_system_unlock: 
+    andi $r2 $r1 #512 -- Mask ninth bit
+    subz $r2 #512
+    -- if system unlocked
+    sz @config_adc_enable
+
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000000 - 0000000000000000
+    ldi $r9 #2
+    ssop $r9
+    -- Send config to ADC
+    ldi $r13 #41024  -- xa040
+    nbdatacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+    j @start
+
+-- USE SPACE BELOW FOR FUNCTIONS
+
+config_adc_enable:
+
+    -- Configure ADC
+    -- send.data <= x"a0420000"; enable ch 0
+    -- 1010000001000010 - 0000000000000000
+
+    -- Process ADC config data
+    ldi $r13 #41026  -- xa042 => First config register
+    -- ============================ Check Rate ============================
+    andi $r2 $r1 #8 -- Mask third bit
+    subz $r2 #8
+    -- if rate[0] switched
+    sz @set_rate_0
+    -- else
+    andi $r13 $r13 #65531 -- 1111111111111011 -> rate[0] <= 0
+    j @join_adc_rate_0
+set_rate_0:
+    ori $r13 $r13 #4 -- 0000000000000100 -> rate[0] <= 1
+join_adc_rate_0:
+
+andi $r2 $r1 #16 -- Mask fourth bit
+    subz $r2 #16
+    -- if rate[1] switched
+    sz @set_rate_1
+    -- else
+    andi $r13 $r13 #65527 -- 1111111111110111 -> rate[1] <= 0
+    j @join_adc_rate_1
+set_rate_1:
+    ori $r13 $r13 #8 -- 0000000000001000 -> rate[1] <= 1
+join_adc_rate_1:
+
+    -- ============================ Check Rate ============================
+
+    ldi $r7 #0 -- 0x0000
+    -- ========================= Check Resolution =========================
+    andi $r2 $r1 #32 -- Mask fifth bit
+    subz $r2 #32
+    -- if resolution[0] switched
+    sz @set_resolution_0
+    -- else
+    andi $r7 $r7 #49151 -- 1011111111111111 -> resolution[0] <= 0
+    j @join_adc_resolution_0
+set_resolution_0:
+    ori $r7 $r7 #16384 -- 0100000000000000 -> resolution[0] <= 1
+join_adc_resolution_0:
+
+andi $r2 $r1 #64 -- Mask sixth bit
+    subz $r2 #64
+    -- if resolution[1] switched
+    sz @set_resolution_1
+    -- else
+    andi $r7 $r7 #32767 -- 0111111111111111 -> resolution[1] <= 0
+    j @join_adc_resolution_1
+set_resolution_1:
+    ori $r7 $r7 #32768 -- 1000000000000000 -> resolution[1] <= 1
+join_adc_resolution_1:
+
+    -- ========================= Check Resolution =========================
+
+    -- Route message to ADC
+    ldi $r9 #2
+    ssop $r9
+
+    -- Send config to ADC
+    nbdatacallr $r13 $r7
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+    j @start
+
+config_la_normal:
+    -- Configure Averaging
+    ldi $r9 #4
+    ssop $r9
+    -- Send config to Averaging
+    ldi $r13 #61762  -- xF142
+    nbdatacalli $r13 #0 -- 0x0000
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+    
+    j @check_core
+
+config_core_normal:
+
+ldi $r0 #0
+datacalli $r0 #0
+lsip $r3 -- Wait for new switch config for CORE
+
+-- ldi $r13 #40962  -- 1010000000000010
+ldi $r7 #0 -- 0000000000000000
+
+
+-- ======================= Check Correlation Window =======================
+    andi $r2 $r1 #1 -- Mask first bit
+    subz $r2 #1
+    -- if CW[0] switched
+    sz @set_corr_window_0
+    -- else
+    andi $r7 $r7 #65407 -- 1111111101111111 -> CW[0] <= 0
+    j @join_corr_window_0
+set_corr_window_0:
+    ori $r7 $r7 #128 -- 0000000010000000 -> CW[0] <= 1
+join_corr_window_0:
+
+andi $r2 $r1 #2 -- Mask second bit
+    subz $r2 #2
+    -- if CW[1] switched
+    sz @set_corr_window_1
+    -- else
+    andi $r7 $r7 #65279 -- 1111111011111111 -> CW[1] <= 0
+    j @join_corr_window_1
+set_corr_window_1:
+    ori $r7 $r7 #256 -- 0000000100000000 -> CW[1] <= 1
+join_corr_window_1:
+
+andi $r2 $r1 #4 -- Mask third bit
+    subz $r2 #4
+    -- if CW[2] switched
+    sz @set_corr_window_2
+    -- else
+    andi $r7 $r7 #65023 -- 1111110111111111 -> CW[2] <= 0
+    j @join_corr_window_2
+set_corr_window_2:
+    ori $r7 $r7 #512 -- 0000001000000000 -> CW[2] <= 1
+join_corr_window_2:
+
+andi $r2 $r1 #8 -- Mask fourth bit
+    subz $r2 #8
+    -- if CW[3] switched
+    sz @set_corr_window_3
+    -- else
+    andi $r7 $r7 #65511 -- 1111101111111111 -> CW[3] <= 0
+    j @join_corr_window_3
+set_corr_window_3:
+    ori $r7 $r7 #1024 -- 0000010000000000 -> CW[3] <= 1
+join_corr_window_3:
+
+andi $r2 $r1 #16 -- Mask fifth bit
+    subz $r2 #16
+    -- if CW[4] switched
+    sz @set_corr_window_4
+    -- else
+    andi $r7 $r7 #63487 -- 1111011111111111 -> CW[4] <= 0
+    j @join_corr_window_4
+set_corr_window_4:
+    ori $r7 $r7 #2048 -- 0000100000000000 -> CW[4] <= 1
+join_corr_window_4:
+-- ======================= Check Correlation Window =======================
+
+-- ============================ Check ADC Wait ============================
+andi $r2 $r1 #32 -- Mask sixth bit
+    subz $r2 #32
+    -- if AW[0] switched
+    sz @set_adc_wait_0
+    -- else
+    andi $r7 $r7 #61439 -- 1110111111111111 -> AW[0] <= 0
+    j @join_adc_wait_0
+set_adc_wait_0:
+    ori $r7 $r7 #4096 -- 0001000000000000 -> AW[0] <= 1
+join_adc_wait_0:
+
+andi $r2 $r1 #64 -- Mask seventh bit
+    subz $r2 #64
+    -- if AW[1] switched
+    sz @set_adc_wait_1
+    -- else
+    andi $r7 $r7 #57343 -- 1101111111111111 -> AW[1] <= 0
+    j @join_adc_wait_1
+set_adc_wait_1:
+    ori $r7 $r7 #8192 -- 0010000000000000 -> AW[1] <= 1
+join_adc_wait_1:
+
+andi $r2 $r1 #128 -- Mask eigth bit
+    subz $r2 #128
+    -- if AW[2] switched
+    sz @set_adc_wait_2
+    -- else
+    andi $r7 $r7 #49151 -- 1011111111111111 -> AW[2] <= 0
+    j @join_adc_wait_2
+set_adc_wait_2:
+    ori $r7 $r7 #16384 -- 0100000000000000 -> AW[2] <= 1
+join_adc_wait_2:
+
+andi $r2 $r1 #256 -- Mask ninth bit
+    subz $r2 #256
+    -- if AW[3] switched
+    sz @set_adc_wait_3
+    -- else
+    andi $r7 $r7 #32767 -- 0111111111111111 -> AW[3] <= 0
+    j @join_adc_wait_3
+set_adc_wait_3:
+    ori $r7 $r7 #32768 -- 1000000000000000 -> AW[3] <= 1
+join_adc_wait_3:
+-- ============================ Check ADC Wait ============================
+
+    -- Configure CORE
+    -- Load port address
+    ldi $r9 #1
+    ssop $r9
+    -- Send config to CORE
+    -- "1010" & "0000" & "0000" & "00" & '1' & '0' & "0101" & "11111" & "0000000";
+    ldi $r12 #40962  -- 1010000000000010
+    nbdatacallr $r12
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+    j @check_pd
+
+config_pd_normal:
+    -- Configure PD
+    -- Load address in R9
+    ldi $r9 #0 -- load address 0 for PD
+    ssop $r9 -- put address on NOC
+    -- Send config to PD
+    ldi $r13 #44882 -- "AF52"
+    nbdatacalli $r13 #32767 -- "7FFF"
+
+    -- Reset NOC back to 0
+    ldi $r0 #0
+    nbdatacalli $r0 #0
+
+    j @check_system_unlock

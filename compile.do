@@ -69,6 +69,8 @@ set library_file_list {
 
                                            ReCOPs/701-ReCOP/src/vhdl/processor/top_level.vhd
 
+                                           src/vhdl/nios_noc_interface.vhd
+
                                            src/vhdl/TopLevel.vhd
                                            
                            }
@@ -76,6 +78,7 @@ set library_file_list {
                            test_library   {
                                           test/TdmaMin/TestTdmaMin.vhd
                                           test/TdmaMin/TestTdmaMinInterface.vhd
+                                          test/testbench_nios_noc_interface.vhd
                                           test/testbench_asp_integration.vhd
                                           test/testbench_environment_integration.vhd
                                           test/testbench_valued_switches.vhd
