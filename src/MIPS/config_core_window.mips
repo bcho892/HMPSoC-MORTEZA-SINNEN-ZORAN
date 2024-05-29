@@ -169,28 +169,69 @@ config_la_normal:
 
 config_core_normal:
 
--- ============================ Check ADC Wait ============================
-    andi $r2 $r1 #8 -- Mask third bit
-    subz $r2 #8
-    -- if rate[0] switched
-    sz @set_rate_0
-    -- else
-    andi $r13 $r13 #65531 -- 1111111111111011 -> rate[0] <= 0
-    j @join_adc_rate_0
-set_rate_0:
-    ori $r13 $r13 #4 -- 0000000000000100 -> rate[0] <= 1
-join_adc_rate_0:
+ldi $r0 #0
+datacalli $r0 #0
+lsip $r3 -- Wait for new switch config for CORE
 
-andi $r2 $r1 #16 -- Mask fourth bit
-    subz $r2 #16
-    -- if rate[1] switched
-    sz @set_rate_1
+-- ldi $r13 #40962  -- 1010000000000010
+ldi $r13 #21376 -- 0101001110000000
+
+
+-- ============================ Check ADC Wait ============================
+    andi $r2 $r1 #1 -- Mask first bit
+    subz $r2 #1
+    -- if CW[0] switched
+    sz @set_corr_window_0
     -- else
-    andi $r13 $r13 #65527 -- 1111111111110111 -> rate[1] <= 0
-    j @join_adc_rate_1
-set_rate_1:
-    ori $r13 $r13 #8 -- 0000000000001000 -> rate[1] <= 1
-join_adc_rate_1:
+    andi $r13 $r13 #65407 -- 1111111101111111 -> CW[0] <= 0
+    j @join_corr_window_0
+set_corr_window_0:
+    ori $r13 $r13 #128 -- 0000000010000000 -> CW[0] <= 1
+join_corr_window_0:
+
+andi $r2 $r1 #2 -- Mask first bit
+    subz $r2 #2
+    -- if CW[1] switched
+    sz @set_corr_window_1
+    -- else
+    andi $r13 $r13 #65279 -- 1111111011111111 -> CW[1] <= 0
+    j @join_corr_window_1
+set_corr_window_1:
+    ori $r13 $r13 #256 -- 0000000100000000 -> CW[1] <= 1
+join_corr_window_1:
+
+andi $r2 $r1 #4 -- Mask first bit
+    subz $r2 #4
+    -- if CW[2] switched
+    sz @set_corr_window_2
+    -- else
+    andi $r13 $r13 #65407 -- 1111111011111111 -> CW[0] <= 0
+    j @join_corr_window_2
+set_corr_window_2:
+    ori $r13 $r13 #512 -- 0000000100000000 -> CW[0] <= 1
+join_corr_window_2:
+
+andi $r2 $r1 #1 -- Mask first bit
+    subz $r2 #1
+    -- if CW[0] switched
+    sz @set_corr_window_3
+    -- else
+    andi $r13 $r13 #65407 -- 1111111101111111 -> CW[0] <= 0
+    j @join_corr_window_3
+set_corr_window_3:
+    ori $r13 $r13 #128 -- 0000000010000000 -> CW[0] <= 1
+join_corr_window_3:
+
+andi $r2 $r1 #1 -- Mask first bit
+    subz $r2 #1
+    -- if CW[0] switched
+    sz @set_corr_window_4
+    -- else
+    andi $r13 $r13 #65407 -- 1111111101111111 -> CW[0] <= 0
+    j @join_corr_window_4
+set_corr_window_4:
+    ori $r13 $r13 #128 -- 0000000010000000 -> CW[0] <= 1
+join_corr_window_4:
 
 -- ============================ Check ADC Wait ============================
 
