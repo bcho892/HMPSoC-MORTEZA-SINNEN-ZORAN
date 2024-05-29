@@ -3,13 +3,13 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity SIMD_ADD_HW is
+entity ci_read_item_hw is
     port (
         reg_A, reg_B : in  std_logic_vector(31 downto 0);
         reg_C        : out std_logic_vector(31 downto 0));
-end entity SIMD_ADD_HW;
+end entity ci_read_item_hw;
 
-architecture arc_v1 of SIMD_ADD_HW is
+architecture arc_v1 of ci_read_item_hw is
 begin
     reg_C(31 downto 24) <= std_logic_vector(unsigned(reg_A(31 downto 24)) + unsigned(reg_B(31 downto 24)));
     reg_C(23 downto 16) <= std_logic_vector(unsigned(reg_A(23 downto 16)) + unsigned(reg_B(23 downto 16)));
