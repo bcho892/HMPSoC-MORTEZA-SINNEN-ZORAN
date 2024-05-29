@@ -9,8 +9,9 @@ use work.TdmaMinTypes.all;
 
 entity TopLevel is
     generic (
-        ports           : positive := 6;
-        recop_file_path : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH
+        ports                 : positive := 6;
+        recop_file_path       : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH;
+        default_starting_tick : unsigned := x"C35" -- 3125 -> gives 16kHz when using 50MHz clock
     );
     port (
         CLOCK_50      : in    std_logic;
@@ -107,6 +108,9 @@ begin
         );
 
     viktor_asp : entity work.TopLevelAdcAsp
+        generic map(
+            default_starting_tick => default_starting_tick
+        )
         port map(
             clock  => clock,
             reset  => '0',
