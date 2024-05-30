@@ -29,6 +29,8 @@
 #define PEAK_INFO_CODE 0b1011
 #define SIGNAL_INFO_CODE 0b1000
 
+#define DATA_ONLY(data) data & 0x0FFFFFFF
+
 static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
@@ -45,17 +47,19 @@ int main() {
 
         switch (datain >> 28) {
         case (CORRELATION_CODE):
-            printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
+            printf("Correlation Detected: Value: %u\n", DATA_ONLY(datain));
+            ALT_CI_BIGLARI_SSEG_0((0xC << 20) | (0x0 << 16) | (0xC << 12) | (0xC << 8));
             break;
         case (PEAK_INFO_CODE):;
-            uint32_t cycles = (datain & 0x0FFFFFFF);
+            uint32_t cycles = DATA_ONLY(datain);
             uint16_t frequency = (uint16_t)calculate_frequency(cycles);
-            printf("Peak Detected: Cock Cycles: %u\n", frequency);
-            //            printf("Frequency: %d Hz\n", (int));
-            ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
+            printf("Peak Detected: Frequency: %u\n", frequency);
+            ALT_CI_BIGLARI_SSEG_0((0xF << 20) | decimal_to_hex(DATA_ONLY(frequency)));
             break;
         case (SIGNAL_INFO_CODE):
-            printf("Signal reading: %u\n", datain & 0x0FFFFFFF);
+
+            printf("Signal reading: %u\n", DATA_ONLY(datain));
+            ALT_CI_BIGLARI_SSEG_0((0xA << 20) | (0xD << 16) | decimal_to_hex(DATA_ONLY(datain)));
             break;
         }
     }
