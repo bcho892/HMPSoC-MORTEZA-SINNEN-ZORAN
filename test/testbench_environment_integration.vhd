@@ -17,8 +17,9 @@ begin
 
     dut : entity work.TopLevel
         generic map(
-            recop_file_path => FilePaths.RECOP_CONFIGURABLE_CONFIG_FILE_PATH,
-            ports           => 6
+            recop_file_path       => FilePaths.RECOP_CONFIGURABLE_CONFIG_FILE_PATH,
+            ports                 => 6,
+            default_starting_tick => x"00F"
         )
         port map(
             CLOCK_50      => t_clock,
@@ -48,33 +49,53 @@ begin
         --- Everything enabled
         t_switch   <= "1000000111"; -- All On
         t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
         for i in 2500 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000101"; -- Open Core
+        t_switch   <= "1000000101"; -- Open Core
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "0000000110"; -- Buffer System
+        t_switch   <= "0000000110"; -- Buffer System
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000110"; -- Open LA
+        t_switch   <= "1000000110"; -- Open LA
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
 
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000011"; -- only PD off
+        t_switch   <= "1000000011"; -- only PD off
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
 
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "0000000000"; -- All off
+        t_switch   <= "0000000000"; -- All off
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
 
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000000"; -- adc to kneeos directly
+        t_switch   <= "1000000000"; -- adc to kneeos directly
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
 
         for i in 1900 downto 0 loop
             wait until rising_edge(t_clock);
@@ -84,7 +105,10 @@ begin
         for i in 1200 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_switch <= "1000000111"; -- All on again
+        t_switch   <= "1000000111"; -- All on again
+        t_key_lime <= "1110";
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
         wait;
     end process emulate_user_input;
 
