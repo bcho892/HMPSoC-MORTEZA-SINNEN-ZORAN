@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports                 : positive := 6;
-        recop_file_path       : string   := "C:\Users\nwol626\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\valued_config_fields.mif";
+        recop_file_path       : string   := "C:\Users\nwol626\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\config_core_window.mif";
         default_starting_tick : unsigned := x"C35" -- 3125 -> gives 16kHz when using 50MHz clock
     );
     port (
