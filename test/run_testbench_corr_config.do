@@ -1,25 +1,17 @@
 puts {
     biglari asp integration test
 }
-set top_level              test_library.testbench_valued_switches
+set top_level              test_library.testbench_corr_config
 
 # load the simulation
 eval vsim $top_level
 
 # if waves are required
-add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/d_peak_detected
-add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/data_out
-add wave -noupdate -format Analog-Step -height 74 -max 252.0 /testbench_valued_switches/dut/oliver_sinnen_asp/left_average
-add wave -noupdate -format Analog-Step -height 74 -max 168422.0 -radix hexadecimal /testbench_valued_switches/dut/cor_asp_inst/correlation
-add wave -noupdate /testbench_valued_switches/dut/pd_asp_inst/peak_detection/correlation_data
-add wave -noupdate -max 31316.0 /testbench_valued_switches/dut/pd_asp_inst/peak_detection/previous_correlation
-add wave -noupdate -radix hexadecimal /testbench_valued_switches/dut/recop_wolf_top_level_inst/dpcr_data_out
-add wave -noupdate /testbench_valued_switches/dut/recop_wolf_top_level_inst/clock
-add wave -noupdate /testbench_valued_switches/t_key_lime
-add wave -noupdate /testbench_valued_switches/t_switch
+add wave -noupdate -format Analog-Step -height 74 -max 168422.0 -radix hexadecimal /testbench_corr_config/dut/cor_asp_inst/correlation
+add wave -noupdate -format Analog-Step -height 74 -max 255 -radix hexadecimal /testbench_corr_config/dut/viktor_asp/adc_data_in 
 
 # run the simulation
-run 100000ns
+run 3200000 ns
 
 
 # if waves are required
