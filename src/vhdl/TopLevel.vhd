@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports                 : positive := 6;
-        recop_file_path       : string   := "C:\Users\nwol626\HMPSoC-MORTEZA-SINNEN-ZORAN\src\recop_programs\config_core_window.mif";
+        recop_file_path       : string   := FilePaths.RECOP_WOLF_CONFIG_FIELDS_FILE_PATH;
         default_starting_tick : unsigned := x"C35" -- 3125 -> gives 16kHz when using 50MHz clock
     );
     port (
@@ -53,19 +53,19 @@ architecture rtl of TopLevel is
 
     component zoran_nios is
         port (
-            ack_external_connection_export        : out std_logic;                                        --        ack_external_connection.export
+            ack_external_connection_export        : out std_logic; --        ack_external_connection.export
             biglari_read_0_conduit_end_cock       : in  std_logic_vector(31 downto 0) := (others => '0'); --     biglari_read_0_conduit_end.cock
-            biglari_sseg_0_conduit_end_zoran0     : out std_logic_vector(6 downto 0);                     --     biglari_sseg_0_conduit_end.zoran0
-            biglari_sseg_0_conduit_end_zoran1     : out std_logic_vector(6 downto 0);                     --                               .zoran1
-            biglari_sseg_0_conduit_end_zoran2     : out std_logic_vector(6 downto 0);                     --                               .zoran2
-            biglari_sseg_0_conduit_end_zoran3     : out std_logic_vector(6 downto 0);                     --                               .zoran3
-            biglari_sseg_0_conduit_end_zoran4     : out std_logic_vector(6 downto 0);                     --                               .zoran4
-            biglari_sseg_0_conduit_end_zoran5     : out std_logic_vector(6 downto 0);                     --                               .zoran5
-            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => '0');  -- button_pio_external_connection.export
-            clocks_ref_clk_clk                    : in  std_logic                    := '0';              --                 clocks_ref_clk.clk
-            led_pio_external_connection_export    : out std_logic_vector(7 downto 0);                     --    led_pio_external_connection.export
-            send_addr_external_connection_export  : out std_logic_vector(7 downto 0);                     --  send_addr_external_connection.export
-            send_data_external_connection_export  : out std_logic_vector(31 downto 0)                     --  send_data_external_connection.export
+            biglari_sseg_0_conduit_end_zoran0     : out std_logic_vector(6 downto 0); --     biglari_sseg_0_conduit_end.zoran0
+            biglari_sseg_0_conduit_end_zoran1     : out std_logic_vector(6 downto 0); --                               .zoran1
+            biglari_sseg_0_conduit_end_zoran2     : out std_logic_vector(6 downto 0); --                               .zoran2
+            biglari_sseg_0_conduit_end_zoran3     : out std_logic_vector(6 downto 0); --                               .zoran3
+            biglari_sseg_0_conduit_end_zoran4     : out std_logic_vector(6 downto 0); --                               .zoran4
+            biglari_sseg_0_conduit_end_zoran5     : out std_logic_vector(6 downto 0); --                               .zoran5
+            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => '0'); -- button_pio_external_connection.export
+            clocks_ref_clk_clk                    : in  std_logic                    := '0'; --                 clocks_ref_clk.clk
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); --    led_pio_external_connection.export
+            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); --  send_addr_external_connection.export
+            send_data_external_connection_export  : out std_logic_vector(31 downto 0) --  send_data_external_connection.export
         );
     end component zoran_nios;
 

@@ -29,36 +29,37 @@
 #define PEAK_INFO_CODE 0b1011
 #define SIGNAL_INFO_CODE 0b1000
 
+#define DATA_ONLY(data) data & 0x0FFFFFFF
+
 static float calculate_frequency(uint32_t cycles);
 
-static uint16_t decimal_to_hex(uint16_t value);
+static uint32_t decimal_to_hex(uint32_t value);
 
-int main()
-{
+int main() {
     printf("Hello from Nios II!\n");
     // SEND_ADDR(0x01);
     // SEND_DATA(0x00000000);
 
-    for (;;)
-    {
+    for (;;) {
 
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
-        {
+        switch (datain >> 28) {
         case (CORRELATION_CODE):
-            printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
+            printf("Correlation Detected: Value: %u\n", DATA_ONLY(datain));
+            ALT_CI_BIGLARI_SSEG_0((0xC << 20) | decimal_to_hex(DATA_ONLY(datain)));
             break;
         case (PEAK_INFO_CODE):;
-            uint32_t cycles = (datain & 0x0FFFFFFF);
+            uint32_t cycles = DATA_ONLY(datain);
             uint16_t frequency = (uint16_t)calculate_frequency(cycles);
-            printf("Peak Detected: Cock Cycles: %u\n", frequency);
-//            printf("Frequency: %d Hz\n", (int));
-            ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
+            printf("Peak Detected: Frequency: %u\n", frequency);
+            ALT_CI_BIGLARI_SSEG_0((0xF << 20) | decimal_to_hex(DATA_ONLY(frequency)));
             break;
         case (SIGNAL_INFO_CODE):
-            printf("Signal reading: %u\n", datain & 0x0FFFFFFF);
+
+            printf("Signal reading: %u\n", DATA_ONLY(datain));
+            ALT_CI_BIGLARI_SSEG_0((0xA << 20) | (0xD << 16) | decimal_to_hex(DATA_ONLY(datain)));
             break;
         }
     }
@@ -70,6 +71,11 @@ static float calculate_frequency(uint32_t cycles) {
     return CLOCK_FREQUENCY / (float)cycles;
 }
 
-static uint16_t decimal_to_hex(uint16_t value){
-    return (((value / 1000) % 10) << 12) | (((value / 100) % 10) << 8) | (((value / 10) % 10) << 4) | (value % 10);
+static uint32_t decimal_to_hex(uint32_t value) {
+    return (((value / 100000) % 10) << 20) |
+           (((value / 10000) % 10) << 16) |
+           (((value / 1000) % 10) << 12) |
+           (((value / 100) % 10) << 8) |
+           (((value / 10) % 10) << 4) |
+           (value % 10);
 }

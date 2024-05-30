@@ -1,0 +1,475 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do 701-HMPSOC_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlib zoran_nios
+# vmap zoran_nios zoran_nios
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap zoran_nios zoran_nios 
+# Modifying modelsim.ini
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_reset_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:33 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_reset_controller.v 
+# -- Compiling module altera_reset_controller
+# 
+# Top level modules:
+# 	altera_reset_controller
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_reset_synchronizer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_reset_synchronizer.v 
+# -- Compiling module altera_reset_synchronizer
+# 
+# Top level modules:
+# 	altera_reset_synchronizer
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0.v 
+# -- Compiling module zoran_nios_mm_interconnect_0
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_avalon_st_adapter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_avalon_st_adapter.v 
+# -- Compiling module zoran_nios_mm_interconnect_0_avalon_st_adapter
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_avalon_st_adapter
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_customins_master_translator.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_customins_master_translator.v 
+# -- Compiling module altera_customins_master_translator
+# 
+# Top level modules:
+# 	altera_customins_master_translator
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_send_data.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_send_data.v 
+# -- Compiling module zoran_nios_send_data
+# 
+# Top level modules:
+# 	zoran_nios_send_data
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_onchip_memory.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_onchip_memory.v 
+# -- Compiling module zoran_nios_onchip_memory
+# 
+# Top level modules:
+# 	zoran_nios_onchip_memory
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_jtag_uart.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_jtag_uart.v 
+# -- Compiling module zoran_nios_jtag_uart_sim_scfifo_w
+# -- Compiling module zoran_nios_jtag_uart_scfifo_w
+# -- Compiling module zoran_nios_jtag_uart_sim_scfifo_r
+# -- Compiling module zoran_nios_jtag_uart_scfifo_r
+# -- Compiling module zoran_nios_jtag_uart
+# 
+# Top level modules:
+# 	zoran_nios_jtag_uart
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_high_res_timer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_high_res_timer.v 
+# -- Compiling module zoran_nios_high_res_timer
+# 
+# Top level modules:
+# 	zoran_nios_high_res_timer
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_cpu.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_cpu.v 
+# -- Compiling module zoran_nios_cpu
+# 
+# Top level modules:
+# 	zoran_nios_cpu
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_clocks.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_clocks.v 
+# -- Compiling module zoran_nios_clocks
+# 
+# Top level modules:
+# 	zoran_nios_clocks
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_up_avalon_reset_from_locked_signal.v 
+# -- Compiling module altera_up_avalon_reset_from_locked_signal
+# 
+# Top level modules:
+# 	altera_up_avalon_reset_from_locked_signal
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_clocks_sys_pll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_clocks_sys_pll.v 
+# -- Compiling module zoran_nios_clocks_sys_pll
+# 
+# Top level modules:
+# 	zoran_nios_clocks_sys_pll
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_ack.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:34 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_ack.v 
+# -- Compiling module zoran_nios_ack
+# 
+# Top level modules:
+# 	zoran_nios_ack
+# End time: 16:38:34 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_LED_pio.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_LED_pio.v 
+# -- Compiling module zoran_nios_LED_pio
+# 
+# Top level modules:
+# 	zoran_nios_LED_pio
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_BUTTON_pio.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_BUTTON_pio.v 
+# -- Compiling module zoran_nios_BUTTON_pio
+# 
+# Top level modules:
+# 	zoran_nios_BUTTON_pio
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_irq_mapper.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_irq_mapper.sv 
+# -- Compiling module zoran_nios_irq_mapper
+# 
+# Top level modules:
+# 	zoran_nios_irq_mapper
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_avalon_st_adapter_error_adapter_0
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_avalon_st_adapter_error_adapter_0
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_mux_001.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_mux_001.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_rsp_mux_001
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_rsp_mux_001
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_arbitrator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_arbitrator.sv 
+# -- Compiling module altera_merlin_arbitrator
+# -- Compiling module altera_merlin_arb_adder
+# 
+# Top level modules:
+# 	altera_merlin_arbitrator
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_mux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_mux.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_rsp_mux
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_rsp_mux
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_demux_003.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_demux_003.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_rsp_demux_003
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_rsp_demux_003
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_demux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_rsp_demux.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_rsp_demux
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_rsp_demux
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_mux_003.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_mux_003.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_cmd_mux_003
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_cmd_mux_003
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_mux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_mux.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_cmd_mux
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_cmd_mux
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_demux_001.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_demux_001.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_cmd_demux_001
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_cmd_demux_001
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_demux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:35 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_cmd_demux.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_cmd_demux
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_cmd_demux
+# End time: 16:38:35 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv 
+# -- Compiling module altera_merlin_traffic_limiter
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(531): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(602): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(603): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(604): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(605): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(606): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(607): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(612): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(614): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(617): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(618): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(644): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(646): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(647): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(648): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(649): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(650): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(655): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(657): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(660): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_traffic_limiter.sv(661): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	altera_merlin_traffic_limiter
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 21
+# vlog -vlog01compat -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_avalon_sc_fifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -vlog01compat -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_avalon_sc_fifo.v 
+# -- Compiling module altera_avalon_sc_fifo
+# 
+# Top level modules:
+# 	altera_avalon_sc_fifo
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_005.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_005.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_router_005_default_decode
+# -- Compiling module zoran_nios_mm_interconnect_0_router_005
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_router_005
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_002.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_002.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_router_002_default_decode
+# -- Compiling module zoran_nios_mm_interconnect_0_router_002
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_router_002
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_001.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router_001.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_router_001_default_decode
+# -- Compiling module zoran_nios_mm_interconnect_0_router_001
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_router_001
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_mm_interconnect_0_router.sv 
+# -- Compiling module zoran_nios_mm_interconnect_0_router_default_decode
+# -- Compiling module zoran_nios_mm_interconnect_0_router
+# 
+# Top level modules:
+# 	zoran_nios_mm_interconnect_0_router
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv 
+# -- Compiling module altera_merlin_slave_agent
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(618): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(488): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(489): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(490): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(491): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_agent.sv(34): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# 
+# Top level modules:
+# 	altera_merlin_slave_agent
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 6
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_burst_uncompressor.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_burst_uncompressor.sv 
+# -- Compiling module altera_merlin_burst_uncompressor
+# 
+# Top level modules:
+# 	altera_merlin_burst_uncompressor
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_master_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_master_agent.sv 
+# -- Compiling module altera_merlin_master_agent
+# 
+# Top level modules:
+# 	altera_merlin_master_agent
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_slave_translator.sv 
+# -- Compiling module altera_merlin_slave_translator
+# 
+# Top level modules:
+# 	altera_merlin_slave_translator
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_master_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_merlin_master_translator.sv 
+# -- Compiling module altera_merlin_master_translator
+# 
+# Top level modules:
+# 	altera_merlin_master_translator
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_customins_slave_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:36 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/altera_customins_slave_translator.sv 
+# -- Compiling module altera_customins_slave_translator
+# 
+# Top level modules:
+# 	altera_customins_slave_translator
+# End time: 16:38:36 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work zoran_nios +incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_cpu_custom_instruction_master_multi_xconnect.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:37 on May 30,2024
+# vlog -reportprogress 300 -sv -work zoran_nios "+incdir+C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules" C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/quartus/Zoran_Nios/synthesis/submodules/zoran_nios_cpu_custom_instruction_master_multi_xconnect.sv 
+# -- Compiling module zoran_nios_cpu_custom_instruction_master_multi_xconnect
+# 
+# Top level modules:
+# 	zoran_nios_cpu_custom_instruction_master_multi_xconnect
+# End time: 16:38:37 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:38:37 on May 30,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# ** Error: (vcom-11) Could not find work.tdmamintypes.
+# ** Error (suppressible): C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd(40): (vcom-1195) Cannot find expanded name "work.TdmaMinTypes".
+# ** Error: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd(40): Unknown expanded name.
+# ** Error: C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd(42): VHDL Compiler exiting
+# End time: 16:38:37 on May 30,2024, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# ** Error: C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./701-HMPSOC_run_msim_rtl_vhdl.do line 50
+# C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {C:/Users/AKLbc/Desktop/Development/HMPSoC-MORTEZA-SINNEN-ZORAN/ASPs/701AvgASP/ip/queue.vhd}"
