@@ -169,6 +169,8 @@ config_la_normal:
 
 config_core_normal:
 
+ldi $r9 #256 -- 0000000100000000
+ssop $r9
 ldi $r0 #0
 datacalli $r0 #0
 lsip $r3 -- Wait for new switch config for CORE
