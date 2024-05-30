@@ -49,36 +49,32 @@ begin
         --- Everything enabled
         t_switch   <= "1000000111"; -- Config ADC <= Rate - 00 Res - 00
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000001111"; -- Config ADC <= Rate - 01 Res - 00
-        for i in 50000 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
+        wait until rising_edge(t_clock);
+        t_key_lime <= "1100";
+        t_switch   <= "1000100111"; -- Config ADC <= Rate - 01 Res - 00
+
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
-        t_key_lime <= "1100";
-        t_switch   <= "1000000111"; -- Config ADC <= Rate - 01 Res - 00
 
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000010111"; -- Config ADC <= Rate - 10 Res - 00
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
@@ -87,98 +83,80 @@ begin
         end loop;
         t_key_lime <= "1100";
         t_switch   <= "1000011111"; -- Config ADC <= Rate - 11 Res - 00
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000100111"; -- Config ADC <= Rate - 00 Res - 01
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000101111"; -- Config ADC <= Rate - 01 Res - 01
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000110111"; -- Config ADC <= Rate - 10 Res - 01
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1000111111"; -- Config ADC <= Rate - 11 Res - 01
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1001000111"; -- Config ADC <= Rate - 00 Res - 10
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1001001111"; -- Config ADC <= Rate - 01 Res - 10
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1001010111"; -- Config ADC <= Rate - 10 Res - 10
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1001011111"; -- Config ADC <= Rate - 11 Res - 10
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_key_lime <= "1110";
-        for i in 20 downto 0 loop
-            wait until rising_edge(t_clock);
-        end loop;
+        wait until rising_edge(t_clock);
         t_key_lime <= "1100";
         t_switch   <= "1001100111"; -- Config ADC <= Rate - 00 Res - 11
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch   <= "1001101111"; -- Config ADC <= Rate - 01 Res - 11
         t_key_lime <= "0110";
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         t_switch   <= "1000000001";
         t_key_lime <= "0100";
-        for i in 500 downto 0 loop
+        for i in 1000 downto 0 loop
             wait until rising_edge(t_clock);
         end loop;
         wait;
