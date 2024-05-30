@@ -23,25 +23,53 @@
 #define SEND_DATA(data) IOWR_ALTERA_AVALON_PIO_DATA(DATA_OUT_BASE, data)
 #define SEND_ADDR(data) IOWR_ALTERA_AVALON_PIO_DATA(ADDR_OUT_BASE, data)
 
-int main() {
+#define CLOCK_FREQUENCY 50000000UL
+
+#define CORRELATION_CODE 0b1001
+#define PEAK_INFO_CODE 0b1011
+#define SIGNAL_INFO_CODE 0b1000
+
+static float calculate_frequency(uint32_t cycles);
+
+static uint16_t decimal_to_hex(uint16_t value);
+
+int main()
+{
     printf("Hello from Nios II!\n");
     // SEND_ADDR(0x01);
     // SEND_DATA(0x00000000);
 
-    for (;;) {
+    for (;;)
+    {
 
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
-        ALT_CI_BIGLARI_SSEG_0(datain >> 28);
+        // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-
-        if (((datain >> 28) == 0b1001)) {
-            printf("Correlation Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
-            continue;
-        }
-
-        if ((datain >> 28) == 0b1011) {
-            printf("Peak Detected: Cock Cycles: %u\n", datain & 0x0FFFFFFF);
+        switch (datain >> 28)
+        {
+        case (CORRELATION_CODE):
+            printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
+            break;
+        case (PEAK_INFO_CODE):;
+            uint32_t cycles = (datain & 0x0FFFFFFF);
+            uint16_t frequency = (uint16_t)calculate_frequency(cycles);
+            printf("Peak Detected: Cock Cycles: %u\n", frequency);
+//            printf("Frequency: %d Hz\n", (int));
+            ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
+            break;
+        case (SIGNAL_INFO_CODE):
+            printf("Signal reading: %u\n", datain & 0x0FFFFFFF);
+            break;
         }
     }
+
     return 0;
+}
+
+static float calculate_frequency(uint32_t cycles) {
+    return CLOCK_FREQUENCY / (float)cycles;
+}
+
+static uint16_t decimal_to_hex(uint16_t value){
+    return (((value / 1000) % 10) << 12) | (((value / 100) % 10) << 8) | (((value / 10) % 10) << 4) | (value % 10);
 }
