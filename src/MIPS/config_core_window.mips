@@ -178,7 +178,7 @@ ldi $r7 #0 -- 0000000000000000
 
 
 -- ======================= Check Correlation Window =======================
-    andi $r2 $r1 #1 -- Mask first bit
+    andi $r2 $r3 #1 -- Mask first bit
     subz $r2 #1
     -- if CW[0] switched
     sz @set_corr_window_0
@@ -189,7 +189,7 @@ set_corr_window_0:
     ori $r7 $r7 #128 -- 0000000010000000 -> CW[0] <= 1
 join_corr_window_0:
 
-andi $r2 $r1 #2 -- Mask second bit
+andi $r2 $r3 #2 -- Mask second bit
     subz $r2 #2
     -- if CW[1] switched
     sz @set_corr_window_1
@@ -200,7 +200,7 @@ set_corr_window_1:
     ori $r7 $r7 #256 -- 0000000100000000 -> CW[1] <= 1
 join_corr_window_1:
 
-andi $r2 $r1 #4 -- Mask third bit
+andi $r2 $r3 #4 -- Mask third bit
     subz $r2 #4
     -- if CW[2] switched
     sz @set_corr_window_2
@@ -211,7 +211,7 @@ set_corr_window_2:
     ori $r7 $r7 #512 -- 0000001000000000 -> CW[2] <= 1
 join_corr_window_2:
 
-andi $r2 $r1 #8 -- Mask fourth bit
+andi $r2 $r3 #8 -- Mask fourth bit
     subz $r2 #8
     -- if CW[3] switched
     sz @set_corr_window_3
@@ -222,7 +222,7 @@ set_corr_window_3:
     ori $r7 $r7 #1024 -- 0000010000000000 -> CW[3] <= 1
 join_corr_window_3:
 
-andi $r2 $r1 #16 -- Mask fifth bit
+andi $r2 $r3 #16 -- Mask fifth bit
     subz $r2 #16
     -- if CW[4] switched
     sz @set_corr_window_4
@@ -235,7 +235,7 @@ join_corr_window_4:
 -- ======================= Check Correlation Window =======================
 
 -- ============================ Check ADC Wait ============================
-andi $r2 $r1 #32 -- Mask sixth bit
+andi $r2 $r3 #32 -- Mask sixth bit
     subz $r2 #32
     -- if AW[0] switched
     sz @set_adc_wait_0
@@ -246,7 +246,7 @@ set_adc_wait_0:
     ori $r7 $r7 #4096 -- 0001000000000000 -> AW[0] <= 1
 join_adc_wait_0:
 
-andi $r2 $r1 #64 -- Mask seventh bit
+andi $r2 $r3 #64 -- Mask seventh bit
     subz $r2 #64
     -- if AW[1] switched
     sz @set_adc_wait_1
@@ -257,7 +257,7 @@ set_adc_wait_1:
     ori $r7 $r7 #8192 -- 0010000000000000 -> AW[1] <= 1
 join_adc_wait_1:
 
-andi $r2 $r1 #128 -- Mask eigth bit
+andi $r2 $r3 #128 -- Mask eigth bit
     subz $r2 #128
     -- if AW[2] switched
     sz @set_adc_wait_2
@@ -268,7 +268,7 @@ set_adc_wait_2:
     ori $r7 $r7 #16384 -- 0100000000000000 -> AW[2] <= 1
 join_adc_wait_2:
 
-andi $r2 $r1 #256 -- Mask ninth bit
+andi $r2 $r3 #256 -- Mask ninth bit
     subz $r2 #256
     -- if AW[3] switched
     sz @set_adc_wait_3

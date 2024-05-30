@@ -82,6 +82,7 @@ set library_file_list {
                                           test/testbench_asp_integration.vhd
                                           test/testbench_environment_integration.vhd
                                           test/testbench_valued_switches.vhd
+                                          test/testbench_corr_config.vhd
                            }
 }
 
