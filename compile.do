@@ -44,7 +44,7 @@ set library_file_list {
                                            ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd
                                            ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd
 
-                                           ASPs/701AvgASP/src/avg_queue.vhd
+                                           ASPs/701AvgASP/ip/queue.vhd
                                            ASPs/701AvgASP/src/asp_control_unit.vhd
                                            ASPs/701AvgASP/src/asp.vhd
 

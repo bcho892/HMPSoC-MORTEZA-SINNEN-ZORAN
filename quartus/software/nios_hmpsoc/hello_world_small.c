@@ -33,20 +33,17 @@ static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
 
-int main()
-{
+int main() {
     printf("Hello from Nios II!\n");
     // SEND_ADDR(0x01);
     // SEND_DATA(0x00000000);
 
-    for (;;)
-    {
+    for (;;) {
 
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
-        {
+        switch (datain >> 28) {
         case (CORRELATION_CODE):
             printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
             break;
@@ -54,7 +51,7 @@ int main()
             uint32_t cycles = (datain & 0x0FFFFFFF);
             uint16_t frequency = (uint16_t)calculate_frequency(cycles);
             printf("Peak Detected: Cock Cycles: %u\n", frequency);
-//            printf("Frequency: %d Hz\n", (int));
+            //            printf("Frequency: %d Hz\n", (int));
             ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
             break;
         case (SIGNAL_INFO_CODE):
@@ -70,6 +67,6 @@ static float calculate_frequency(uint32_t cycles) {
     return CLOCK_FREQUENCY / (float)cycles;
 }
 
-static uint16_t decimal_to_hex(uint16_t value){
+static uint16_t decimal_to_hex(uint16_t value) {
     return (((value / 1000) % 10) << 12) | (((value / 100) % 10) << 8) | (((value / 10) % 10) << 4) | (value % 10);
 }

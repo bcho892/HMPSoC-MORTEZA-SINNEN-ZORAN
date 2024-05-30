@@ -35,41 +35,41 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 000003a8  00000000  00000000  00002bf0  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   0000492b  00000000  00000000  00002f98  2**0
+  9 .debug_info   0000493d  00000000  00000000  00002f98  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00001c1d  00000000  00000000  000078c3  2**0
+ 10 .debug_abbrev 00001c1d  00000000  00000000  000078d5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   00001ef7  00000000  00000000  000094e0  2**0
+ 11 .debug_line   00001f0b  00000000  00000000  000094f2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  00000514  00000000  00000000  0000b3d8  2**2
+ 12 .debug_frame  00000514  00000000  00000000  0000b400  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    000012e5  00000000  00000000  0000b8ec  2**0
+ 13 .debug_str    00001309  00000000  00000000  0000b914  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00002a25  00000000  00000000  0000cbd1  2**0
+ 14 .debug_loc    00002a25  00000000  00000000  0000cc1d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000030  00000000  00000000  0000f5f8  2**2
+ 15 .debug_alt_sim_info 00000030  00000000  00000000  0000f644  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000560  00000000  00000000  0000f628  2**3
+ 16 .debug_ranges 00000560  00000000  00000000  0000f678  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  00010d7d  2**0
+ 17 .thread_model 00000003  00000000  00000000  00010dcd  2**0
                   CONTENTS, READONLY
- 18 .cpu          00000003  00000000  00000000  00010d80  2**0
+ 18 .cpu          00000003  00000000  00000000  00010dd0  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  00010d83  2**0
+ 19 .qsys         00000001  00000000  00000000  00010dd3  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  00010d84  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  00010dd4  2**0
                   CONTENTS, READONLY
- 21 .stderr_dev   00000009  00000000  00000000  00010d85  2**0
+ 21 .stderr_dev   00000009  00000000  00000000  00010dd5  2**0
                   CONTENTS, READONLY
- 22 .stdin_dev    00000009  00000000  00000000  00010d8e  2**0
+ 22 .stdin_dev    00000009  00000000  00000000  00010dde  2**0
                   CONTENTS, READONLY
- 23 .stdout_dev   00000009  00000000  00000000  00010d97  2**0
+ 23 .stdout_dev   00000009  00000000  00000000  00010de7  2**0
                   CONTENTS, READONLY
- 24 .sopc_system_name 0000000a  00000000  00000000  00010da0  2**0
+ 24 .sopc_system_name 0000000a  00000000  00000000  00010df0  2**0
                   CONTENTS, READONLY
- 25 .quartus_project_dir 00000034  00000000  00000000  00010daa  2**0
+ 25 .quartus_project_dir 00000046  00000000  00000000  00010dfa  2**0
                   CONTENTS, READONLY
- 26 .sopcinfo     0005a162  00000000  00000000  00010dde  2**0
+ 26 .sopcinfo     0005713f  00000000  00000000  00010e40  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 08008000 l    d  .entry	00000000 .entry
@@ -305,79 +305,79 @@ alt_after_alt_main:
  8008068:	003fff06 	br	8008068 <_gp+0xffff64b0>
 
 0800806c <main>:
+
 static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
 
-int main()
-{
+int main() {
  800806c:	defffc04 	addi	sp,sp,-16
     printf("Hello from Nios II!\n");
  8008070:	01020074 	movhi	r4,2049
+
 static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
 
-int main()
-{
+int main() {
  8008074:	dc400115 	stw	r17,4(sp)
     printf("Hello from Nios II!\n");
  8008078:	21265a04 	addi	r4,r4,-26264
+        uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
-        {
+        switch (datain >> 28) {
         case (CORRELATION_CODE):
             printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
  800807c:	04440034 	movhi	r17,4096
+
 static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
 
-int main()
-{
+int main() {
  8008080:	dfc00315 	stw	ra,12(sp)
  8008084:	dc800215 	stw	r18,8(sp)
  8008088:	dc000015 	stw	r16,0(sp)
+        uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
-        {
+        switch (datain >> 28) {
         case (CORRELATION_CODE):
             printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
  800808c:	8c7fffc4 	addi	r17,r17,-1
+static float calculate_frequency(uint32_t cycles);
 
 static uint16_t decimal_to_hex(uint16_t value);
 
-int main()
-{
+int main() {
     printf("Hello from Nios II!\n");
  8008090:	80090540 	call	8009054 <puts>
-    {
+    for (;;) {
 
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
+        switch (datain >> 28) {
  8008094:	01000244 	movi	r4,9
  8008098:	018002c4 	movi	r6,11
  800809c:	00c00204 	movi	r3,8
+    // SEND_ADDR(0x01);
     // SEND_DATA(0x00000000);
 
-    for (;;)
-    {
+    for (;;) {
 
         uint32_t datain = ALT_CI_BIGLARI_READ_0;
  80080a0:	000bc032 	custom	0,r5,zero,zero
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
+        switch (datain >> 28) {
  80080a4:	2804d73a 	srli	r2,r5,28
  80080a8:	11000626 	beq	r2,r4,80080c4 <main+0x58>
  80080ac:	11800926 	beq	r2,r6,80080d4 <main+0x68>
  80080b0:	10fffb1e 	bne	r2,r3,80080a0 <_gp+0xffff64e8>
             printf("Peak Detected: Cock Cycles: %u\n", frequency);
-//            printf("Frequency: %d Hz\n", (int));
+            //            printf("Frequency: %d Hz\n", (int));
             ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
             break;
         case (SIGNAL_INFO_CODE):
@@ -386,10 +386,10 @@ int main()
  80080b8:	2c4a703a 	and	r5,r5,r17
  80080bc:	21267004 	addi	r4,r4,-26176
  80080c0:	00003206 	br	800818c <main+0x120>
+        uint32_t datain = ALT_CI_BIGLARI_READ_0;
         // ALT_CI_BIGLARI_SSEG_0(datain >> 28);
 
-        switch (datain >> 28)
-        {
+        switch (datain >> 28) {
         case (CORRELATION_CODE):
             printf("Correlation Detected: Value: %u\n", datain & 0x0FFFFFFF);
  80080c4:	01020074 	movhi	r4,2049
@@ -414,7 +414,7 @@ int main()
  80080fc:	900b883a 	mov	r5,r18
  8008100:	21266804 	addi	r4,r4,-26208
  8008104:	8008f880 	call	8008f88 <printf>
-//            printf("Frequency: %d Hz\n", (int));
+            //            printf("Frequency: %d Hz\n", (int));
             ALT_CI_BIGLARI_SSEG_0(decimal_to_hex(frequency));
  8008108:	9009883a 	mov	r4,r18
  800810c:	0140fa04 	movi	r5,1000
