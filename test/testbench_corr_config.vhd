@@ -199,7 +199,7 @@ begin
             wait until rising_edge(t_clock);
         end loop;
 
-        t_switch   <= "1000000101"; -- Config Include CORE
+        t_switch   <= "1000000111"; -- Config Include CORE
         t_key_lime <= "1110";
         for i in 20 downto 0 loop
             wait until rising_edge(t_clock);
