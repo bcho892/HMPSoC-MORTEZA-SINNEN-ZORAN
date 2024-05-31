@@ -10,7 +10,7 @@ use work.TdmaMinTypes.all;
 entity TopLevel is
     generic (
         ports                 : positive := 6;
-        recop_file_path       : string   := FilePaths.RECOP_VALUED_CONFIG_FIELDS_FILE_PATH;
+        recop_file_path       : string   := FilePaths.RECOP_WOLF_CONFIG_FIELDS_FILE_PATH;
         default_starting_tick : unsigned := x"C35" -- 3125 -> gives 16kHz when using 50MHz clock
     );
     port (
@@ -42,34 +42,30 @@ end entity;
 
 architecture rtl of TopLevel is
 
-    signal clock                     : std_logic;
-    signal unblock_datacall          : std_logic;
-    signal zoran                     : std_logic_vector(7 downto 0);
+    signal clock            : std_logic;
+    signal unblock_datacall : std_logic;
+    signal zoran            : std_logic_vector(7 downto 0);
 
-    signal send_port                 : tdma_min_ports(0 to ports - 1);
-    signal recv_port                 : tdma_min_ports(0 to ports - 1);
+    signal send_port        : tdma_min_ports(0 to ports - 1);
+    signal recv_port        : tdma_min_ports(0 to ports - 1);
 
-    signal ack                       : std_logic;
-    signal nios_noc_interface_output : std_logic_vector(31 downto 0);
+    signal ack              : std_logic;
 
     component zoran_nios is
         port (
-            ack_external_connection_export        : out std_logic;
-            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
-            clocks_ref_clk_clk                    : in  std_logic                    := 'X'; -- clk
-            clocks_ref_reset_reset                : in  std_logic                    := 'X'; -- reset
-            clocks_sdram_clk_clk                  : out std_logic; -- clk
-            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); -- export
-            sseg_5_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_4_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_3_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_2_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_1_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            sseg_0_external_connection_export     : out std_logic_vector(6 downto 0); -- export
-            send_data_external_connection_export  : out std_logic_vector(31 downto 0); -- export
-            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); -- export
-            recv_data_external_connection_export  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- export
-            recv_addr_external_connection_export  : in  std_logic_vector(7 downto 0)  := (others => 'X') -- export
+            ack_external_connection_export        : out std_logic; --        ack_external_connection.export
+            biglari_read_0_conduit_end_cock       : in  std_logic_vector(31 downto 0) := (others => '0'); --     biglari_read_0_conduit_end.cock
+            biglari_sseg_0_conduit_end_zoran0     : out std_logic_vector(6 downto 0); --     biglari_sseg_0_conduit_end.zoran0
+            biglari_sseg_0_conduit_end_zoran1     : out std_logic_vector(6 downto 0); --                               .zoran1
+            biglari_sseg_0_conduit_end_zoran2     : out std_logic_vector(6 downto 0); --                               .zoran2
+            biglari_sseg_0_conduit_end_zoran3     : out std_logic_vector(6 downto 0); --                               .zoran3
+            biglari_sseg_0_conduit_end_zoran4     : out std_logic_vector(6 downto 0); --                               .zoran4
+            biglari_sseg_0_conduit_end_zoran5     : out std_logic_vector(6 downto 0); --                               .zoran5
+            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => '0'); -- button_pio_external_connection.export
+            clocks_ref_clk_clk                    : in  std_logic                    := '0'; --                 clocks_ref_clk.clk
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); --    led_pio_external_connection.export
+            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); --  send_addr_external_connection.export
+            send_data_external_connection_export  : out std_logic_vector(31 downto 0) --  send_data_external_connection.export
         );
     end component zoran_nios;
 
@@ -149,41 +145,24 @@ begin
             noc_out => send_port(4)
         );
 
-    -- nios wrapper
-    nios_noc_interface_inst : entity work.nios_noc_interface
-        port map(
-            clock     => clock,
-            rdreq     => ack,
-            empty     => open,
-            full      => open,
-            q         => nios_noc_interface_output,
-            recv_port => recv_port(5)
-        );
-
     zoran_nios_inst : component zoran_nios
         port map(
             ack_external_connection_export        => ack,
             button_pio_external_connection_export => "00",
             clocks_ref_clk_clk                    => clock,
-            clocks_ref_reset_reset                => '0',
-            led_pio_external_connection_export    => open, -- LEDR(7 downto 0),
-            recv_addr_external_connection_export  => recv_port(5).addr,
-            recv_data_external_connection_export  => nios_noc_interface_output,
+            biglari_sseg_0_conduit_end_zoran0     => HEX0,
+            biglari_sseg_0_conduit_end_zoran1     => HEX1,
+            biglari_sseg_0_conduit_end_zoran2     => HEX2,
+            biglari_sseg_0_conduit_end_zoran3     => HEX3,
+            biglari_sseg_0_conduit_end_zoran4     => HEX4,
+            biglari_sseg_0_conduit_end_zoran5     => HEX5,
+            biglari_read_0_conduit_end_cock       => recv_port(5).data,
+            led_pio_external_connection_export    => open, -- LEDR(3 downto 0),
             send_addr_external_connection_export  => send_port(5).addr,
-            send_data_external_connection_export  => send_port(5).data,
-            sseg_0_external_connection_export     => HEX0,
-            sseg_1_external_connection_export     => HEX1,
-            sseg_2_external_connection_export     => HEX2,
-            sseg_3_external_connection_export     => HEX3,
-            sseg_4_external_connection_export     => HEX4,
-            sseg_5_external_connection_export     => HEX5
+            send_data_external_connection_export  => send_port(5).data
         );
 
-    LEDR(0) <= '1' when send_port(0).data(31 downto 28) = "1011" else
-               '0';
-    LEDR(1)          <= ack;
-    LEDR(5 downto 2) <= send_port(2).data(31 downto 28);
-    LEDR(9 downto 6) <= send_port(2).data(7 downto 4);
+    LEDR(0) <= zoran(0);
 
     process (clock)
         variable edge : std_logic;

@@ -28,8 +28,8 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         zoran_nios_mm_interconnect_0_rsp_demux_003
-//   ST_DATA_W:           108
-//   ST_CHANNEL_W:        17
+//   ST_DATA_W:           106
+//   ST_CHANNEL_W:        9
 //   NUM_OUTPUTS:         1
 //   VALID_WIDTH:         1
 // ------------------------------------------
@@ -46,8 +46,8 @@ module zoran_nios_mm_interconnect_0_rsp_demux_003
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
-    input  [108-1    : 0]   sink_data, // ST_DATA_W=108
-    input  [17-1 : 0]   sink_channel, // ST_CHANNEL_W=17
+    input  [106-1    : 0]   sink_data, // ST_DATA_W=106
+    input  [9-1 : 0]   sink_channel, // ST_CHANNEL_W=9
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -56,8 +56,8 @@ module zoran_nios_mm_interconnect_0_rsp_demux_003
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [108-1    : 0] src0_data, // ST_DATA_W=108
-    output reg [17-1 : 0] src0_channel, // ST_CHANNEL_W=17
+    output reg [106-1    : 0] src0_data, // ST_DATA_W=106
+    output reg [9-1 : 0] src0_channel, // ST_CHANNEL_W=9
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
@@ -94,7 +94,7 @@ module zoran_nios_mm_interconnect_0_rsp_demux_003
     // -------------------
     assign ready_vector[0] = src0_ready;
 
-    assign sink_ready = |(sink_channel & {{16{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{8{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

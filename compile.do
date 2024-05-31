@@ -44,7 +44,7 @@ set library_file_list {
                                            ASPs/VHDL-Autocorrelator/src/util/address_constants.vhd
                                            ASPs/VHDL-Autocorrelator/src/processor/cor_asp.vhd
 
-                                           ASPs/701AvgASP/src/avg_queue.vhd
+                                           ASPs/701AvgASP/ip/queue.vhd
                                            ASPs/701AvgASP/src/asp_control_unit.vhd
                                            ASPs/701AvgASP/src/asp.vhd
 
@@ -82,6 +82,7 @@ set library_file_list {
                                           test/testbench_asp_integration.vhd
                                           test/testbench_environment_integration.vhd
                                           test/testbench_valued_switches.vhd
+                                          test/testbench_corr_config.vhd
                            }
 }
 

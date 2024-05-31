@@ -35,6 +35,7 @@ wave.do
 # ignore Quartus II generated folders
 /quartus/c5_pin_model_dump.txt
 */db/
+*.objdump
 */incremental_db/
 */simulation/
 */timing/

@@ -47,6 +47,7 @@ module zoran_nios_cpu_cpu_test_bench (
                                         W_estatus_reg,
                                         W_exception_reg,
                                         W_iw,
+                                        W_iw_custom_n,
                                         W_iw_op,
                                         W_iw_opx,
                                         W_pcb,
@@ -108,12 +109,13 @@ module zoran_nios_cpu_cpu_test_bench (
   input   [ 31: 0] W_estatus_reg;
   input   [ 31: 0] W_exception_reg;
   input   [ 31: 0] W_iw;
+  input   [  7: 0] W_iw_custom_n;
   input   [  5: 0] W_iw_op;
   input   [  5: 0] W_iw_opx;
   input   [ 27: 0] W_pcb;
   input   [ 31: 0] W_status_reg;
   input            W_valid;
-  input   [ 71: 0] W_vinst;
+  input   [111: 0] W_vinst;
   input            W_wr_dst_reg;
   input            clk;
   input   [ 27: 0] d_address;
@@ -192,6 +194,8 @@ wire             W_op_andi;
 wire             W_op_beq;
 wire             W_op_bge;
 wire             W_op_bgeu;
+wire             W_op_biglari_read_0;
+wire             W_op_biglari_sseg_0;
 wire             W_op_blt;
 wire             W_op_bltu;
 wire             W_op_bne;
@@ -445,6 +449,8 @@ wire             test_has_ended;
   assign W_op_intr = (W_iw_opx == 61) & W_is_opx_inst;
   assign W_op_crst = (W_iw_opx == 62) & W_is_opx_inst;
   assign W_op_opx_rsv63 = (W_iw_opx == 63) & W_is_opx_inst;
+  assign W_op_biglari_read_0 = W_op_custom & ({W_iw_custom_n[0]} == 1'h0);
+  assign W_op_biglari_sseg_0 = W_op_custom & ({W_iw_custom_n[0]} == 1'h1);
   assign W_is_opx_inst = W_iw_op == 58;
   always @(posedge clk or negedge reset_n)
     begin
