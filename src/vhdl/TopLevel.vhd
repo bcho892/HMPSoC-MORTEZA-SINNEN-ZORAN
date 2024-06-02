@@ -53,19 +53,15 @@ architecture rtl of TopLevel is
 
     component zoran_nios is
         port (
-            ack_external_connection_export        : out std_logic; --        ack_external_connection.export
-            biglari_read_0_conduit_end_cock       : in  std_logic_vector(31 downto 0) := (others => '0'); --     biglari_read_0_conduit_end.cock
+            biglari_read_0_conduit_end_noc       : in  std_logic_vector(31 downto 0) := (others => '0'); --     biglari_read_0_conduit_end.noc
             biglari_sseg_0_conduit_end_zoran0     : out std_logic_vector(6 downto 0); --     biglari_sseg_0_conduit_end.zoran0
             biglari_sseg_0_conduit_end_zoran1     : out std_logic_vector(6 downto 0); --                               .zoran1
             biglari_sseg_0_conduit_end_zoran2     : out std_logic_vector(6 downto 0); --                               .zoran2
             biglari_sseg_0_conduit_end_zoran3     : out std_logic_vector(6 downto 0); --                               .zoran3
             biglari_sseg_0_conduit_end_zoran4     : out std_logic_vector(6 downto 0); --                               .zoran4
             biglari_sseg_0_conduit_end_zoran5     : out std_logic_vector(6 downto 0); --                               .zoran5
-            button_pio_external_connection_export : in  std_logic_vector(1 downto 0) := (others => '0'); -- button_pio_external_connection.export
             clocks_ref_clk_clk                    : in  std_logic                    := '0'; --                 clocks_ref_clk.clk
-            led_pio_external_connection_export    : out std_logic_vector(7 downto 0); --    led_pio_external_connection.export
-            send_addr_external_connection_export  : out std_logic_vector(7 downto 0); --  send_addr_external_connection.export
-            send_data_external_connection_export  : out std_logic_vector(31 downto 0) --  send_data_external_connection.export
+            led_pio_external_connection_export    : out std_logic_vector(7 downto 0) --    led_pio_external_connection.export
         );
     end component zoran_nios;
 
@@ -147,8 +143,6 @@ begin
 
     zoran_nios_inst : component zoran_nios
         port map(
-            ack_external_connection_export        => ack,
-            button_pio_external_connection_export => "00",
             clocks_ref_clk_clk                    => clock,
             biglari_sseg_0_conduit_end_zoran0     => HEX0,
             biglari_sseg_0_conduit_end_zoran1     => HEX1,
@@ -156,10 +150,8 @@ begin
             biglari_sseg_0_conduit_end_zoran3     => HEX3,
             biglari_sseg_0_conduit_end_zoran4     => HEX4,
             biglari_sseg_0_conduit_end_zoran5     => HEX5,
-            biglari_read_0_conduit_end_cock       => recv_port(5).data,
-            led_pio_external_connection_export    => open, -- LEDR(3 downto 0),
-            send_addr_external_connection_export  => send_port(5).addr,
-            send_data_external_connection_export  => send_port(5).data
+            biglari_read_0_conduit_end_noc       => recv_port(5).data,
+            led_pio_external_connection_export    => open -- LEDR(3 downto 0),
         );
 
     LEDR(0) <= zoran(0);

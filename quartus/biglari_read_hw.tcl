@@ -86,5 +86,5 @@ set_interface_property conduit_end PORT_NAME_MAP ""
 set_interface_property conduit_end CMSIS_SVD_VARIABLES ""
 set_interface_property conduit_end SVD_ADDRESS_GROUP ""
 
-add_interface_port conduit_end recv_port cock Input 32
+add_interface_port conduit_end recv_port noc Input 32
 

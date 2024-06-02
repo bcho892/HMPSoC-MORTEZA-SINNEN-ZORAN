@@ -1,4 +1,4 @@
-// (C) 2001-2019 Intel Corporation. All rights reserved.
+// (C) 2001-2018 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files from any of the foregoing (including device programming or simulation 
@@ -11,9 +11,9 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/19.1std/ip/merlin/altera_irq_mapper/altera_irq_mapper.sv.terp#1 $
+// $Id: //acds/rel/18.1std/ip/merlin/altera_irq_mapper/altera_irq_mapper.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2018/11/07 $
+// $Date: 2018/07/18 $
 // $Author: psgswbuild $
 
 // -------------------------------------------------------
@@ -22,7 +22,7 @@
 // Parameters
 //   NUM_RCVRS        : 3
 //   SENDER_IRW_WIDTH : 32
-//   IRQ_MAP          : 0:1,1:0,2:2
+//   IRQ_MAP          : 0:0,1:1,2:2
 //
 // -------------------------------------------------------
 
@@ -53,8 +53,8 @@ module zoran_nios_irq_mapper
     always @* begin
 	sender_irq = 0;
 
-        sender_irq[1] = receiver0_irq;
-        sender_irq[0] = receiver1_irq;
+        sender_irq[0] = receiver0_irq;
+        sender_irq[1] = receiver1_irq;
         sender_irq[2] = receiver2_irq;
     end
 

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
  * SOPC Builder design path: ../../zoran_nios.sopcinfo
  *
- * Generated: Thu May 30 15:26:25 NZST 2024
+ * Generated: Sun Jun 02 17:47:54 NZST 2024
  */
 
 /*

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
  * SOPC Builder design path: ../../zoran_nios.sopcinfo
  *
- * Generated: Thu May 30 15:26:25 NZST 2024
+ * Generated: Sun Jun 02 17:47:54 NZST 2024
  */
 
 /*
@@ -65,9 +65,9 @@
  *
  */
 
-#define ONCHIP_MEMORY_REGION_BASE 0x8008020
+#define ONCHIP_MEMORY_REGION_BASE 0x8020
 #define ONCHIP_MEMORY_REGION_SPAN 20448
-#define RESET_REGION_BASE 0x8008000
+#define RESET_REGION_BASE 0x8000
 #define RESET_REGION_SPAN 32
 
 

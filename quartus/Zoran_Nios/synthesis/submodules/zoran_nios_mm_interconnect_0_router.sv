@@ -1,4 +1,4 @@
-// (C) 2001-2019 Intel Corporation. All rights reserved.
+// (C) 2001-2018 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files from any of the foregoing (including device programming or simulation 
@@ -24,9 +24,9 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/19.1std/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
+// $Id: //acds/rel/18.1std/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2018/11/07 $
+// $Date: 2018/07/18 $
 // $Author: psgswbuild $
 
 // -------------------------------------------------------
@@ -47,23 +47,23 @@ module zoran_nios_mm_interconnect_0_router_default_decode
      parameter DEFAULT_CHANNEL = 2,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 6 
+               DEFAULT_DESTID = 5 
    )
-  (output [92 - 89 : 0] default_destination_id,
-   output [9-1 : 0] default_wr_channel,
-   output [9-1 : 0] default_rd_channel,
-   output [9-1 : 0] default_src_channel
+  (output [79 - 77 : 0] default_destination_id,
+   output [6-1 : 0] default_wr_channel,
+   output [6-1 : 0] default_rd_channel,
+   output [6-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[92 - 89 : 0];
+    DEFAULT_DESTID[79 - 77 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 9'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 6'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module zoran_nios_mm_interconnect_0_router_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 9'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 9'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 6'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 6'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -93,7 +93,7 @@ module zoran_nios_mm_interconnect_0_router
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [106-1 : 0]    sink_data,
+    input  [93-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,8 +102,8 @@ module zoran_nios_mm_interconnect_0_router
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [106-1    : 0] src_data,
-    output reg [9-1 : 0] src_channel,
+    output reg [93-1    : 0] src_data,
+    output reg [6-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -112,18 +112,18 @@ module zoran_nios_mm_interconnect_0_router
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 63;
+    localparam PKT_ADDR_H = 52;
     localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 92;
-    localparam PKT_DEST_ID_L = 89;
-    localparam PKT_PROTECTION_H = 96;
-    localparam PKT_PROTECTION_L = 94;
-    localparam ST_DATA_W = 106;
-    localparam ST_CHANNEL_W = 9;
+    localparam PKT_DEST_ID_H = 79;
+    localparam PKT_DEST_ID_L = 77;
+    localparam PKT_PROTECTION_H = 83;
+    localparam PKT_PROTECTION_L = 81;
+    localparam ST_DATA_W = 93;
+    localparam ST_CHANNEL_W = 6;
     localparam DECODER_TYPE = 0;
 
-    localparam PKT_TRANS_WRITE = 66;
-    localparam PKT_TRANS_READ  = 67;
+    localparam PKT_TRANS_WRITE = 55;
+    localparam PKT_TRANS_READ  = 56;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -134,21 +134,18 @@ module zoran_nios_mm_interconnect_0_router
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
-    localparam PAD0 = log2ceil(64'h10 - 64'h0); 
-    localparam PAD1 = log2ceil(64'h8010000 - 64'h8008000); 
-    localparam PAD2 = log2ceil(64'h8011000 - 64'h8010800); 
-    localparam PAD3 = log2ceil(64'h8011020 - 64'h8011000); 
-    localparam PAD4 = log2ceil(64'h8011050 - 64'h8011040); 
-    localparam PAD5 = log2ceil(64'h8011060 - 64'h8011050); 
-    localparam PAD6 = log2ceil(64'h80110d0 - 64'h80110c0); 
-    localparam PAD7 = log2ceil(64'h80110e0 - 64'h80110d0); 
-    localparam PAD8 = log2ceil(64'h80110e8 - 64'h80110e0); 
+    localparam PAD0 = log2ceil(64'h10000 - 64'h8000); 
+    localparam PAD1 = log2ceil(64'h11000 - 64'h10800); 
+    localparam PAD2 = log2ceil(64'h11020 - 64'h11000); 
+    localparam PAD3 = log2ceil(64'h11030 - 64'h11020); 
+    localparam PAD4 = log2ceil(64'h11040 - 64'h11030); 
+    localparam PAD5 = log2ceil(64'h11050 - 64'h11048); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h80110e8;
+    localparam ADDR_RANGE = 64'h11050;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
@@ -172,7 +169,7 @@ module zoran_nios_mm_interconnect_0_router
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [9-1 : 0] default_src_channel;
+    wire [6-1 : 0] default_src_channel;
 
 
 
@@ -196,58 +193,40 @@ module zoran_nios_mm_interconnect_0_router
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
-    // ( 0x0 .. 0x10 )
-    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 28'h0   ) begin
-            src_channel = 9'b100000000;
+    // ( 0x8000 .. 0x10000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h8000   ) begin
+            src_channel = 6'b000100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
+    end
+
+    // ( 0x10800 .. 0x11000 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h10800   ) begin
+            src_channel = 6'b000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
-    // ( 0x8008000 .. 0x8010000 )
-    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 28'h8008000   ) begin
-            src_channel = 9'b000000100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
-    end
-
-    // ( 0x8010800 .. 0x8011000 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 28'h8010800   ) begin
-            src_channel = 9'b000000010;
+    // ( 0x11000 .. 0x11020 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 17'h11000   ) begin
+            src_channel = 6'b010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
-    // ( 0x8011000 .. 0x8011020 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 28'h8011000   ) begin
-            src_channel = 9'b000010000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
-    end
-
-    // ( 0x8011040 .. 0x8011050 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 28'h8011040   ) begin
-            src_channel = 9'b010000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
-    end
-
-    // ( 0x8011050 .. 0x8011060 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 28'h8011050   ) begin
-            src_channel = 9'b001000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
-    end
-
-    // ( 0x80110c0 .. 0x80110d0 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 28'h80110c0   ) begin
-            src_channel = 9'b000100000;
+    // ( 0x11020 .. 0x11030 )
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 17'h11020   ) begin
+            src_channel = 6'b100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 
-    // ( 0x80110d0 .. 0x80110e0 )
-    if ( {address[RG:PAD7],{PAD7{1'b0}}} == 28'h80110d0   ) begin
-            src_channel = 9'b000001000;
+    // ( 0x11030 .. 0x11040 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 17'h11030   ) begin
+            src_channel = 6'b001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
-    // ( 0x80110e0 .. 0x80110e8 )
-    if ( {address[RG:PAD8],{PAD8{1'b0}}} == 28'h80110e0   ) begin
-            src_channel = 9'b000000001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
+    // ( 0x11048 .. 0x11050 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 17'h11048   ) begin
+            src_channel = 6'b000001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
 end

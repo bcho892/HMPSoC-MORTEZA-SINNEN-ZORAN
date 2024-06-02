@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'zoran_nios'
 # SOPC Builder design path: ../../zoran_nios.sopcinfo
 #
-# Generated: Thu May 30 15:26:25 NZST 2024
+# Generated: Sun Jun 02 17:47:54 NZST 2024
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # onchip_memory
-memory 0x8008000 0x800d000 cache
+memory 0x8000 0xd000 cache

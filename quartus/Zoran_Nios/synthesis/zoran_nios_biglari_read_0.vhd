@@ -16,7 +16,7 @@ entity zoran_nios_biglari_read_0 is
 		result    : out std_logic_vector(31 downto 0);                    --                              .result
 		clk       : in  std_logic                     := '0';             --                              .clk
 		reset     : in  std_logic                     := '0';             --                              .reset
-		recv_port : in  std_logic_vector(31 downto 0) := (others => '0')  --                   conduit_end.cock
+		recv_port : in  std_logic_vector(31 downto 0) := (others => '0')  --                   conduit_end.noc
 	);
 end entity zoran_nios_biglari_read_0;
 
@@ -31,7 +31,7 @@ architecture rtl of zoran_nios_biglari_read_0 is
 			result    : out std_logic_vector(31 downto 0);                    -- result
 			clk       : in  std_logic                     := 'X';             -- clk
 			reset     : in  std_logic                     := 'X';             -- reset
-			recv_port : in  std_logic_vector(31 downto 0) := (others => 'X')  -- cock
+			recv_port : in  std_logic_vector(31 downto 0) := (others => 'X')  -- noc
 		);
 	end component ci_read_item_instruction;
 
@@ -47,7 +47,7 @@ begin
 			result    => result,    --                              .result
 			clk       => clk,       --                              .clk
 			reset     => reset,     --                              .reset
-			recv_port => recv_port  --                   conduit_end.cock
+			recv_port => recv_port  --                   conduit_end.noc
 		);
 
 end architecture rtl; -- of zoran_nios_biglari_read_0

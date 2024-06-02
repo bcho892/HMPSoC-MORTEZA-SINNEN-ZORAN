@@ -81,6 +81,47 @@ a python script from a terminal of your choice:
 - `run_testbench_environment_integration.do` Shows operation of the ASPs with basic configs coming in from the switches (only a small subset of the available configurations are included)
 - `run_testbench_valued_switches.do` Shows the operation of the HMPSoC NoC with different values on the switches - meaning in some periods the ASPs are configured to different modes such as passthrough etc
 
+## Programming onto an FPGA
+
+The program the HMPSoC onto an FPGA, you must first compile
+the HMPSoC project in quartus.
+
+After doing this, you need to program your FPGA with the
+HMPSoC. This is done by opening the Quartus programmer and
+programming your FPGA with the output file of the
+compilation process.
+
+
+### Setting up Nios II Eclipse Build Tools
+Once the FPGA has been loaded with the HDL bitstream, you
+need to load the NIOS II code onto the NIOS II processor. To
+do this, you must first open The Eclipse Build Tools by
+clicking `Tools > Nios II Software Build Tools for Eclipse`.
+Then after eclipse opens, you need to select your workspace.
+This workspace does not have to be inside the repository.
+Then, in Eclipse - with your workspace open - you can click
+`File > Import`, and select the `General > Exsting Projects
+into Workspace` option. In the next dialog menu, choose the
+root directory as the root directory of this repository - 2
+two project should show up after select the directory. You
+can then click `Finish`. Lastly, you need to regenerate the
+`BSP` of your Nios II code. To do this, right click on the
+`BSP` project, and click `Nios II > Generate BSP`. You can
+now fully build your Nios II code.
+
+### Building Nios II Code in Eclipse
+
+Hit `Ctrl-B` to build your code in Eclipse. Then, once
+built, click `Run > Run configurations`, and then double
+click on Nios II Hardware. This should create a new run
+configuration. On the first page, select the current project
+name, and in the `Target Connections` page, make sure you
+can see a target connection. Note that the FPGA must be
+plugged in and programmed at this point in time.
+
+You can then click `Run` to load the code onto the Nios II
+Core!
+
 ## Troubleshooting
 
 > [!IMPORTANT]
