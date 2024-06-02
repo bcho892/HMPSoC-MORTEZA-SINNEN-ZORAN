@@ -55,7 +55,7 @@ for config_file, info in paths.items():
         write_line(file, f"package {info['package_name']} is")
         for variable in info["variables"]:
             variable_name = variable["variable_name"]
-            absolute_path = Path(variable["relative_path"]).resolve()
+            absolute_path = SCRIPT_DIR.joinpath(variable["relative_path"]).resolve()
             write_line(file, f"\tconstant {variable_name} : string := \"{absolute_path}\";")
         
         write_line(file, "end package;")

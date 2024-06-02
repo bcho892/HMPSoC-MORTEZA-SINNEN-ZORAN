@@ -5,9 +5,13 @@ Development of heterogeneous multiprocessor system on chip - Made in collaborati
 ## Getting Started
 
 > [!IMPORTANT]
-> The first thing you should do before attempting any synthesis or simulation is to generate the correct file paths. To do this follow the steps below
+> The first thing you should do before attempting any
+> synthesis or simulation is to generate the correct file
+> paths. To do this you need to run the python configuration
+> scripts. To do this run (in your terminal)
 
-1. run `py generate_file_paths.py`
+- run `python generate_file_paths.py`
+- run `py generate_file_paths.py` (if using Windows Store managed Python Distribution)
 
 > [!WARNING]
 > If the above does not work, you should navigate to `src\vhdl\Constants\FilePaths.vhd` and replace the constants with the _absolute_ path.
