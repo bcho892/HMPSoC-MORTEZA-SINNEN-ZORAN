@@ -4,17 +4,27 @@ Development of heterogeneous multiprocessor system on chip - Made in collaborati
 
 ## Getting Started
 
+The first thing that needs to be done after cloning this
+repo is to initialise the submodules, using
+```sh
+git submodule update --init
+```
+
 > [!IMPORTANT]
-> The first thing you should do before attempting any
-> synthesis or simulation is to generate the correct file
-> paths. To do this you need to run the python configuration
-> scripts. To do this run (in your terminal)
+> Before attempting any synthesis or simulation, you need to
+> generate the correct file paths. To do this you need to
+> run the python configuration scripts.
+
+After cloning the repo, and updating the submodules, you
+need to configure the absolute file paths to point to the
+right location on your machine. This is done through running
+a python script from a terminal of your choice:
 
 - run `python generate_file_paths.py`
 - run `py generate_file_paths.py` (if using Windows Store managed Python Distribution)
 
 > [!WARNING]
-> If the above does not work, you should navigate to `src\vhdl\Constants\FilePaths.vhd` and replace the constants with the _absolute_ path.
+> If the above does not work, you should navigate to `src/vhdl/Constants/FilePaths.vhd` and `ASPs/VHDL-ADC/src/vhdl/FilePaths.vhd` replace the constants with the _absolute_ path.
 
 ## Repository structure
 

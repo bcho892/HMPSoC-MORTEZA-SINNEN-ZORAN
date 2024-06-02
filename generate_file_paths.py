@@ -60,4 +60,14 @@ for config_file, info in paths.items():
         
         write_line(file, "end package;")
     
+    print("-"*len(msg_header))
     print("\n")
+
+
+print("+---+")
+print("|   |")
+print("+---+----------------+\\")
+print("    | Great Success! |-|")
+print("+---+----------------+/")
+print("|   |")
+print("+---+")
