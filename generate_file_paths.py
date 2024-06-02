@@ -64,10 +64,11 @@ for config_file, info in paths.items():
     print("\n")
 
 
-print("+---+")
-print("|   |")
-print("+---+----------------+\\")
-print("    | Great Success! |-|")
-print("+---+----------------+/")
-print("|   |")
-print("+---+")
+print("TO INFINITY AND BEYOND!")
+print("    < +---+")
+print("    <-|   |")
+print("  <-< +---+----------------+\\")
+print("<-<-<     | ELECTRON       |-|")
+print("  <-< +---+----------------+/")
+print("    <-|   |")
+print("    < +---+")
