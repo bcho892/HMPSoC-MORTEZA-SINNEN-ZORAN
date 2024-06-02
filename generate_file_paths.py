@@ -1,51 +1,63 @@
-## USAGE: `py generate_file_paths.py`
+#!/usr/bin/env python3
 
-import os
+## USAGE: `python generate_file_paths.py`
 
-def get_absolute_path(filename):
-    absolute_path = os.path.abspath(filename)
-    return absolute_path
+from pathlib import Path
 
-paths = [{
-        "relative_path": "src/recop_programs/configuration.mif",
-        "variable_name": "RECOP_FIXED_CONFIG_FILE_PATH"
-        },
-        {
-        "relative_path": "src/recop_programs/user_configuration.mif",
-        "variable_name": "RECOP_CONFIGURABLE_CONFIG_FILE_PATH"
-        }, 
-        {
-        "relative_path": "src/recop_programs/valued_config_fields.mif",
-        "variable_name": "RECOP_VALUED_CONFIG_FIELDS_FILE_PATH"
-        }, 
-        {
-        "relative_path": "src/recop_programs/config_core_window.mif",
-        "variable_name": "RECOP_WOLF_CONFIG_FIELDS_FILE_PATH"
-        }, 
-        ]
+def write_line(file, data):
+    print(data)
+    file.write(data)
+    file.write("\n")
 
-to_write = []
-for path in paths:
-    print(get_absolute_path(path["relative_path"]))
-    to_write.append({"variable_name": path["variable_name"], 
-                   "absolute_path": get_absolute_path(path["relative_path"])})
+paths = {
+    "src/VHDL/Constants/FilePaths.vhd": {
+        "package_name": "FilePaths",
+        "variables": [
+            {
+                "relative_path": "src/recop_programs/configuration.mif",
+                "variable_name": "RECOP_FIXED_CONFIG_FILE_PATH",
+            },
+            {
+                "relative_path": "src/recop_programs/user_configuration.mif",
+                "variable_name": "RECOP_CONFIGURABLE_CONFIG_FILE_PATH",
+            },
+            {
+                "relative_path": "src/recop_programs/valued_config_fields.mif",
+                "variable_name": "RECOP_VALUED_CONFIG_FIELDS_FILE_PATH",
+            },
+            {
+                "relative_path": "src/recop_programs/config_core_window.mif",
+                "variable_name": "RECOP_WOLF_CONFIG_FIELDS_FILE_PATH",
+            },
+        ],
+    },
+    "ASPs/VHDL-ADC/src/vhdl/FilePaths.vhd": {
+        "package_name": "AdcFilePaths",
+        "variables": [
+            {
+                "relative_path": "ASPs/VHDL-ADC/src/MIFs/12_bit_rom.mif",
+                "variable_name": "rom_12_file_path",
+            }
+        ],
+    },
+}
+
+SCRIPT_DIR = Path(__file__).parent
+
+for config_file, info in paths.items():
+    config_file_path = SCRIPT_DIR.joinpath(config_file).resolve()
+
+    with open(config_file_path, "w", encoding="iso8859-1") as file:
+        msg_header = f"Configuring {config_file_path}"
+        print(msg_header)
+        print("-"*len(msg_header))
+
+        write_line(file, f"package {info['package_name']} is")
+        for variable in info["variables"]:
+            variable_name = variable["variable_name"]
+            absolute_path = Path(variable["relative_path"]).resolve()
+            write_line(file, f"\tconstant {variable_name} : string := \"{absolute_path}\";")
+        
+        write_line(file, "end package;")
     
-f = open("./src/vhdl/Constants/FilePaths.vhd", "w")
-
-f.write("-- This file should be updated using the script called generate_file_paths.py at the root\n")
-f.write("package FilePaths is\n")
-
-for absolute_path in to_write:
-    print('Writing variable {} with its absolute path {}'.format( 
-          absolute_path["variable_name"], 
-          absolute_path["absolute_path"]))
-    f.write('   constant {} : string := "{}";\n'.format(absolute_path["variable_name"], 
-                                                        absolute_path["absolute_path"]))
-
-f.write("end package;")
-
-f.close()
-
-
-
-    
+    print("\n")
